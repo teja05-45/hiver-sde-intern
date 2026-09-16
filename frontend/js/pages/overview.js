@@ -36,10 +36,10 @@
   function headSection() {
     return el("div", { class: "page-head overview-head" },
       el("div", null,
-        el("h1", { text: "Evidence-First Support Agent" }),
+        el("h1", { text: "Overview" }),
         el("p", { class: "desc" },
-          "An AI support system that answers only when historical evidence supports the response. ",
-          "When evidence is insufficient, it abstains and escalates rather than invent an answer.")),
+          "How the support agent is performing: automation quality on human-verified labels, where it still fails, ",
+          "and why the headline classifier number is not the number to trust.")),
       el("div", { class: "system-status", id: "system-status" },
         el("span", { class: "dot" }),
         el("span", { text: "checking status…" })));
@@ -155,7 +155,7 @@
         el("ul", { class: "reason-list", id: "not-well-list" },
           items.length ? items.map((t) => el("li", { class: "bad" }, el("span", { class: "bullet", text: "!" }), el("span", { text: t })))
             : el("li", { class: "small text-muted" }, el("span", { text: "Loading failure analysis…" }))),
-        el("p", { class: "hint mt-3" }, "Full failure taxonomy with real examples: the Failure Analysis page.")));
+        el("p", { class: "hint mt-3" }, "Full failure taxonomy with real examples: the Failure Analysis page under Insights.")));
   }
 
   function headlineGapSection({ gap, silverAuto, goldenAuto, baselines }) {
