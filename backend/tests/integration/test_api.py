@@ -1,6 +1,14 @@
+import os
 import sys
 import unittest
 from pathlib import Path
+
+# Deterministic, offline test runs: force mock mode before the app module
+# imports (and loads .env). A developer's real GROQ key must never make the
+# test suite burn live API quota or fail on provider 429s.
+os.environ["LLM_PROVIDER"] = "mock"
+os.environ.pop("GROQ_API_KEY", None)
+os.environ.pop("LLM_MODE", None)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
