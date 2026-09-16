@@ -431,15 +431,27 @@ def retrieve():
         return err
 
     agent = get_agent()
-    evidence = agent.retriever.retrieve(message, k=k)
+    # Hybrid retrieval wants the classifier's intent distribution for this
+    # query (intent-compatibility channel); same source the agent uses.
+    from app.services.text_cleaning import clean_for_modeling
+    intent_probs = agent.classifier.predict([clean_for_modeling(message)])[0].all_scores
+    evidence = agent.retriever.retrieve(message, k=k, intent_probs=intent_probs)
     return jsonify({
         "request_id": _request_id(),
         "cases": [
             {"conversation_id": c.conversation_id, "similarity": round(c.similarity, 4),
-             "customer_message": c.customer_message, "resolution": c.resolution, "intent": c.intent}
+             "customer_message": c.customer_message, "resolution": c.resolution, "intent": c.intent,
+             "final_score": (round(c.final_score, 4) if c.final_score is not None else None),
+             "rank_raw": c.rank_raw,
+             "components": ({k2: round(v2, 4) for k2, v2 in c.components.items()}
+                             if c.components else {}),
+             "explanation": c.explanation}
             for c in evidence.cases
         ],
         "intent_agreement_rate": round(evidence.intent_agreement_rate, 4),
+        "resolution_agreement_rate": round(evidence.resolution_agreement_rate, 4),
+        "top_similarity": round(evidence.top_similarity, 4),
+        "hybrid_enabled": evidence.hybrid_enabled,
     })
 
 

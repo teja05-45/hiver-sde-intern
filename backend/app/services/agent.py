@@ -91,9 +91,21 @@ class AgentResult:
                         "customer_message": c.customer_message,
                         "resolution": c.resolution,
                         "intent": c.intent,
+                        # Hybrid-reranking extras (None/empty when disabled):
+                        "final_score": (round(c.final_score, 4)
+                                         if c.final_score is not None else None),
+                        "rank_raw": c.rank_raw,
+                        "components": ({k: round(v, 4) for k, v in c.components.items()}
+                                        if c.components else {}),
+                        "explanation": c.explanation,
                     }
                     for c in self.evidence.cases
                 ],
+                # Retrieval-quality summary for the UI panel:
+                "hybrid_enabled": self.evidence.hybrid_enabled,
+                "top_similarity": round(self.evidence.top_similarity, 4),
+                "intent_agreement_rate": round(self.evidence.intent_agreement_rate, 4),
+                "resolution_agreement_rate": round(self.evidence.resolution_agreement_rate, 4),
             },
             "ambiguity": self.ambiguity.as_dict() if self.ambiguity else None,
             "novelty": self.novelty.as_dict() if self.novelty else None,
@@ -156,7 +168,14 @@ class SupportAgent:
         t0 = perf_counter()
         retrieval_failed = False
         try:
-            evidence = self.retriever.retrieve(customer_message, k=k)
+            # The fitted classifier doubles as the intent-compatibility
+            # channel for hybrid retrieval: its full distribution for THIS
+            # query is exactly P(case_intent | query) the reranker needs.
+            # No separate model, no retraining, no keyword rules.
+            evidence = self.retriever.retrieve(
+                customer_message, k=k,
+                intent_provider=lambda q: self.classifier.predict([clean_for_modeling(q)])[0].all_scores,
+            )
         except Exception:  # noqa: BLE001
             logger.exception("Retrieval failed")
             evidence = EvidenceResult(cases=[])
