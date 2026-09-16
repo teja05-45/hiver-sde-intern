@@ -74,10 +74,11 @@
         pillLabel = "NOT CONFIGURED";
         pillTip = "No API key configured for the selected provider. Using mock mode.";
       } else {
-        // Health check not available — fall back to configured-but-unverified
-        pillClass = "live";
-        pillLabel = `LIVE — ${String(provider).toUpperCase()}`;
-        pillTip = `Provider ${provider} is configured. Run provider health check to verify.`;
+        // Health check unavailable (fetch failed) — never present an
+        // unverified provider as LIVE. Configuration truth only.
+        pillClass = "unverified";
+        pillLabel = `${String(provider).toUpperCase()} — UNVERIFIED`;
+        pillTip = `Provider ${provider} is configured but its health could not be measured (health-check request failed). Real API calls may fail.`;
       }
 
       pill.className = "mode-pill " + pillClass;
@@ -86,7 +87,7 @@
 
       document.getElementById("foot-brand").textContent = health.brand || "—";
       document.getElementById("foot-provider").textContent = provider;
-      document.getElementById("foot-mode").textContent = isMock ? "MOCK" : (providerHealth?.healthy ? "LIVE" : providerHealth?.healthy === false ? "UNHEALTHY" : "LIVE");
+      document.getElementById("foot-mode").textContent = isMock ? "MOCK" : (providerHealth?.healthy ? "LIVE" : providerHealth?.healthy === false ? "UNHEALTHY" : "UNVERIFIED");
       document.getElementById("foot-env").textContent = health.app_env || "—";
     } catch (_) {
       pill.className = "mode-pill mock";

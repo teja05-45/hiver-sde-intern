@@ -620,6 +620,7 @@ def llm_judge_summary():
     human_method = str((agreement or {}).get("human_scoring_method") or "")
     human_labels_real = bool(human_method) and "proxy" not in human_method.lower()
     human_validated = validated and human_labels_real
+    n_examples = (agreement or {}).get("n_examples")
     return jsonify({
         "status": "VALIDATED" if human_validated else "NOT_VALIDATED",
         "pipeline_validated": validated,
@@ -634,10 +635,16 @@ def llm_judge_summary():
             "NOT a real quality assessment and must not be read as one."
             if is_mock else
             (f"A live provider was configured and the judge ran, but {n_judged} examples were "
-             f"successfully judged (0 of {agreement.get('n_examples', '?')} attempted "
+             f"successfully judged (0 of {n_examples if n_examples is not None else '?'} attempted "
              "succeeded). No agreement result exists yet -- this is NOT VALIDATED."
              if not validated else
-             "Judge scores come from a live LLM and were compared against human scores.")),
+             (f"The judge ran LIVE against a real LLM ({n_judged} of {n_examples if n_examples is not None else '?'} "
+              "examples judged successfully), but the scores it was compared against are PROXY "
+              "human scores derived programmatically from golden labels (scripts/score_human_proxy.py) "
+              "-- NOT real human judgments. This proves the judge pipeline executes end-to-end with a "
+              "live LLM and reports honest agreement statistics; it does NOT establish human agreement."
+              if not human_labels_real else
+              "Judge scores come from a live LLM and were compared against real human scores."))),
         "agreement": agreement,
         "required_to_validate": [
             "Configure LLM_PROVIDER=groq (or gemini) with a real API key.",

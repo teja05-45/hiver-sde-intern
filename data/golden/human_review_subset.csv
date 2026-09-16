@@ -1,70 +1,226 @@
 id,message,true_intent,generated_reply,is_mock,human_correctness,human_groundedness,human_helpfulness,human_completeness,human_actionability,human_brand_consistency,human_safety
-golden_164,@115850 really disappointed for not supporting a loyal customer. OnePlus Adapter is not present on Amazon by OnePlus . Then also saying to buy from amazon. Should I buy a duplicate charger or should not,general_other,,False,3,4,1,1,0,0,4
-golden_029,"@115830 You abandon £100s worth of our Christmas presents on a countryside wall in the pouring rain and have the gall to send a status update to say ""delivered""? Ridiculous.",order_status_inquiry,,False,3,4,1,1,0,0,4
-golden_007,When you realized something you ordered off @115821 Prime is going to take more than 2 days https://t.co/c9y6IoMrqb,delivery_delay,,False,3,4,1,1,0,0,4
-golden_190,"Dear @115821, good thing no one stole the #Fingerlings!!! 😂😂😂 #almostthere #AmazonPrime #amazon https://t.co/JCRFDogT4V",general_other,,False,3,4,1,1,0,0,4
-golden_071,@115851 @115821 been a customer since 2002 and placed well over 1100 orders and today marks the worst customer service experience.  Guess it was a good run,customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_063,Idk what’s going on with @115821 but this is the second time in a month they’ve sent me the wrong item 😒,return_or_replacement_request,,False,3,4,1,1,0,0,4
-golden_058,"Hey @119625, why no subtitles for 'Newton'  the latest hindi movie nominated for Oscar from India ? Please enable the subtitles man...",content_availability_inquiry,,False,3,4,1,1,0,0,4
-golden_036,@115850 your add address form resets after switching apps. Please address the issue in upcoming update. https://t.co/O0vTN1oEwQ,order_status_inquiry,,False,3,4,1,1,0,0,4
-golden_189,Still haven’t heard back from @115821 regarding the horrible  condition my most recent order was received in. #amazonfail,general_other,,False,3,4,1,1,0,0,4
-golden_027,@115830 still waiting on a delivery/just an update on the delivery #theseareallgoodtimes ? #thesearenotgoodtimes,order_status_inquiry,,False,3,4,1,1,0,0,4
-golden_174,"@115850 If you cant honor orders, stop taking orders and then cancelling it once we lose opportunity to buy from your competitor!! Check OrderId 407-3570338-2876318 and 407-8674147-6797957. Get mature to do business !!",general_other,,False,3,4,1,1,0,0,4
-golden_140,@115821 why do I pay for a Prime account if my package still gets delayed 3-5 days every time I order something????,delivery_delay,,False,3,4,1,1,0,0,4
-golden_023,"@115850 @AmazonHelp  @120543 @20666 @1198 @118342 sir, my parcel's tracking id- AW919025074IN was supposed to be delivered at PIN-249135 PO Bhatwari, District Uttarkashi by 24th Nov. However instead of PO Bhatwari it is being tossed from Haridwar2",delivery_not_received,,False,3,4,1,1,0,0,4
-golden_152,"Every time @115821 uses their amzn delivery service, my stuff never comes on time. I'm really annoyed.",general_other,,False,3,4,1,1,0,0,4
-golden_109,@115830 appalling customer service. Appalling delivery system. Two items apparently delivered but NOT. Why are there no supervisors or managers available? Prime membership seems to mean nothing to @115830,prime_membership_issue,,False,3,4,1,1,0,0,4
-golden_009,@115833 need to get Alexa to close my window.,general_other,,False,3,4,1,1,0,0,4
-golden_008,"Hey @117795, server down or is it me? #amazonprimenow",general_other,,False,3,4,1,1,0,0,4
-golden_024,"@AmazonHelp @115821 
-surely there's been some mistake? Is my mailman gonna come by right before bedtime or is it coming tomorrow? https://t.co/UqKblnaRvQ",general_other,,False,3,4,1,1,0,0,4
-golden_056,"@115851 , Hi, Amazon@India failing multiple times. Eroding business values, Customer Service gives false data...Deliveries don't happen. Are you really in serious business in India? Latest failed delivery was a gift for my wife. Believed Amazon &amp; have been left high &amp; dry now.",customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_060,"Goodbye @115830. You are a disgusting company. I've never known such poor customer service as I have just experienced, let alone your UK tax avoidance. I will be cancelling every single subscription and service I have with you and never using you again. Good riddance.",customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_130,@115821 Why did your delivery driver just ring my doorbell three times at 10:10 PM?!?! Scared us to near death and woke up every creature in the house. I am NOT HAPPY.,general_other,,False,3,4,1,1,0,0,4
-golden_155,Dear @115850 please do not use @149473 as your courier partner. They really have no interest in doing their job.,general_other,,False,3,4,1,1,0,0,4
-golden_198,@115830 @115821 this is frustrating! You promised refund also items were not delivered to the said address and the person you named doesn't live there!,delivery_not_received,,False,3,4,1,1,0,0,4
-golden_144,"AMAZON ORDER UPDATE: 
+golden_164,@AmazonHelp can u help this keeps popping up every time i want to buy my friend something from their wishlist and it’s done this to EVERY item in the wishlist https://t.co/JrrX9IY0k3,general_other,"Hi there! Sorry you’re seeing that pop‑up every time you try to buy something from a wishlist. A few things that have helped other shoppers with similar issues are:
+1. Close the Amazon app (or browser tab) and open it again.
+2. Make sure the app is updated to the latest version.
+3. If you’re on a web browser, try clearing your cache and cookies, or try a different browser/device.
+If the problem continues after those steps, please reach out to our support team so we can investigate further: https://t.co/vlvfJr4nN9. Thanks for your patience!",False,3,2,3,4,4,3,4
+golden_029,@115850 Order# 405-2797358-2470712 No update; only DTDC tracking no Z44698404 which says package delivered to a wrong address,order_status_inquiry,"Hi there,
 
-First, they said my package would be delayed but I was still getting it today. Now it's says I'll get it between November 26th and November 30th. So, what is the point of even paying for Prime to get free 2 day shipping if THIS is the end result?! https://t.co/qfv0boWnx7",delivery_delay,,False,3,4,1,1,0,0,4
-golden_051,"@165092 
-#Help Have purchased Moto G5plus on 11th July during #AmazonPrimeDays, supposed to receive the cashback into my HDFC Bank account by 12th Oct but haven't. Called and mailed Amazon customer service several times, asked to wait for 7days since 3rd Nov. What can I do?",customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_167,@AmazonHelp you cancelled my order 😣,general_other,,False,3,4,1,1,0,0,4
-golden_192,@115821 is getting an email from   “ __email__ “ telling me my order hasn’t been shipped because i need to fax credit card information and the billing adress legit or a scam ?,general_other,,False,3,4,1,1,0,0,4
-golden_108,So the bathroom tap I bought from @115821 has broke but they won't send a replacement until a pay a plumber to take it off then they will refund me to buy a new one and pay for a plumber to come back out and fit . Absolute joke @115830 @AmazonHelp,cancellation_or_refund_request,,False,3,4,1,1,0,0,4
-golden_057,@115830 please stop using @122232 for your delivery services. Every Christmas they’re the carriers that return parcels without even an attempt to deliver.,general_other,,False,3,4,1,1,0,0,4
-golden_115,"@111522 I am seriously annoyed with @116316 right now. I've been preordering Legend of the Galactic Heroes since volume 2, and every single one has had its delivery delayed for at least a week, a month twice. It is happening again with Vol.5",general_other,,False,3,4,1,1,0,0,4
-golden_151,"Amazon at it again with the delayed shippings with no explanation 🤔
-@AmazonHelp https://t.co/0yjT14tQxX",general_other,,False,3,4,1,1,0,0,4
-golden_072,Why as a @117795 customer do I now have to wait 3 days for delivery??,general_other,,False,3,4,1,1,0,0,4
-golden_002,Why did I order a 5 pound bag of gummy bears from @115821 on Black Friday? https://t.co/h8sCTNzFYr,general_other,,False,3,4,1,1,0,0,4
-golden_041,"@115850 @AmazonHelp Who is the winner for the #OnePlus5TAppQuiz ? Publish the winner list,waiting for your update.",order_status_inquiry,,False,3,4,1,1,0,0,4
-golden_186,"Thanks @149789 and @115821 ! I always wanted 3 corsets instead of my Wacom Cintiq Pro 13"". /s
+I'm sorry to hear that the tracking information for Order # 405-2797358-2470712 shows delivery to the wrong address. Could you please check with DTDC to see if they have any additional details or options for you?
 
-But seriously, where is my Cintiq?!?
+In the meantime, kindly report this issue using the following link so we can investigate further: https://t.co/vlvfJr4nN9. Once we have your report, we’ll look into the delivery status right away.
 
-#wacom #amazon #scammer https://t.co/VqpaZuOXir",general_other,,False,3,4,1,1,0,0,4
-golden_088,@115850 orders worth 18 k more coming. All getting Returned! Customer care isn't helping. I need the no. &amp; Addr of Angul Amazon center. https://t.co/GgOuyQM7Iy,customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_169,"@115850 GM, I just wish to say that if you ask me Aadhar mandatory for any shopping that I did or its tracking , it will be last purchase of mine. I have been a customer over 18 years. So you know @115821 @AmazonHelp",general_other,,False,3,4,1,1,0,0,4
-golden_040,"Ready to throw this @116439 off the nearest bridge. Since whatever update, I get kicked out of Hulu constantly because of a “poor connection” smfh get it together",order_status_inquiry,,False,3,4,1,1,0,0,4
-golden_182,"@115850 when will ur next sale start, need to buy things, and that hdfc offer buy now pay after 3 months.",general_other,,False,3,4,1,1,0,0,4
-golden_087,"Dear @AmazonHelp @115850 ,
-I haven't ordered any thing to any one but why these mails to my account and actually I don't have any of your app in my Mobile.
-This is not only one but I have got 4 - 5 frequent mails of the orders.
-Kindly look into this asap
-Ty https://t.co/6oNyfFwg4Z",app_or_device_technical_issue,,False,3,4,1,1,0,0,4
-golden_191,Omg been expecting a delivery from @115830 and @6841 for one week. Said address not valid. Have had other deliveries from @6841 😢,general_other,,False,3,4,1,1,0,0,4
-golden_183,"Oh @115821 why did I forsake thee? @Walmart has crushed my soul with their utter lack of customer service. NEVER AGAIN YOU RETAIL DEVIL!!
+Thank you for your patience, and we’ll do our best to resolve this for you.",False,4,4,4,4,4,2,2
+golden_007,"@AmazonHelp hello,I have received my order but as you can see it is already opened and the cd ""who built the moon"" is missing, customer service have reordered it for me,either it's been opened deliberately or the seal has failed and the cd has fallen out https://t.co/uHlTenrTTk",delivery_not_received,"Hi there,
 
-Amazon, my love, please forgive me. https://t.co/6YwDScXf5o",customer_service_complaint,,False,3,4,1,1,0,0,4
-golden_098,"@AmazonHelp @115821 #primefail : when your order is guaranteed to arrive on the Wed. before the holiday, but arrives days late, after you’ve already left town. Added bonus: your other order is now delayed another week. Ordered 11/19, delivery 12/6. I’ll take my $99 back, thanks.",delivery_delay,,False,3,4,1,1,0,0,4
-golden_025,"Hi @AmazonHelp please could you explain why my next day prime orders are scheduled to arrive on Friday and next Monday, instead of arriving tomorrow?",delivery_delay,,False,3,4,1,1,0,0,4
-golden_092,"@AmazonHelp placed the order yesterday at £289 and it was temporarily out of stock. Price has gone up today, do I still pay £289 https://t.co/cQEujpryWk",general_other,,False,3,4,1,1,0,0,4
-golden_089,"@115830 Prime delivery, ordered 21st Nov. PAID FOR delivery today.  not even ""Out for delivery"" yet.  #DemandARefund",prime_membership_issue,,False,3,4,1,1,0,0,4
-golden_068,@AmazonHelp @115850 BUT IT ISN’T working ALREADY. What do I do?????  I need an exchange or a return ASAP !!!!! https://t.co/8uIoIGsHWe,return_or_replacement_request,,False,3,4,1,1,0,0,4
-golden_012,@AmazonHelp Hi I’ve ordered something and don’t know if payment has been taken or not?  Is payment immediate or does it take a while?,general_other,,False,3,4,1,1,0,0,4
-golden_118,"I wake up to my @116090 account being hacked, but no purchase being made yet.
+I’m really sorry to hear that your order arrived opened and the CD ""Who Built the Moon"" was missing. I understand how frustrating that must be. I see that a replacement has already been reordered for you, and we’ll work to get it to you as quickly as possible.
 
-Little did the hacker know, I was able to sign into my account via the mobile app with touch ID to remove my credit card.
+If you have any additional details or photos of the package, please feel free to share them with us. You can also reach out via chat or phone so we can look into this further and make sure everything is resolved to your satisfaction.
 
-Out-Played.",app_or_device_technical_issue,,False,3,4,1,1,0,0,4
-golden_138,.@115830 @AmazonHelp Really Amazon? Was this box necessary? A 12 inch rule in a 4ft box! This cost me an additional €14.95 in shipping costs &amp; you sent me the wrong product. Not impressed. How can we sort this? https://t.co/be1QnBaZmX,general_other,,False,3,4,1,1,0,0,4
+Thank you for bringing this to our attention, and we appreciate your patience.
+
+Best regards,
+Customer Support",False,2,1,2,4,2,2,4
+golden_190,"Wonder if @115830 delivery are under so much pressure to hit targets they’re marking parcels delivered when they’re not. 2nd item in as many weeks not received despite notification of delivery. Stress and worry, not a great customer experience. 😧",app_or_device_technical_issue,"We’re very sorry you’ve been marked as delivered but haven’t received your parcel – that’s certainly not the experience we want you to have. If you haven’t already, could you please check with any nearby neighbours or a safe‑place location where the driver might have left it? If the item is still missing, please reach out to us using this link so we can investigate and get it sorted for you: https://t.co/JzP7hlA23B",False,2,1,4,4,4,2,4
+golden_071,@115830 (2/2) I’ve contacted the seller and was told to wait 2 days for a response. if I’m paying for prime then I shouldn’t have to wait for my delivery when I was given a specific date for delivery that it has not been met??? ignore the monkey. Hiding the birthday gift,prime_membership_issue,"Hi there,
+
+I’m sorry to hear that your Prime delivery didn’t arrive on the date you were expecting. We aim to deliver orders by the delivery date that’s confirmed when the order is placed, but please note that the delivery window is calculated from the time the order ships, not from the moment you place it. Occasionally, factors outside of our control can cause a delay.
+
+I’ll look into the status of your order and get back to you with an update as soon as possible. Thank you for your patience.
+
+Best regards,
+Customer Support",False,4,3,2,3,2,2,4
+golden_063,"Remember when @115821 got upset when @115817 and @81 missed deliveries?  So Amazon set up their own logistics?  Yea, @115821 missed today’s delivery and is only giving a date range for next attempt. I miss @115817 and @81.",delivery_not_received,"Hi, I’m sorry to hear that your delivery was missed again. To investigate this for you, could you please share the order number and the carrier listed on your tracking information? You can also reach our delivery support team directly through this link: https://t.co/2n73phHPtG. Once we have those details, we’ll work on getting a new delivery window for you.",False,3,2,4,1,4,2,4
+golden_058,"Hey @115821 and @118706, Thatnks for delivering my package to the side of my driveway nowhere near my mailbox of my door. It was really fun looking for it in the middle of the night....DO BETTER. It looks like someone just literally tossed it in my lawn. WTF",content_availability_inquiry,"Hi there,
+
+I’m really sorry to hear that your package was left in the middle of your driveway instead of a safe spot. That’s definitely not the experience we want you to have. Could you let us know if the item was damaged in any way?
+
+To help us investigate further, please share a few more details about the order (order number, delivery date, and any photos you may have) using this form: https://t.co/RHUI1ew188. A team member will review the information and get back to you as soon as possible.
+
+If you’d prefer to speak with us directly, you can also reach us by phone or chat here: https://t.co/eJXKURvpr8.
+
+Thank you for bringing this to our attention – we’ll work to make sure it doesn’t happen again.
+
+Best regards,
+Customer Support",False,4,3,4,3,4,3,4
+golden_036,Its been 4 days already and I havenot recieved any call or update regarding the counterfeiting of @112482 . And fake sellers are selling without any fear on your platform. @Amazonhelp @115851 https://t.co/XTyoD4yLo1,order_status_inquiry,"Hi there,
+
+We’re sorry to hear you’ve encountered a counterfeit product on our platform and that you haven’t received an update yet. We take reports of fake or counterfeit listings very seriously.
+
+Could you please share the order number (or the listing ID) and any screenshots or details you have about the product and the seller? You can submit this information through our support channel here: https://t.co/rS49hgaADF. Please avoid including personal or payment details in the message.
+
+Once we receive the details, our team will investigate the listing and get back to you as soon as possible.
+
+Thank you for bringing this to our attention.
+
+Best regards,
+Customer Support",False,2,1,3,4,4,2,4
+golden_189,Ordered a work colleagues leaving present from @115830. I've only got half the items I've ordered and they all say they are delivered. I cannot find a phone number or anything helpful on the website. Help!,general_other,"Hi there,
+
+I’m sorry to hear that you’ve only received half of the items from your order, even though the tracking shows everything as delivered. To help us look into this for you, could you please provide your order number and let us know whether the items were sold by Amazon or a third‑party seller? You can check that information here: https://t.co/aaDyEz1VgE.
+
+In the meantime, the quickest way to get this investigated is to contact our support team directly through this link: https://t.co/hApLpMlfHN. An agent will be able to open a case, verify the delivery details, and work on getting the missing items to you.
+
+Thank you for your patience, and we’ll do our best to resolve this as soon as possible.",False,4,3,4,4,4,3,4
+golden_027,@115850 Unable to add Money to Amazon Pay.. Not receiving verification text mesaage! https://t.co/ogyF6qBqS7,payment_or_billing_issue,"Hi there, sorry to hear you’re having trouble adding money to your Amazon Pay balance and not receiving the verification text. To help us investigate this quickly, could you please share the details of the issue (e.g., the phone number linked to your account, the last four digits of the card you’re trying to use, and any error messages you see) using this link: https://t.co/GIJyeYqKE0. Once we have that information, our team will look into the problem and get back to you.",False,4,3,4,4,4,2,3
+golden_174,"@115821 why you force prime membership on users? Today my card was charge for 10.90 USD, if no cc alerts set it would hv silently went under carpet. This is second time it's happened.",prime_membership_issue,"Hi there, I'm sorry to hear about the unexpected $10.90 charge and the frustration it’s caused. We’d like to investigate this for you. Could you please share the order or subscription number associated with the charge, or any reference details you have? You can also reach out to us directly via phone or chat so we can look into the charge together. Please use this link to start the conversation: https://t.co/hApLpMlfHN. Thank you for your patience, and we’ll work to resolve this as quickly as possible.",False,4,3,4,2,4,2,4
+golden_140,"@115830 4 days of supposed ""attempted deliveries"" really????
+Ur driver is having every1 on. What's the point of being a prime cust? #wrong",delivery_delay,"Hi there, I'm sorry to hear about the repeated delivery attempts and the frustration it's causing. Our 2‑Day shipping promise for Prime reflects the in‑transit time once the order has been processed, not the processing time itself. Delivery windows can extend into the evening, with couriers able to deliver as late as 10 pm. It sounds like the driver may be having trouble locating your address, which can lead to multiple attempts. Could you please double‑check that the address details in your order are correct? If everything looks right and you still haven't received your package, please let us know using this link so we can investigate further: https://t.co/JzP7hlRCV9. For more information on how Prime shipping works, you can also review the details here: https://t.co/XFSZ6r24V0. Thank you for your patience, and we’ll do our best to get your order to you as soon as possible.",False,4,4,4,3,4,3,2
+golden_023,@115850 very poor service and cheating done by amazon.,delivery_not_received,"We’re sorry to hear about the poor service you’ve experienced. To help us investigate the delivery issue, could you please share your order number and any relevant details through our support form here: https://t.co/vlvfJr4nN9? Once we have that information, we’ll look into it and work to resolve the problem for you.",False,4,3,3,4,4,2,4
+golden_152,"@AmazonHelp I made an order on Wednesday and selected one day shipping at checkout, and I did not receive the item on Thursday or Friday. I talked to a representative on Friday, and they said that my order would receive priority shipping, yet I still have not received my item.",general_other,"We’re sorry you haven’t received your order yet. To investigate the shipping status, could you please provide your order number and the email address used for the purchase? You can also reach our support team directly by phone or chat here: https://t.co/JzP7hlA23B. Once we have those details, we’ll look into why the one‑day shipping didn’t arrive as expected and work to resolve the issue.",False,4,3,4,4,4,2,3
+golden_109,"@115821, against our complaint and refund request against order no.402-573-4541-1452349,for MOTO G5S PLUS GOLD 64 GB , sorry to say that nothing positive has been done till date. It has been a sad, frustrating and pathetic experience for us. Soooo sad !",cancellation_or_refund_request,"Hi, we’re really sorry to hear about the ongoing trouble with your order 402‑573‑4541‑1452349 for the Moto G5S Plus Gold 64 GB. I understand how frustrating this must be. To move forward, could you please provide the required details through the secure link we previously sent you? Once we have that information, we’ll investigate the issue right away and keep you updated on the next steps.
+
+Thank you for your patience.",False,3,2,3,3,3,2,4
+golden_009,@115850 seems they have got a huge population of prime members in india and now they don't want more customers in india https://t.co/Cngg7ux6Kr,delivery_delay,"I’m sorry, but I don’t have enough information to address your concern.",False,2,1,1,1,0,1,2
+golden_008,I never actually receive my “same day” orders from amazon on the same day. Maybe they’ll show up tomorrow? They say delivered. Who knows. It’s always a mystery. @AmazonHelp,customer_service_complaint,"I’m sorry your same‑day order hasn’t arrived yet. If it doesn’t arrive by 9:00 pm tomorrow, please let us know. In the meantime, could you share the order number and the carrier listed on the tracking page so we can look into it for you?",False,4,3,2,1,1,3,4
+golden_024,@115830 how do i download the wwe app on an amazon fire tablet?!,delivery_not_received,"Hi there! The WWE app is available in the Amazon Appstore on your Fire tablet. To download it, open the Appstore, use the search function to look for ""WWE"", and then tap the download/install button. If you don’t see the app in the library or run into any issues, just let us know and we’ll walk you through the steps.",False,3,2,2,4,2,1,4
+golden_056,"@115850 @115851 @4773 __email__,Reg Mob-9717597841.I have placed an order on Amazon.in on 21NOV. Order ID-4__credit_card__.Not received order Still.Estimated Delivery Date of Order was 27Nov &amp;Today is30Nov.I need token of Apology of Rs1000 in AmazonPayBal https://t.co/EarpjMSZBi",prime_membership_issue,"We’re sorry to hear that your order placed on 21 Nov has not arrived yet. For your privacy and security, we can’t view order details or process requests through this public channel. Please do not share personal information such as your email, phone number, or order ID here. To investigate further, kindly contact our support team using the dedicated link: https://t.co/vlvfJr4nN9. Our team will review the status of your order and get back to you as soon as possible. Thank you for your patience.",False,4,3,4,4,4,2,2
+golden_060,@117795 Can you get your UK counterparts to stop being the funny guys.  Why would a refund for an item not be the full amount I paid for it?,cancellation_or_refund_request,"Hi there, I’m sorry you’ve only received a partial refund. Our refund policy is listed here: https://t.co/27Cl195bsC. It explains that refunds are issued for the purchase price of the item, but shipping fees are only refunded when the item was defective, damaged, or never arrived. If an item is returned in a condition that differs from how it was received, the refund amount may be adjusted. To look into why you didn’t receive the full amount, could you please share your order number and any relevant details with us? You can start a real‑time chat or call us here: https://t.co/JzP7hlA23B. Thanks for your patience.",False,4,4,4,4,4,2,4
+golden_130,@AmazonHelp my item was broken when I received it yesterday! States no refunds? Why? Should I dispute the charge?,general_other,"Hi there, I'm sorry to hear that the item arrived broken. We definitely want to help you resolve this. Could you please share a link to the product or your order number so we can look into why the listing mentions ""no refunds""? In the meantime, you can view the available options for a damaged item here: https://t.co/T994nVbxA2. Once we have the details, we'll investigate further and let you know the next steps.",False,4,4,3,2,4,3,3
+golden_155,"Just got an email asking me for feedback on the stuff I ordered from @116090 last week.  They really didn't have an option for ""I don't know because Amazon f***ed up my 'guaranteed 2-day delivery' and I'm still waiting for it five days later"".  cc: @AmazonHelp  #NotImpressed",return_or_replacement_request,"Hi there,
+
+I’m sorry to hear about the delay with your order and the frustration it’s caused – especially when the delivery didn’t meet the guaranteed 2‑day window. I understand how disappointing that can be.
+
+Could you please share your order number (or the email address used for the purchase) so I can check the exact status and see what options we have for you, such as a replacement or a refund?
+
+Thank you for your patience, and I’ll do my best to get this sorted for you quickly.
+
+Best regards,
+Customer Support",False,2,1,3,3,3,2,3
+golden_198,@AmazonHelp please see my message. My parcel is set as delivered and I haven't received it,cancellation_or_refund_request,"Hi there,
+
+I'm sorry to hear that your parcel is marked as delivered but you haven't received it. This can be frustrating, and I’d like to help you resolve it.
+
+First, could you please double‑check the delivery location (e.g., around your front door, porch, or with a neighbor) and any delivery notice left by the carrier? Sometimes parcels are placed in a safe spot or with a nearby resident.
+
+If you still can’t locate the item, you can try the following steps that have helped other customers:
+
+1. Review the delivery details using this link, which may provide more information on where the carrier left the package: https://t.co/yU32StPfBi
+2. If the parcel remains missing, you may want to file an A‑to‑Z Guarantee claim. More information on how to start a claim can be found here: https://t.co/yuFkROHpQP
+
+In the meantime, we’ve forwarded your case to the relevant team and will keep you updated as soon as we have more information.
+
+Thank you for your patience, and please let us know if you have any other questions.
+
+Best regards,
+Customer Support",False,4,3,4,3,4,4,4
+golden_144,Worst customer experience ever! Been told every day for last 4 days that my parcel will arrive tomorrow but nothing! Where is the customer obsession? @AmazonHelp,delivery_not_received,"I’m really sorry to hear about the repeated delays and the frustration it’s caused you. To investigate this further and get your parcel to you as quickly as possible, could you please share your order number and the shipping address (or any other details you’re comfortable providing) in a private message? Once we have that information, we’ll look into the status of your delivery and follow up with you right away.",False,2,1,2,1,1,2,2
+golden_051,"Did not receive order no. 405-6021334-3005910. Received sms, item delivered to me &amp; signed by me! @118919",general_other,"Hi there,
+
+I'm sorry to hear that you haven't received your order #405‑6021334‑3005910 despite the delivery confirmation you received. I understand how frustrating this must be.
+
+Could you please confirm the shipping address we have on file for this order, and let us know if anyone else might have signed for the package on your behalf? If you have any photos of the delivery notice or the SMS you received, that would also be helpful.
+
+Once we have those details, we’ll open an investigation with the carrier and work to resolve this for you as quickly as possible.
+
+Thank you for your patience, and we look forward to sorting this out for you.
+
+Best regards,
+Customer Support",False,2,1,2,2,3,2,2
+golden_167,"Yo, I wanted to check the price of an item since it was like bugged in sales screen, so I continued until the last page and accidentally clicked checkout with an unvalid card. I'm getting mails about giving info about a card thats no longer valid(also it was virtual)@AmazonHelp",account_access_issue,"Hi there,
+
+I’m sorry you’re having trouble after the checkout step. To protect your account, please do not share any card details in email replies. The best way for us to investigate the order that was placed with the virtual card and to help you cancel it (or resolve any pricing concerns) is to connect with a support specialist directly. You can do this via phone or chat using the following link: https://t.co/lr7T0jiNiW. Once you’re connected, please have your order number handy so we can look into the transaction and make any needed adjustments.
+
+If you have any other questions in the meantime, just let us know!
+
+Thanks for reaching out,
+Amazon Help Team",False,3,2,3,4,4,4,4
+golden_192,So I order a tv from @115830 and is to be delivered by @24123 on Saturday the 25th now they say they will be delivering it on Monday the 29th I get one day off work which is Saturday what a joke 👎👎,app_or_device_technical_issue,"Hi, I’m sorry to hear about the delivery delay and that it’s affecting your day off. Could you please share your order number so we can investigate further? In the meantime, please check your email for any updates we may have sent. We’ll look into this and get back to you as soon as possible.",False,4,3,3,4,2,2,4
+golden_108,"@115830 Very disappointed with the poor customer service at Amazon UK! Never buying TVs from them again. Long delivery times, faulty items and nightmare to get replaced! Please can someone  @115830 sort this out! All I now want to do is cancel the order and get a refund!",delivery_not_received,"We’re really sorry to hear about the trouble you’ve experienced with your TV order. To help you cancel the order and process a refund as quickly as possible, please get in touch with us through this link: https://t.co/vlvfJr4nN9. Once we hear from you there, we’ll be able to sort this out for you.",False,4,3,3,3,4,2,4
+golden_057,"Enough of I am sorry @115821, a classic trademark of perverse organizational dynamics @115821. FULL REFUND IS THE ONLY ANSWER WHEN A SELLER DELIBERATELY SENDS A DAMAGED ITEM AND ACKNOWLEDGES IT ON THE SALES SLIP. CHECK 112-28550003-9905044. SHAME https://t.co/sciqR2C6om",prime_membership_issue,"I’m sorry to hear that the item you received was damaged. To resolve this, please contact the seller directly to request a return and refund. You can do this from the ""Your Orders"" page by selecting the order and choosing the option to return or replace the item. If you need help with the steps, you can refer to the guidance we’ve shared previously for returning damaged items from third‑party sellers. Should the seller not respond or you encounter any issues, you can also open an A‑to‑Z Guarantee claim for further assistance.
+
+If you have any other questions or need additional help, please let us know.",False,2,1,3,3,1,3,4
+golden_115,@AmazonHelp how can I get a refund for a product never received that the seller will not respond to,app_or_device_technical_issue,"Hi there, I'm sorry to hear you haven't received your order. Please start by checking the order details in your Amazon account and try contacting the seller directly through the order page. If the seller still doesn't respond, you can open a case with Amazon support for a refund. The quickest way to do this is through the Amazon app – just go to the order, select ""Problem with order"" and follow the prompts. Providing your contact information (such as the phone number linked to your account) can also help us locate the order faster. Let us know if you need any further assistance.",False,2,1,3,4,4,3,3
+golden_151,@115850 promised to deliver by today morning 11am but yet not delivered. Missed my train because of such improper service by you. https://t.co/SF7n1OpO4A,customer_service_complaint,"We’re very sorry to hear that your delivery did not arrive as promised and that you missed your train. To investigate this issue and help you as quickly as possible, please do not share your order number or personal details publicly. You can send us a direct message with your order ID and contact information, or use the support link we’ll provide here to securely share those details. Once we have the necessary information, our team will look into the delivery status and get back to you promptly.",False,4,3,3,3,4,3,4
+golden_072,"So not only had @115821 taken $100 unauthorized from me without consent or reason, they admit their fault in email and NO ONE is helping to refund it even though they said they would.  Liars.",app_or_device_technical_issue,"I’m sorry to hear about this situation. To investigate the $100 charge you mentioned, could you please provide the order number or any reference details from the email you received? Once we have that information, we’ll look into it and work toward a resolution.",False,3,2,3,4,2,2,4
+golden_002,"the one day I have a day off work and I ""missed"" my package from Amazon 😭",return_or_replacement_request,"Hi there, I’m really sorry you missed your delivery on your day off. Have you received an email from us with more information or a delivery attempt notice? You can also check the latest tracking details in your order page to see the next available delivery window. If you’d like us to arrange a new delivery attempt or discuss a replacement, just let us know and we’ll work with the carrier to get it sorted for you.",False,4,3,3,4,3,3,4
+golden_041,"Please update the result ? 
+#AmazonRechargeQuiz 
+@AmazonHelp 
+@115850",order_status_inquiry,"Hi there,
+
+We’d like to help, but we need a bit more information to understand your request. Could you please let us know which specific result you’re referring to (e.g., an order, a quiz, or a contest) and provide any relevant details such as an order number, contest name, or a link? Once we have that, we’ll be able to look into it for you.
+
+Thank you!",False,3,2,2,1,2,2,4
+golden_186,Order Honor 8. Order no. 406-7219817-1950749. Ordered on 21 Nov. Received this pack of salt. @AmazonHelp @115850 Look into it. https://t.co/GUQfBsKGcF,customer_service_complaint,"We’re very sorry to hear that you received the wrong item. For your privacy and security, please do not share your order number or personal details publicly. Could you please send us your order information through the private link we’ve provided (e.g., https://t.co/GIJyeYqKE0) so we can investigate and resolve this for you as quickly as possible?",False,4,3,4,1,4,0,4
+golden_088,"@AmazonHelp, I paid extra to have a package delivered yesterday. Mail has already come today and it's still not here (which should have been here today even without paying extra since I have prime). How do I get back my money I paid for early delivery that never happened?",content_availability_inquiry,"Hi there,
+
+I’m really sorry to hear that your package didn’t arrive as expected, especially after you paid extra for early delivery. I understand how frustrating this must be.
+
+Could you please share your order number and the current tracking details? You can also check the latest status here: https://t.co/Jra7nZawgp. Once we have that information, we’ll investigate what happened and work on getting this resolved for you as quickly as possible.
+
+In many cases, packages that are delayed arrive the following day, but we’ll confirm the exact situation for your order. Please let us know if it still hasn’t arrived by tomorrow, and we’ll take the next steps.
+
+Thank you for your patience, and we look forward to sorting this out for you.
+
+Best regards,
+[Your Support Team]",False,4,3,4,4,4,3,4
+golden_169,"I am not getting what you have done and how I will get my refund today in my bank account. I have 2 messages from your end both says different story. @115821 @115850 @AmazonHelp
+
+That means I will only need to wait for today? https://t.co/Xto0qhF2t1",app_or_device_technical_issue,"Hi there,
+
+I’m sorry for the mixed messages you’ve received. To clarify, when you paid with a debit card, any refund will be credited back to the same bank account linked to that card. Once the refund is processed on our side, it should appear in your bank account according to your bank’s usual processing times.
+
+We’re looking into why you received differing information, and we’ll make sure you have the correct details. If you don’t see the refund after a reasonable period, please let us know so we can investigate further.
+
+Thank you for your patience.
+
+Best regards,
+Customer Support",False,2,1,2,3,2,3,2
+golden_040,@119625 since your last update on iPhone 📱 it doesn’t cast on @115858 TV 📺. Please help,order_status_inquiry,"Hi there! Sorry to hear that casting from your iPhone to your TV isn’t working after the recent update. A few things that have helped other customers in similar situations are:
+1. Sign out of the app, then sign back in.
+2. Uninstall the app, restart your phone, and reinstall the app.
+3. Make sure your phone and TV are on the same Wi‑Fi network.
+If you’ve already tried these steps and it’s still not working, we’d be happy to take a closer look with you. You can reach us by phone or chat here: https://t.co/hApLpMlfHN. Let us know how it goes!",False,4,3,4,3,4,2,4
+golden_182,Ugh @115821 this is my third prime order in 2 weeks that will be delivered late. What’s the deal? #nothappy @AmazonHelp,delivery_delay,"I’m really sorry you’ve had three Prime orders arrive late – that’s definitely not the experience we want you to have. Could you let me know which carrier was used for each of the delayed shipments and share the order numbers? I’ll make sure this is reported and we’ll look into what’s causing the delays. If you need immediate assistance, you can reach us 24/7 here: https://t.co/hApLpMlfHN",False,3,2,4,3,4,3,4
+golden_087,Furious with @115830 carrier: package containing 3 orders claims to have been delivered but I don't have it &amp; I have checked everywhere and checked with my neighbours. I want to find it as weather is not good.,payment_or_billing_issue,"I’m really sorry you haven’t received your package despite the delivery status showing it as delivered. Please double‑check the delivery details on our help page here: https://t.co/atcI04KgVD. If you still can’t locate the parcel, you can reach our support team directly at 1‑866‑216‑1072 or use this link to start a review of your order: https://t.co/JzP7hlA23B. Have your order number handy so we can investigate further and find a solution for you.",False,4,3,4,4,4,2,4
+golden_191,@115821 @AmazonHelp shocking service received. Been sent the wrong item &amp; what’s the point of paying for Prime &amp; taking 4 days for delivery.,app_or_device_technical_issue,"I’m sorry you received the wrong item and that your Prime delivery took longer than expected. To help us investigate, could you let us know the carrier listed for this order and share the order number? You can view the carrier details here: https://t.co/Y5jpI9gRhE. Once we have that information, we’ll look into why the incorrect product was sent and work on a resolution for you.",False,4,3,3,3,4,1,4
+golden_183,Two delayed packages from @115821 this week and their customer support is a joke. One of the packages is needed to be delivered today for an early Christmas gift for this Sunday.,customer_service_complaint,"I’m really sorry to hear about the delays with your two packages and understand how important it is to get the gift in time for Christmas. Could you please share the order numbers or tracking numbers for the shipments? Also, let us know if you’ve already spoken with a support representative and what options were offered. With that information we can investigate the status of the missing package and see what can be done to get it to you as quickly as possible.",False,3,2,2,4,1,3,4
+golden_098,@AmazonHelp I used one of your lockers to return an item on the 22nd of November and it says I will get a refund once my product is back but I haven't heard anything since? The order number is # 202-4125944-1540341 and my name is Lilian Harvey,delivery_not_received,"Hi Lilian,
+
+I’m sorry you haven’t received an update on your refund yet. I’ll look into the status of the return for order #202-4125944-1540341. To help us investigate, please log in to your Amazon account, go to the ""Your Orders"" page and check the return status there. If the status still shows as pending, you can also reach out to us directly through the Help Center (Account → Help → Contact Us) so we can review the details and move the refund forward.
+
+Thank you for your patience, and we’ll do our best to resolve this quickly.
+
+Best regards,
+Amazon Support",False,2,1,3,4,4,2,4
+golden_025,".@115830 Just spoken to your team in a chat to discuss a Prime order of mine due yesterday that was not arriving until today. Without discussing it with me, they've scheduled a re-delivery which means it will be further delayed. Not happy with this service at all!",cancellation_or_refund_request,"Hi there,
+
+I’m really sorry to hear about the delay with your Prime order and the inconvenience caused by the re‑delivery being scheduled without your input. I completely understand how frustrating this must be.
+
+Could you please share your order number (or the email address linked to the order) so I can look into the details and see what options we have to get your item to you as quickly as possible? I’ll check on the delivery status right away and let you know what we can do to resolve this for you.
+
+Thank you for your patience, and I look forward to helping you get this sorted.",False,2,1,3,2,3,3,2
+golden_092,@115850 Reported a fraudulent seller ( Shipping cheaper models than mentioned in listing ). Requested RTO / Refund once found out. Vineet told me that my order will be RTO and no delivery would be attempted. Suddenly the app shows delivery would be done by Tue. @115851,delivery_delay,"Hi there,
+
+I’m really sorry to hear about the trouble you’re experiencing with your order and the confusion around the delivery status. I understand how frustrating it must be to receive a different product than expected and then see a delivery date appear in the app after being told the order would be returned.
+
+I’ll look into the status of your order right away to confirm that it is set for RTO (Return to Origin) and that no delivery attempt will be made. Once the return is processed, we’ll move forward with your refund.
+
+Could you please share your order number (or any reference you have) so I can pull up the details and expedite this for you?
+
+Thank you for your patience, and I’ll keep you updated as soon as I have more information.
+
+Best regards,
+[Your Name]
+Customer Support",False,2,1,2,4,2,2,4
+golden_089,@AmazonHelp  i ordered bluetooth speaker worth 1799/-INR and got a prime membership of worth 459/-INR  i cancelled both bluetooth speaker and prime  membership.So they initiated my refund but unfortunately i haven't  received it yet.I also call to help center but prblm remainsame https://t.co/GEAsFcCmnG,prime_membership_issue,"Hi there, we’re sorry to hear that you haven’t received your refund yet. To protect your personal information, please do not share order numbers or other details publicly. Instead, kindly report this issue to our support team through the secure link here: https://t.co/rS49hgaADF. Our team will be able to look up your order and provide an update on the refund status. Thank you for your patience.",False,3,2,4,4,4,1,4
+golden_068,@AmazonHelp I have not received my refund ..,general_other,"Hi there,
+
+I’m sorry to hear you haven’t received your refund yet. Refund authorizations typically take 3‑5 business days to fall off, after which the funds should appear in your account. If you still don’t see the refund after that period, you may want to reach out to your bank to see if there’s any delay on their end.
+
+Could you please provide your order number or any reference details so we can look into this further for you?
+
+Thank you for your patience, and we’ll do our best to resolve this quickly.",False,2,1,3,4,4,2,4
+golden_012,@AmazonHelp ordered a JBL CHARGE3 on Black Friday. Unplugged it the first time it does this help!  @164902 maybe you can help too?  I don’t want a return just a new cord. https://t.co/UbEAakQCcI,general_other,"Hi there, thanks for reaching out. I’m sorry to hear you’re experiencing an issue with your JBL Charge3. To help you further, could you please provide a bit more detail about the problem you’re seeing with the cord? Once we have that information, we’ll be able to look into the best way to assist you.",False,3,2,2,2,3,3,4
+golden_118,".@115830 last 5 of 10 Amazon Prime orders either no shows, late or chucked over back gate &amp; left out in the rain. Beyond frustrating 2 b paying for a service which is not being delivered!Probs happened 2 start when delivery driver changed... HOW WILL YOUU SORT THIS OUT PLEASE?!",delivery_delay,"I’m really sorry to hear that several of your Amazon Prime orders have either not arrived, arrived late, or were left out in the rain behind your gate. I understand how frustrating this must be. We’d like to investigate each of these deliveries and work with you to resolve the issue. Could you please share the order numbers and, if possible, any photos of the parcels that were left out? You can send the details to us through our support phone line here: https://t.co/JzP7hlA23B. Once we have that information, we’ll look into the deliveries with our Transportation team and get back to you with a solution.",False,4,3,4,4,4,2,4
+golden_138,"Why is it @115821 that whenever we call for a simple, simple question your Seller Support agents don't know the answer? Why? #WTF is wrong with you guys? How you are a billion dollar company is beyond me. Bunch of fucking idiots work in customer service.",delivery_not_received,"Hi there,
+
+I’m really sorry to hear about the frustration you’ve experienced with our support team. It’s never our intention for you to feel like you’re being passed around without getting a clear answer. Your feedback is important, and we want to make sure we address the specific question you have.
+
+Could you please share a bit more detail about the issue you’re trying to resolve (for example, an order number or the product you’re asking about)? With that information we can look into what happened and get you the answer you need.
+
+Thank you for bringing this to our attention – we’ll do our best to improve the experience for you and other customers.
+
+Best regards,
+Customer Support",False,3,2,2,3,2,2,2

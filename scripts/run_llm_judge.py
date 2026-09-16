@@ -79,7 +79,9 @@ def judge_single(provider, message: str, reply: str,
         "expected_intent": expected_intent,
     })
     try:
-        response = provider.complete(JUDGE_SYSTEM_PROMPT, payload, temperature=0.0, max_tokens=600)
+        # Same reasoning-model headroom rationale as run_live_judge.py: 600
+        # could truncate on longer messages; 1200 fits the score JSON + reason.
+        response = provider.complete(JUDGE_SYSTEM_PROMPT, payload, temperature=0.0, max_tokens=1200)
         text = response.text.strip().strip("`")
         if text.lower().startswith("json"):
             text = text[4:].strip()

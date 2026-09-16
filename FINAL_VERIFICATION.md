@@ -10,10 +10,12 @@ Lint:                       N/A    (no linter configured in repo; syntax checks 
 API smoke test:             PASS   (all endpoints, live server)
 Docker build:               PASS   (backend + frontend images)
 Docker run (smoke):         PASS   (gunicorn boot + health + respond + nginx proxy)
-Live LLM:                   VERIFIED (single smoke generation via Groq API — see scope note)
+Live LLM:                   VERIFIED (smoke generation + measured provider health + 50 golden-subset
+                            generations + 50 live judge calls — see §5 and §9)
 Golden evaluation:          VERIFIED (reproduced exactly: 0.9357 silver / 0.195 golden / 0.7407 gap)
 Ambiguity/multi-intent:     VALIDATED (direction test — see §8)
-LLM judge human agreement:  NOT VERIFIED (never run — reported as NOT VALIDATED everywhere)
+LLM judge human agreement:  PARTIAL — live judge executed 50/50 vs. PROXY human scores
+                            (pipeline VERIFIED end-to-end; human agreement NOT established — §9)
 Decision log:               PASS   (docs/decision-log.md exists, 19 decisions, UI renders correctly)
 Failure analysis:           PASS   (reports/failure_analysis.json, 161 failures, no object rendering bugs)
 ```
@@ -105,6 +107,54 @@ Findings during this verification:
 grounding intake). It does NOT constitute a live evaluation: no golden-set generation run, no live
 judge scores, no human agreement. Those remain NOT RUN.
 
+## 5b. Live judge + proxy-human agreement — RUN (2026-09-16), honestly scoped
+
+After the `max_tokens` truncation fix (§5 findings), the full judge chain was re-executed live:
+
+1. `compare_judge_to_human.py prepare` — 50 golden-subset replies regenerated with the LIVE Groq
+   provider (`is_mock=False` on all 50 rows; the previous CSV had been generated during the broken
+   era and contained only empty replies).
+2. `score_human_proxy.py` — filled 350 proxy-human score cells derived programmatically from golden
+   labels. These are NOT real human judgments (stated in the report and in the UI).
+3. `run_live_judge.py` — 50/50 examples judged by the live judge, 0 failures, ~260s.
+
+Result (`reports/judge_human_agreement.json`, `is_mock_judge: false`, `n_judged: 50`):
+
+```
+correctness          n=50  exact=42%  adjacent=72%  kappa=0.022   spearman_r=0.0096
+groundedness         n=50  exact=16%  adjacent=56%  kappa=-0.014  spearman_r=-0.0619
+helpfulness          n=50  exact=44%  adjacent=82%  kappa=0.189   spearman_r=0.0779
+completeness         n=50  exact=34%  adjacent=68%  kappa=0.108   spearman_r=0.1061
+actionability        n=50  exact=60%  adjacent=76%  kappa=0.288   spearman_r=0.1944
+brand_consistency    n=50  exact=4%   adjacent=38%  kappa=0.030   spearman_r=0.2421
+safety               n=50  exact=72%  adjacent=82%  kappa=0.0     spearman_r=None (constant input)
+```
+
+Reading: weak-to-moderate agreement. Correct, honest interpretation — the judge pipeline is verified
+end-to-end against a real LLM; the low correlation with proxy scores does NOT validate (or invalidate)
+real human agreement. The API labels this state explicitly
+(`/api/v1/llm-judge/summary` → `status: NOT_VALIDATED`, `pipeline_validated: true`), and the UI
+renders it as "live judge vs. PROXY human scores" — never as validation.
+
+## 5c. Provider health — VERIFIED (measured)
+
+`GET /api/v1/provider/health?verify=1` against the live backend (2026-09-16):
+
+```json
+{"provider": "groq", "mode": "live", "configured": true, "healthy": true,
+ "reachable": true, "model": "openai/gpt-oss-120b", "latency_ms": 1173,
+ "checks": {"models_list": "ok", "completion": "ok", "completion_latency_ms": 1173}}
+```
+
+A full agent request also passed live (`POST /api/v1/agent/respond`, real refund message):
+`generation_status: PASS`, `provenance: {provider: groq, mode: live, model: openai/gpt-oss-120b}`,
+`decision: ESCALATE (high risk)` with reason codes, generation latency ~2.3s.
+
+Environment note: an unrelated process (a different project's uvicorn app) was found listening on
+127.0.0.1:8000 and intercepting `localhost:8000` — verification was done on port 8010, and that
+stale process is unrelated to this repository. Anything listening on port 8000 should be checked
+with `netstat -ano | grep :8000` before trusting a smoke test against `localhost:8000`.
+
 ### 6. Golden evaluation reproducibility — VERIFIED
 
 ```
@@ -136,9 +186,11 @@ both counts when run.
 
 ## Summary of remaining unverified items
 
-1. Full live-LLM evaluation (generation over golden set, live judge, human agreement) — NOT RUN.
-2. Submission ZIP packaging — NOT RUN.
-3. Production hardening beyond smoke (load, TLS, horizontal scale) — NOT RUN.
+1. Live generation over the FULL golden set — NOT RUN (only the 50-example judge subset).
+2. Judge comparison against REAL (non-proxy) human scores — NOT RUN; current agreement numbers are
+   judge-vs-proxy and are labeled as such everywhere they appear.
+3. Submission ZIP packaging — NOT RUN.
+4. Production hardening beyond smoke (load, TLS, horizontal scale) — NOT RUN.
 
 ## New section: ambiguity/multi-intent signal validation (RUN)
 

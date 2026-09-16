@@ -1,266 +1,75 @@
 {
-  "run_id": "judge_20260915_223604",
-  "generated_at": "2026-09-15T17:06:04Z",
   "n_examples": 50,
-  "n_judged": 0,
-  "n_failed": 50,
+  "n_judged": 50,
+  "n_failed": 0,
   "is_mock_judge": false,
   "judge_model": "openai/gpt-oss-120b",
   "judge_provider": "groq",
-  "human_scoring_method": "proxy_scores_from_golden_labels (scripts/score_human_proxy.py) \u2014 NOT real human judgments",
-  "human_scoring_note": "Human scores in this CSV are PROXY scores derived from golden labels \u2014 they are NOT real human judgments. This artifact validates that the judge pipeline executes end-to-end; it does NOT establish human agreement.",
-  "human_agreement": "NOT_AVAILABLE",
-  "per_dimension": [],
-  "per_example": [
+  "human_scoring_method": "proxy_scores_from_golden_labels (scripts/score_human_proxy.py)",
+  "human_scoring_note": "Human scores are proxy scores derived from golden labels, evidence, and generated replies. NOT real human judgments. This validates the judge pipeline end-to-end, not human-judge agreement.",
+  "per_dimension": [
     {
-      "id": "golden_164",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "correctness",
+      "n": 50,
+      "spearman_r": 0.0096,
+      "spearman_p": 0.9471,
+      "weighted_kappa": 0.022,
+      "exact_agreement_rate": 0.42,
+      "adjacent_agreement_rate": 0.72
     },
     {
-      "id": "golden_029",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "groundedness",
+      "n": 50,
+      "spearman_r": -0.0619,
+      "spearman_p": 0.6692,
+      "weighted_kappa": -0.014,
+      "exact_agreement_rate": 0.16,
+      "adjacent_agreement_rate": 0.56
     },
     {
-      "id": "golden_007",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "helpfulness",
+      "n": 50,
+      "spearman_r": 0.0779,
+      "spearman_p": 0.5906,
+      "weighted_kappa": 0.1888,
+      "exact_agreement_rate": 0.44,
+      "adjacent_agreement_rate": 0.82
     },
     {
-      "id": "golden_190",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "completeness",
+      "n": 50,
+      "spearman_r": 0.1061,
+      "spearman_p": 0.4631,
+      "weighted_kappa": 0.1081,
+      "exact_agreement_rate": 0.34,
+      "adjacent_agreement_rate": 0.68
     },
     {
-      "id": "golden_071",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "actionability",
+      "n": 50,
+      "spearman_r": 0.1944,
+      "spearman_p": 0.1761,
+      "weighted_kappa": 0.2884,
+      "exact_agreement_rate": 0.6,
+      "adjacent_agreement_rate": 0.76
     },
     {
-      "id": "golden_063",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "brand_consistency",
+      "n": 50,
+      "spearman_r": 0.2421,
+      "spearman_p": 0.0903,
+      "weighted_kappa": 0.0296,
+      "exact_agreement_rate": 0.04,
+      "adjacent_agreement_rate": 0.38
     },
     {
-      "id": "golden_058",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_036",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_189",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_027",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_174",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_140",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_023",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_152",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_109",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_009",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_008",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_024",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_056",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_060",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_130",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_155",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_198",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_144",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_051",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_167",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_192",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_108",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_057",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_115",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_151",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_072",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_002",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_041",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_186",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_088",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_169",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_040",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_182",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_087",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_191",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_183",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_098",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_025",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_092",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_089",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_068",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_012",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_118",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
-    },
-    {
-      "id": "golden_138",
-      "status": "FAILED",
-      "error": "judge call failed or returned invalid JSON"
+      "dimension": "safety",
+      "n": 50,
+      "spearman_r": null,
+      "spearman_p": null,
+      "weighted_kappa": 0.0,
+      "exact_agreement_rate": 0.72,
+      "adjacent_agreement_rate": 0.82
     }
   ]
 }

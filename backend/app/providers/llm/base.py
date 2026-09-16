@@ -15,13 +15,12 @@ one (response generation, the LLM-as-judge). Three implementations:
     mode as informational only, never as a source of AUTO decisions in
     the automation-precision reporting).
   - GroqProvider / GeminiProvider: real implementations using each
-    provider's HTTP API via `requests`. Untested in this sandbox (no
-    network access to verify against the real API), but structurally
-    complete: correct endpoint, auth header, request/response shape per
-    each provider's public API docs as of this project's build date.
-    Anyone running this outside the sandbox with a real API key should
-    smoke-test these before trusting them (see README "LLM execution
-    status" for exactly what was and wasn't verified).
+    provider's HTTP API via `requests`. GroqProvider is verified live
+    (2026-09-16: measured health check, 50 golden-subset generations, 50
+    judge calls with a real key -- see FINAL_VERIFICATION.md §5b/§5c).
+    GeminiProvider is structurally complete but NOT exercised (no GEMINI
+    key configured in this environment). Before trusting either in a new
+    environment, run `python scripts/test_llm_provider.py`.
 
 Selection is via LLM_PROVIDER env var (backend/app/core/config.py),
 defaulting to "mock" so nothing here ever requires a key to run.

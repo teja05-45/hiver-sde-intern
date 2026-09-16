@@ -173,8 +173,12 @@ Every number in `reports/` is produced by a committed script — nothing hand-ty
 - Automation: precision/coverage sweep + golden check of the untouched threshold (`evaluate_automation.py`)
 - Golden set: 200 human-verified examples, documented methodology (`data/golden/README.md`)
 - Failure analysis: real misclassifications, categorized (`analyze_failures.py`)
-- LLM-as-judge harness + agreement stats: implemented and unit-tested; **mock-only in this
-  environment — explicitly NOT VALIDATED** (`judge.py`, `agreement.py`)
+- LLM-as-judge harness + agreement stats: implemented, unit-tested, and **executed live** (2026-09-16):
+  50 golden-subset replies generated via Groq, judged 50/50 by the live judge, and compared against
+  **proxy** human scores derived programmatically from golden labels (`score_human_proxy.py`). The
+  agreement numbers in `reports/judge_human_agreement.json` are judge-vs-proxy — they prove the
+  pipeline works end-to-end, NOT that the judge agrees with humans (`judge.py`, `agreement.py`,
+  `run_live_judge.py`)
 
 Grounding-quality metrics require live LLM generation and are labeled **NOT AVAILABLE IN MOCK MODE**
 wherever they would otherwise appear.
@@ -194,7 +198,8 @@ GET  /api/v1/evaluation/automation  precision/coverage curve + golden check
 GET  /api/v1/evaluation/intents   per-intent metrics (silver + golden)
 GET  /api/v1/golden-set/summary   golden set methodology data
 GET  /api/v1/golden-set/examples  browser w/ filters (?outcome=&intent=&q=)
-GET  /api/v1/llm-judge/summary    judge status (NOT VALIDATED until human-verified)
+GET  /api/v1/llm-judge/summary    judge status (NOT VALIDATED until real-human-verified; live-judge
+                                  vs proxy-human runs are labeled as exactly that)
 GET  /api/v1/decisions            decision log (parsed from docs/decision-log.md)
 GET  /api/v1/system               runtime/artifact status
 ```
@@ -214,9 +219,10 @@ backend (#13), mock mode as the only end-to-end-exercised LLM path in the build 
 ## 12. Limitations
 
 - **TF-IDF semantic ceiling** — no paraphrase matching; Recall@1 ≈ 49.5% bounds evidence quality.
-- **Live LLM paths are implemented and unit-tested, but were only smoke-verified** — the Groq
-  provider made real calls with a real key in this environment (see FINAL_VERIFICATION.md), yet no
-  full live evaluation (generation over the golden set + judge + human agreement) was run.
+- **Live LLM paths are implemented, unit-tested, and live-verified** — the Groq provider made real
+  calls in this environment (health check, 50 golden-subset generations, 50 judge calls; see
+  FINAL_VERIFICATION.md). What remains NOT RUN: live generation over the full golden set and a
+  comparison against REAL (non-proxy) human scores.
 - **`general_other` is an uncertainty bucket**, not a clean business intent.
 - **Ambiguity/multi-intent signals are experimental** — direction-tested, not validated against a
   labeled ground truth; they only ever escalate, never force AUTO.

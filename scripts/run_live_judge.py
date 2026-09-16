@@ -62,7 +62,11 @@ def judge_single(provider, message: str, reply: str,
                   expected_intent: str | None = None) -> dict | None:
     prompt = build_judge_prompt(message, reply, expected_intent)
     try:
-        response = provider.complete(JUDGE_SYSTEM_PROMPT, prompt, temperature=0.0, max_tokens=300)
+        # max_tokens must leave room for reasoning models (gpt-oss-* spend
+        # tokens on hidden reasoning before the JSON). 300 truncated the JSON
+        # mid-object on longer messages -> "invalid JSON" failures. 1200 gives
+        # headroom for the full 7-dimension object + reason string.
+        response = provider.complete(JUDGE_SYSTEM_PROMPT, prompt, temperature=0.0, max_tokens=1200)
         # NOTE: LLMResponse has no parse_error attribute -- checking for one here
         # raised AttributeError on every successful call and the bare `except`
         # below counted real successes as failures (50/50 "failed" in the

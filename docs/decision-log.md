@@ -146,6 +146,11 @@ credential-based workaround for a sandbox-level network restriction.
 **Trade-off:** Generation quality, grounding-in-practice, and LLM-judge/human-agreement numbers are
 structurally implemented and unit-tested but not measured with a real LLM. This is the single
 biggest open item — see README "LLM execution status" for exactly what to run to close it.
+**Result:** (2026-09-16, updated after the build) The live path has now been exercised end-to-end
+outside the original sandbox: measured Groq provider health, 50 golden-subset generations, and a
+50/50 live judge run vs. proxy-human scores (see FINAL_VERIFICATION.md §5b/§5c). The judge-vs-proxy
+agreement numbers are reported with their provenance and are NOT presented as human validation.
+Live generation over the full golden set and real-human judge comparison remain NOT RUN.
 
 ### 15. Golden set is read and re-labeled by the primary labeler, not accepted from the classifier
 

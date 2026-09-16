@@ -16,6 +16,12 @@
     }
 
     const validated = data.status === "VALIDATED";
+    // pipeline_validated: the judge ran against a LIVE LLM and produced real
+    // agreement statistics. human_validated: those statistics were computed
+    // against REAL human scores. An intermediate state exists: live judge vs
+    // PROXY human scores (derived programmatically from golden labels) —
+    // real numbers, but NOT a human-agreement result, and rendered as such.
+    const pipelineValidated = data.pipeline_validated === true;
     root.replaceChildren(
       el("div", { class: "page-head" },
         el("h1", { text: "LLM Judge" }),
@@ -24,6 +30,7 @@
           "This page states exactly how far that has gotten — and stops.")),
       el("div", { class: "row mb-4" },
         el("span", { class: `stamp ${validated ? "green" : "red"}`, text: validated ? "VALIDATED" : "NOT VALIDATED" }),
+        pipelineValidated && !validated ? badge("LIVE JUDGE — PROXY-HUMAN COMPARISON", "amber") : null,
         data.mock_mode ? badge("MOCK MODE", "amber") : null),
 
       card("What exists vs. what is verified",
@@ -33,18 +40,20 @@
               el("span", { text: "Judge harness implemented: 7 dimensions, structured scores, mock-detection — backend/app/evaluation/judge.py." })),
             el("li", { class: "good" }, el("span", { class: "bullet", text: "✓" }),
               el("span", { text: "Agreement statistics implemented and unit-tested: Spearman correlation, weighted Cohen's kappa, exact/adjacent agreement — backend/app/evaluation/agreement.py." })),
-            el("li", { class: validated ? "good" : "bad" }, el("span", { class: "bullet", text: validated ? "✓" : "✗" }),
-              el("span", { text: validated
-                ? "Judge scores produced by a live LLM and compared against human scores."
+            el("li", { class: pipelineValidated ? "good" : "bad" }, el("span", { class: "bullet", text: pipelineValidated ? "✓" : "✗" }),
+              el("span", { text: pipelineValidated
+                ? `Judge scores produced by a live LLM and compared against reference scores (${data.n_judged}/${data.agreement?.n_examples ?? "—"} examples judged successfully).`
                 : "NOT DONE: real LLM judge scores (mock judge outputs are fixed neutral placeholders, deliberately uniform)." })),
             el("li", { class: validated ? "good" : "bad" }, el("span", { class: "bullet", text: validated ? "✓" : "✗" }),
               el("span", { text: validated
-                ? "Human vs. judge agreement computed on scored responses."
-                : "NOT DONE: human comparison. No human agreement number exists for this project, and none is claimed." }))),
+                ? "Human vs. judge agreement computed on real human-scored responses."
+                : pipelineValidated
+                  ? "NOT DONE: the comparison used PROXY human scores derived programmatically from golden labels — NOT real human judgments. No human-agreement claim is made."
+                  : "NOT DONE: human comparison. No human agreement number exists for this project, and none is claimed." }))),
           !validated ? el("p", { class: "small text-secondary mt-4", text: data.explanation }) : null)),
 
       methodologyCard(),
-      validated ? resultsCard(data) : plannedCard(data)
+      pipelineValidated ? resultsCard(data, validated) : plannedCard(data)
     );
   }
 
@@ -82,11 +91,20 @@
           "so none is shown.")));
   }
 
-  function resultsCard(data) {
+  function resultsCard(data, humanValidated) {
     const perDim = data.agreement?.per_dimension || [];
-    return card("Agreement results (live-judge vs. human)",
+    return card(
+      humanValidated ? "Agreement results (live judge vs. human)"
+                     : "Agreement results (live judge vs. PROXY human scores)",
       el("div", null,
-        el("p", { class: "small text-secondary mb-4", text: `n=${data.agreement?.n_examples ?? "—"} scored examples` }),
+        !humanValidated ? el("div", { class: "mock-warning mb-3" },
+          el("span", { class: "icon", text: "⚠" }),
+          el("span", { text:
+            "The 'human' side of this comparison is a PROGRAMMATIC PROXY derived from golden labels " +
+            "(scripts/score_human_proxy.py), not real human ratings. These agreement numbers prove the " +
+            "judge pipeline executes and quantify judge-vs-proxy divergence; they are NOT evidence of " +
+            "human agreement and must not be quoted as validation of response quality." })) : null,
+        el("p", { class: "small text-secondary mb-4", text: `n=${data.agreement?.n_examples ?? "—"} scored examples · judge: ${data.agreement?.judge_model ?? "—"} via ${data.agreement?.judge_provider ?? "—"}` }),
         el("table", { class: "data" },
           el("thead", null, el("tr", null,
             el("th", { text: "Dimension" }), el("th", { class: "num", text: "Spearman ρ" }),

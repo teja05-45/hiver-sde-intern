@@ -133,6 +133,8 @@
 .mode-pill.live .dot { background: #12b76a; }
 .mode-pill.unhealthy { background: var(--red-soft); color: var(--red); border: 1px solid var(--red-border); }
 .mode-pill.unhealthy .dot { background: #f04438; }
+.mode-pill.unverified { background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-border); }
+.mode-pill.unverified .dot { background: #f79009; }
 
 /* ---------------- Page ---------------- */
 .page {

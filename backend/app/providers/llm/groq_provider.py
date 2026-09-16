@@ -2,13 +2,13 @@
 Groq API provider.
 
 STATUS: implemented against Groq's public OpenAI-compatible chat
-completions API (https://api.groq.com/openai/v1/chat/completions) as
-documented at project build time, but NOT executed or verified in this
-sandbox -- there is no network access here to make a real HTTPS request
-(see README "LLM execution status"). Before trusting this in production,
-run `pytest backend/tests/integration/test_groq_provider_live.py -m live`
-(skipped by default, requires GROQ_API_KEY) to confirm against the real
-API.
+completions API (https://api.groq.com/openai/v1/chat/completions) and
+VERIFIED LIVE (2026-09-16): measured health check (models list + 1-token
+completion), 50 golden-subset generations, and 50 judge calls all succeeded
+with a real key (see FINAL_VERIFICATION.md sections 5b/5c). In a fresh
+environment, re-verify with `pytest
+backend/tests/integration/test_groq_provider_live.py -m live` (skipped by
+default, requires GROQ_API_KEY) or `python scripts/test_llm_provider.py`.
 """
 from __future__ import annotations
 
