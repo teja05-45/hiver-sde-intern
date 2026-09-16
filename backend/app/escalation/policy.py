@@ -22,6 +22,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 from app.services.ambiguity import AmbiguityResult
+from app.services.novelty import NoveltyResult
 
 
 class InternalDecision(str, Enum):
@@ -49,9 +50,12 @@ class EscalationSignals:
     grounding_score: float | None = None       # set by the grounding checker, post-generation
     generation_failed: bool = False             # LLM call failed / malformed output
     retrieval_failed: bool = False
-    # Experimental ambiguity/multi-intent signals (backend/app/services/ambiguity.py).
+    privacy_risk_suspected: bool = False        # customer shared sensitive credentials
+    # Experimental ambiguity/multi-intent/novelty signals
+    # (backend/app/services/ambiguity.py, backend/app/services/novelty.py).
     # ESCALATE-only: they can veto an AUTO decision, never force one.
     ambiguity: "AmbiguityResult | None" = None
+    novelty: "NoveltyResult | None" = None
 
 
 @dataclass
@@ -106,6 +110,19 @@ def decide(signals: EscalationSignals, thresholds: EscalationThresholds | None =
             "Response generation failed or returned invalid output; escalating rather than guessing.",
             reason_codes,
         )
+    # --- Privacy risk: the customer posted credentials/secrets in the
+    # message. Auto-handling could echo them; a human must handle rotation.
+    # Checked BEFORE output-level claim checks: input sensitivity outranks
+    # output quality as a reason (the draft may be fine; the context is not).
+    if signals.privacy_risk_suspected:
+        reason_codes.append("PRIVACY_RISK")
+        return EscalationDecision(
+            InternalDecision.ESCALATE, "ESCALATE", RiskLevel.HIGH,
+            "The message appears to contain sensitive credentials (password, OTP, card number); "
+            "a human must handle credential rotation and the draft must never echo them.",
+            reason_codes,
+        )
+
     if signals.unsupported_claims_present:
         reason_codes.append("UNSUPPORTED_CLAIMS")
         return EscalationDecision(
@@ -114,12 +131,26 @@ def decide(signals: EscalationSignals, thresholds: EscalationThresholds | None =
             reason_codes,
         )
 
+    # --- OOD veto (experimental novelty signal, escalate-by-default). A
+    # message outside the support taxonomy gets a human, not a forced fit —
+    # even when the classifier saturates at high confidence on the wrong
+    # intent (measured: "What is the capital of India?" at p=1.00).
+    if signals.novelty is not None and signals.novelty.is_ood:
+        reason_codes.append("OOD_REQUEST")
+        return EscalationDecision(
+            InternalDecision.ESCALATE, "ESCALATE", RiskLevel.MEDIUM,
+            "The message does not match the supported support-intent taxonomy "
+            f"(novelty score {signals.novelty.ood_score:.2f}); escalating rather than "
+            "forcing it into a guessed intent.",
+            reason_codes,
+        )
+
     # --- Multi-intent veto (experimental signal, escalate-by-default).
     # A message that raises multiple issues gets ESCALATE rather than a
     # confidently wrong single intent ("MULTI-INTENT -> ESCALATE" is safer
     # than guessing which issue the customer means).
     if signals.ambiguity is not None and signals.ambiguity.multi_intent_suspected:
-        reason_codes.append("MULTI_INTENT_SUSPECTED")
+        reason_codes.append("MULTI_INTENT")
         return EscalationDecision(
             InternalDecision.ESCALATE, "ESCALATE", RiskLevel.HIGH,
             "Message appears to raise multiple distinct issues ("
@@ -152,8 +183,13 @@ def decide(signals: EscalationSignals, thresholds: EscalationThresholds | None =
         reason_codes.append("LOW_GROUNDING_SCORE")
     if signals.ambiguity is not None and signals.ambiguity.is_ambiguous:
         reason_codes.append("AMBIGUOUS_INTENT")
-    if signals.ambiguity is not None and (signals.ambiguity.sparse_evidence or signals.ambiguity.retrieval_disagreement):
-        reason_codes.append("WEAK_RETRIEVAL_CORROBORATION")
+    # Explicit classifier-vs-retrieval disagreement: hidden disagreement is
+    # worse than visible disagreement — the reviewer must see that history
+    # points somewhere else than the classifier's argmax.
+    if signals.ambiguity is not None and signals.ambiguity.retrieval_disagreement:
+        reason_codes.append("RETRIEVAL_DISAGREEMENT")
+    if signals.ambiguity is not None and signals.ambiguity.sparse_evidence:
+        reason_codes.append("WEAK_EVIDENCE")
 
     if not reason_codes:
         risk = RiskLevel.MEDIUM if signals.intent_escalation_tendency == "medium" else RiskLevel.LOW
@@ -190,6 +226,20 @@ def _describe_reason_code(code: str, s: EscalationSignals) -> str:
             f"top-2 intent probability margin {s.ambiguity.top2_margin:.2f} "
             "indicates a genuinely ambiguous message"
             if s.ambiguity else "message is genuinely ambiguous between multiple intents"
+        ),
+        "RETRIEVAL_DISAGREEMENT": lambda: (
+            "retrieved historical cases mostly belong to a different intent than the classifier's prediction"
+        ),
+        "LOW_CLASSIFICATION_CONFIDENCE": lambda: (
+            f"intent confidence {s.intent_confidence:.2f} below the auto-handling threshold"
+        ),
+        "WEAK_EVIDENCE": lambda: (
+            f"only {s.num_supporting_cases} retrieved case(s) corroborate this reply"
+        ),
+        "PRIVACY_RISK": lambda: "message may contain credentials that must never be echoed",
+        "OOD_REQUEST": lambda: (
+            f"novelty score {s.novelty.ood_score:.2f}: message resembles no historical case"
+            if s.novelty else "message appears out-of-distribution for the support taxonomy"
         ),
         "WEAK_RETRIEVAL_CORROBORATION": lambda: (
             "retrieved historical evidence is sparse or disagrees with the predicted intent"

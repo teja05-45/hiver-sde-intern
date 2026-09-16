@@ -46,6 +46,17 @@ class TestPerClaimVerification(unittest.TestCase):
         self.assertEqual(result.supported[0].evidence_ids, ["c0"])
         self.assertTrue(result.passed)
 
+    def test_verbatim_quoted_evidence_is_supported_despite_scaffolding(self):
+        """Template scaffolding around a verbatim evidence quote must not
+        dilute a directly-quoted factual core below the threshold."""
+        evidence = make_evidence([("pkg", "please check your tracking page for updates", 0.8)])
+        draft = ("Hi, thanks for reaching out. Based on how we've handled similar delivery delay "
+                 "cases: please check your tracking page for updates. Let us know if you need anything else.")
+        result = verify_claims(draft, evidence)
+        statuses = {c.status for c in result.claims}
+        self.assertIn("supported", statuses)
+        self.assertTrue(result.passed)
+
     def test_unsupported_claim_has_no_evidence_ids(self):
         evidence = make_evidence([("pkg late", "please check your tracking page", 0.8)])
         draft = "Amazon will refund you within 24 hours, guaranteed."

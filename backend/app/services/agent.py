@@ -25,6 +25,7 @@ from app.classification.baselines import TfidfLogisticRegressionClassifier
 from app.retrieval.embeddings import TfidfEmbeddingProvider
 from app.retrieval.retriever import HistoricalRetriever, EvidenceResult
 from app.services.ambiguity import AmbiguityResult, compute_ambiguity_signals
+from app.services.novelty import compute_novelty_signals, NoveltyResult
 from app.services.evidence_scoring import compute_evidence_features, compute_evidence_score
 from app.services.text_cleaning import clean_for_modeling
 from app.generation.generator import generate_response, check_grounding, GeneratedResponse
@@ -33,6 +34,23 @@ from app.escalation.policy import EscalationSignals, EscalationThresholds, decid
 from app.providers.llm.base import LLMProvider
 
 logger = logging.getLogger(__name__)
+
+# Credential-shaped strings that must never be echoed by an automated draft.
+# Deliberately narrow (few false positives): full card numbers, OTP/passcode
+# phrasing, and explicit passwords. Order numbers and tracking IDs are NOT
+# secrets — flagging them would escalate most of the corpus.
+import re as _re
+
+_CREDENTIAL_PATTERNS = [
+    _re.compile(r"\b\d{16}\b"),                                  # 16-digit card number
+    _re.compile(r"\bmy password (is|:)?\s*\S+", _re.IGNORECASE),
+    _re.compile(r"\b(password|passcode|otp|one[- ]time (code|password)|pin)\s*(is|:|=)\s*\S+", _re.IGNORECASE),
+    _re.compile(r"\b\d{6}\b(?=.*\b(otp|code|passcode)\b)", _re.IGNORECASE),
+]
+
+
+def _contains_credential_secrets(message: str) -> bool:
+    return any(p.search(message or "") for p in _CREDENTIAL_PATTERNS)
 
 
 @dataclass
@@ -49,6 +67,7 @@ class AgentResult:
     latency_ms: dict[str, float] = field(default_factory=dict)
     evidence_features: dict[str, float] = field(default_factory=dict)
     ambiguity: AmbiguityResult | None = None
+    novelty: NoveltyResult | None = None
     all_scores: dict[str, float] = field(default_factory=dict)
     claim_verification: ClaimVerificationResult | None = None
 
@@ -77,6 +96,7 @@ class AgentResult:
                 ],
             },
             "ambiguity": self.ambiguity.as_dict() if self.ambiguity else None,
+            "novelty": self.novelty.as_dict() if self.novelty else None,
             "response": {
                 "draft": self.generated.draft_reply if self.generated else None,
                 "grounded": self.grounding_score is not None and self.grounding_score >= 0.6,
@@ -158,6 +178,7 @@ class SupportAgent:
         latency["evidence_scoring_ms"] = round((perf_counter() - t0) * 1000, 1)
 
         ambiguity = compute_ambiguity_signals(all_scores, customer_message, evidence.cases, self.intents_cfg)
+        novelty = compute_novelty_signals(all_scores, evidence.cases)
 
         t0 = perf_counter()
         generated = None
@@ -188,7 +209,8 @@ class SupportAgent:
             num_supporting_cases=evidence.num_cases, intent_agreement_rate=evidence.intent_agreement_rate,
             unsupported_claims_present=unsupported_claims_present, grounding_score=grounding_score,
             generation_failed=generation_failed, retrieval_failed=retrieval_failed,
-            ambiguity=ambiguity,
+            privacy_risk_suspected=_contains_credential_secrets(customer_message),
+            ambiguity=ambiguity, novelty=novelty,
         )
         decision = decide(signals, self.thresholds)
 
@@ -196,6 +218,6 @@ class SupportAgent:
             request_id=request_id, customer_message=customer_message, intent=intent,
             intent_confidence=intent_confidence, evidence=evidence, evidence_score=evidence_score,
             generated=generated, grounding_score=grounding_score, decision=decision, latency_ms=latency,
-            evidence_features=features.as_dict(), ambiguity=ambiguity, all_scores=all_scores,
+            evidence_features=features.as_dict(), ambiguity=ambiguity, novelty=novelty, all_scores=all_scores,
             claim_verification=claim_verification,
         )
