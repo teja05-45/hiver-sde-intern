@@ -93,7 +93,8 @@ class TestPolicyIntegration(unittest.TestCase):
         )
         d = decide(self._signals(ambiguity=amb))
         self.assertEqual(d.public_decision, "ESCALATE")
-        self.assertIn("MULTI_INTENT_SUSPECTED", d.reason_codes)
+        # Renamed MULTI_INTENT_SUSPECTED -> MULTI_INTENT (assignment reason-code vocabulary).
+        self.assertIn("MULTI_INTENT", d.reason_codes)
 
     def test_ambiguity_blocks_auto_when_otherwise_strong(self):
         from app.escalation.policy import decide
