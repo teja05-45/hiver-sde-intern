@@ -10,10 +10,12 @@
     golden: { title: "Golden Set", sub: "Are the evaluation labels trustworthy?", render: () => Pages.golden },
     judge: { title: "LLM Judge", sub: "Can I trust the evaluator?", render: () => Pages.judge },
     decisions: { title: "Decision Log", sub: "Why was the system designed this way?", render: () => Pages.decisions },
-    system: { title: "System", sub: "How does the system work?", render: () => Pages.system },
+    system: { title: "System", sub: "What is this built from?", render: () => Pages.system },
   };
 
   const root = document.getElementById("page-root");
+  const pill = document.getElementById("mode-pill");
+  const pillText = document.getElementById("mode-pill-text");
 
   function currentRoute() {
     const hash = (location.hash || "#overview").replace("#", "");
@@ -39,9 +41,27 @@
 
   window.addEventListener("hashchange", navigate);
 
+  const MODE = {
+    MOCK:      { cls: "mock",      label: "MOCK MODE",            tip: "Deterministic local provider. No external LLM/API call is being made." },
+    LIVE:      { cls: "live",      label: "LIVE",                 tip: "Live provider verified with a real API call." },
+    ERROR:     { cls: "unhealthy", label: "ERROR",                tip: "Provider is configured but failing. Real API calls will fail." },
+    NOT_CONFIGURED: { cls: "mock", label: "NOT CONFIGURED",       tip: "No API key configured for the selected provider." },
+    UNVERIFIED:{ cls: "unverified",label: "UNVERIFIED",           tip: "Provider is configured but its health could not be measured." },
+    OFFLINE:   { cls: "unhealthy", label: "BACKEND OFFLINE",      tip: "Backend unreachable — start it with: cd backend && python -m app.api.app" },
+  };
+
+  function setPill(state, provider, model, errorCode) {
+    const m = MODE[state] || MODE.UNVERIFIED;
+    const prov = provider ? String(provider).toUpperCase() + " — " : "";
+    let tip = m.tip;
+    if (model) tip += ` Model: ${model}.`;
+    if (errorCode) tip += ` Error code: ${errorCode}.`;
+    pill.className = "mode-pill " + m.cls;
+    pillText.textContent = state === "LIVE" || state === "ERROR" || state === "UNVERIFIED" ? prov + m.label : m.label;
+    pill.setAttribute("data-tip", tip);
+  }
+
   async function initStatus() {
-    const pill = document.getElementById("mode-pill");
-    const pillText = document.getElementById("mode-pill-text");
     try {
       const [health, sys, providerHealth] = await Promise.all([
         API.health(),
@@ -51,48 +71,40 @@
       const provider = sys?.llm_provider || health.llm_provider || "—";
       const isMock = health.mock_mode;
 
-      // Determine the mode pill state:
-      // - MOCK: deterministic local provider
-      // - LIVE: live provider confirmed healthy
-      // - UNHEALTHY: live provider configured but failing
-      // - NOT CONFIGURED: no API key set
-      let pillClass, pillLabel, pillTip;
+      /* Full provider state machine — the pill can only say LIVE after a
+       * measured provider check succeeded. States: LIVE | MOCK |
+       * NOT_CONFIGURED | ERROR | UNVERIFIED (health check itself failed) |
+       * OFFLINE (backend unreachable, handled below). */
       if (isMock) {
-        pillClass = "mock";
-        pillLabel = "MOCK MODE";
-        pillTip = "Deterministic local provider. No external LLM/API call is being made.";
-      } else if (providerHealth && providerHealth.healthy === false) {
-        pillClass = "unhealthy";
-        pillLabel = `${String(provider).toUpperCase()} — UNHEALTHY`;
-        pillTip = `Provider ${provider} is configured but not responding correctly. Error: ${providerHealth.error_code || "unknown"}. Real API calls may fail.`;
+        setPill("MOCK", provider, "mock-deterministic-v1");
       } else if (providerHealth && providerHealth.healthy === true) {
-        pillClass = "live";
-        pillLabel = `${String(provider).toUpperCase()} — LIVE`;
-        pillTip = `Live provider: ${provider}. Real API calls are being made. Model: ${providerHealth.model || "default"}.`;
+        setPill("LIVE", provider, providerHealth.model);
       } else if (providerHealth && providerHealth.configured === false) {
-        pillClass = "mock";
-        pillLabel = "NOT CONFIGURED";
-        pillTip = "No API key configured for the selected provider. Using mock mode.";
+        setPill("NOT_CONFIGURED", provider);
+      } else if (providerHealth && providerHealth.healthy === false) {
+        setPill("ERROR", provider, null, providerHealth.error_code);
       } else {
-        // Health check unavailable (fetch failed) — never present an
-        // unverified provider as LIVE. Configuration truth only.
-        pillClass = "unverified";
-        pillLabel = `${String(provider).toUpperCase()} — UNVERIFIED`;
-        pillTip = `Provider ${provider} is configured but its health could not be measured (health-check request failed). Real API calls may fail.`;
+        setPill("UNVERIFIED", provider);
+      }
+      if (typeof window.OverviewStatus !== "undefined") {
+        const ok = isMock || (providerHealth && providerHealth.healthy === true);
+        const bad = !providerHealth || providerHealth.healthy === false;
+        window.OverviewStatus.set(ok ? "ok" : bad ? "err" : "warn",
+          ok ? "Operational" : bad ? "Provider degraded" : "Unverified provider",
+          ok ? (isMock ? "Running in mock mode — deterministic, offline." : "Provider health verified with a real API call.")
+             : "Provider state could not be verified.");
       }
 
-      pill.className = "mode-pill " + pillClass;
-      pillText.textContent = pillLabel;
-      pill.setAttribute("data-tip", pillTip);
-
+      const modeLabel = isMock ? "MOCK" : (providerHealth?.healthy ? "LIVE" : providerHealth?.healthy === false ? "ERROR" : "UNVERIFIED");
       document.getElementById("foot-brand").textContent = health.brand || "—";
       document.getElementById("foot-provider").textContent = provider;
-      document.getElementById("foot-mode").textContent = isMock ? "MOCK" : (providerHealth?.healthy ? "LIVE" : providerHealth?.healthy === false ? "UNHEALTHY" : "UNVERIFIED");
+      document.getElementById("foot-mode").textContent = modeLabel;
       document.getElementById("foot-env").textContent = health.app_env || "—";
     } catch (_) {
-      pill.className = "mode-pill mock";
-      pillText.textContent = "BACKEND OFFLINE";
-      pill.setAttribute("data-tip", "Backend unreachable — start it with: cd backend && python -m app.api.app");
+      setPill("OFFLINE");
+      if (typeof window.OverviewStatus !== "undefined") {
+        window.OverviewStatus.set("err", "Backend offline", MODE.OFFLINE.tip);
+      }
     }
   }
 
