@@ -150,8 +150,13 @@ class SupportAgent:
         self.intents_cfg = intents_cfg
         self.thresholds = thresholds or EscalationThresholds()
 
-    def respond(self, customer_message: str, k: int = 5) -> AgentResult:
-        request_id = str(uuid.uuid4())
+    def respond(self, customer_message: str, k: int = 5,
+                request_id: str | None = None) -> AgentResult:
+        # Adopt the caller's request ID (the API layer passes the incoming
+        # X-Request-ID) so the HTTP response, the structured decision log,
+        # and the runtime decision store all reference the SAME id. A locally
+        # generated id is only a fallback for direct service use.
+        request_id = request_id or str(uuid.uuid4())
         latency: dict[str, float] = {}
 
         t0 = perf_counter()

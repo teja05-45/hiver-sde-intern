@@ -20,14 +20,19 @@ Cross-cutting behavior:
     latency, intent, confidence, evidence score, grounding score, decision,
     and reason codes. Never logs message bodies, API keys, or secrets.
   - CORS: origins come from CORS_ORIGINS (comma-separated). "*" is only
-    allowed when APP_ENV=development; production requires explicit origins.
-
-Endpoints:
+    allowed when APP_ENV=development; production requires explicit origins.Endpoints:
     GET  /health
     GET  /api/v1/intents
     POST /api/v1/agent/classify            {"message", "k"?}
     POST /api/v1/agent/retrieve            {"message", "k"?}
-    POST /api/v1/agent/respond             {"message", "k"?}
+    POST /api/v1/agent/respond             {"message", "k"?, "conversation_id"?}
+    GET  /api/v1/inbox                     (?q=&intent=&status=&page=&page_size=)
+    GET  /api/v1/conversations/<id>        full real thread
+    GET  /api/v1/escalations               runtime ESCALATE queue
+    GET  /api/v1/resolved                  runtime AUTO list
+    GET  /api/v1/agent/decisions           runtime decision log (?limit=&offset=&decision=)
+    GET  /api/v1/agent/decisions/<id>      one decision trail
+    GET  /api/v1/retrieval/explorer        (?q=&k=) retrieval-only inspection
     GET  /api/v1/evaluation/summary
     GET  /api/v1/evaluation/failures
     GET  /api/v1/evaluation/automation
@@ -60,7 +65,13 @@ from app.core.config import get_settings
 from app.providers.llm.factory import get_llm_provider, ProviderConfigError
 from app.providers.llm.status import get_provider_status
 from app.services.agent import SupportAgent
+from app.services.display import sanitize_display_text
+from app.services.inbox import InboxService
+from app.services.decision_store import DecisionStore, build_record_from_result
 from app.escalation.policy import EscalationThresholds
+
+PRODUCT_NAME = "EvidenceDesk"
+PRODUCT_SUBTITLE = "AI Customer Support Operations"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logger = logging.getLogger("omniroute.api")
@@ -71,12 +82,15 @@ REPORTS_DIR = REPO_ROOT / "reports"
 CONFIGS_DIR = REPO_ROOT / "configs"
 GOLDEN_DIR = REPO_ROOT / "data" / "golden"
 FRONTEND_DIR = REPO_ROOT / "frontend"
+RUNTIME_DIR = REPO_ROOT / "data" / "runtime"
 
 app = Flask(__name__)
 
 _agent: SupportAgent | None = None
 _intents_cfg: dict | None = None
 _provider_error: str | None = None
+_inbox = InboxService(REPO_ROOT / "data" / "processed" / "labeled_AmazonHelp.jsonl")
+_decision_store = DecisionStore(RUNTIME_DIR / "decisions.jsonl")
 
 # --------------------------------------------------------------------------
 # Rate limiting (simple in-memory sliding window, per client IP).
@@ -361,6 +375,7 @@ def health():
     mode = settings.provider_mode()
     return jsonify({
         "status": "ok",
+        "product": {"name": PRODUCT_NAME, "subtitle": PRODUCT_SUBTITLE},
         "mock_mode": mode == "mock",
         "llm_provider": "mock" if mode == "mock" else settings.llm_provider,
         "provider_mode": mode,  # "mock" | "live" | "not_configured" -- config truth
@@ -457,14 +472,21 @@ def retrieve():
 
 @app.route("/api/v1/agent/respond", methods=["POST"])
 def respond():
-    """POST /api/v1/agent/respond {"message": str, "k": int=5}
-    -> full AgentResult dict (see app.services.agent.AgentResult.as_dict)."""
+    """POST /api/v1/agent/respond {"message": str, "k": int=5, "conversation_id"?: str}
+    -> full AgentResult dict (see app.services.agent.AgentResult.as_dict).
+
+    When conversation_id is supplied, the decision is linked to that real
+    conversation in the runtime decision store (traceability)."""
     message, err = _validated_message()
     if err:
         return err
     k, err = _validated_k()
     if err:
         return err
+    body = request.get_json(silent=True) or {}
+    conversation_id = body.get("conversation_id")
+    if conversation_id is not None and not isinstance(conversation_id, str):
+        return api_error("INVALID_REQUEST", "'conversation_id' must be a string.", 400)
 
     settings = get_settings()
     if settings.provider_mode() == "not_configured":
@@ -473,7 +495,10 @@ def respond():
         return _provider_not_configured_error()
 
     agent = get_agent()
-    result = agent.respond(message, k=k)
+    # Pass the middleware-assigned request id so the response body, the
+    # structured decision log, and the runtime decision store all carry the
+    # SAME id (X-Request-ID header echoes it back to the UI).
+    result = agent.respond(message, k=k, request_id=_request_id())
     _log_decision(result)
     payload = result.as_dict()
     payload["request_id"] = _request_id()
@@ -496,7 +521,147 @@ def respond():
             "model": "mock-deterministic-v1" if mock else None,
         }
     payload["provenance"]["timestamp"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+    # Persist the decision for the product's traceability surfaces (Decision
+    # Log, Escalated queue, Resolved list). Best-effort: capture failure is
+    # logged inside the store and never fails the support request.
+    record = build_record_from_result(result, payload["provenance"],
+                                      sanitize_display_text(message, max_chars=400),
+                                      conversation_id=conversation_id)
+    if record is not None:
+        _decision_store.append(record)
+
     return jsonify(payload)
+
+
+# --------------------------------------------------------------------------
+# Support workspace endpoints (inbox, conversations, runtime queues)
+# --------------------------------------------------------------------------
+
+@app.route("/api/v1/inbox", methods=["GET"])
+def inbox_list():
+    """GET /api/v1/inbox?q=&intent=&status=&page=&page_size=
+    -> paginated support tickets from the REAL labeled dataset (sanitized
+    display projection). Status mapping is honest: dataset split "train"
+    conversations predate the model's training cutoff -> "resolved";
+    dev/test -> "open" work queues."""
+    q = (request.args.get("q") or "").strip()
+    intent = (request.args.get("intent") or "").strip()
+    status = (request.args.get("status") or "").strip()
+    try:
+        page = max(1, int(request.args.get("page", 1)))
+        page_size = int(request.args.get("page_size", 25))
+    except ValueError:
+        return api_error("INVALID_REQUEST", "page and page_size must be integers.", 400)
+    return jsonify(_inbox.list_tickets(q=q, intent=intent, status=status,
+                                       page=page, page_size=page_size))
+
+
+@app.route("/api/v1/conversations/<path:conversation_id>", methods=["GET"])
+def conversation_detail(conversation_id: str):
+    """GET /api/v1/conversations/<id> -> the full REAL thread for one
+    conversation (messages, roles, timestamps, recorded resolution)."""
+    conv = _inbox.get_conversation(conversation_id)
+    if conv is None:
+        return api_error("NOT_FOUND", f"Unknown conversation: {conversation_id}", 404)
+    return jsonify(conv)
+
+
+@app.route("/api/v1/escalations", methods=["GET"])
+def escalations_list():
+    """GET /api/v1/escalations -> runtime ESCALATE decisions, newest first.
+    Empty until the agent has actually escalated something -- never
+    fabricated queue entries."""
+    try:
+        limit = min(int(request.args.get("limit", 100)), 500)
+    except ValueError:
+        return api_error("INVALID_REQUEST", "limit must be an integer.", 400)
+    return jsonify({
+        "total_estimated": _decision_store.count_by_decision()["ESCALATE"],
+        "escalations": _decision_store.list_decisions(decision="ESCALATE", limit=limit),
+    })
+
+
+@app.route("/api/v1/resolved", methods=["GET"])
+def resolved_list():
+    """GET /api/v1/resolved -> runtime AUTO decisions (AI-handled), newest
+    first. Empty until the agent has actually auto-handled something."""
+    try:
+        limit = min(int(request.args.get("limit", 100)), 500)
+    except ValueError:
+        return api_error("INVALID_REQUEST", "limit must be an integer.", 400)
+    return jsonify({
+        "total_estimated": _decision_store.count_by_decision()["AUTO"],
+        "resolved": _decision_store.list_decisions(decision="AUTO", limit=limit),
+    })
+
+
+@app.route("/api/v1/agent/decisions", methods=["GET"])
+def agent_decisions_list():
+    """GET /api/v1/agent/decisions?limit=&offset=&decision= -> the runtime
+    decision log (every AUTO/ESCALATE the agent actually made, newest
+    first). Distinct from /api/v1/decisions, which serves the DESIGN
+    decision log from docs/decision-log.md."""
+    try:
+        limit = min(int(request.args.get("limit", 100)), 500)
+        offset = max(0, int(request.args.get("offset", 0)))
+    except ValueError:
+        return api_error("INVALID_REQUEST", "limit and offset must be integers.", 400)
+    decision = (request.args.get("decision") or "").strip() or None
+    return jsonify({
+        "decisions": _decision_store.list_decisions(decision=decision, limit=limit, offset=offset),
+    })
+
+
+@app.route("/api/v1/agent/decisions/<path:request_id>", methods=["GET"])
+def agent_decision_detail(request_id: str):
+    """GET /api/v1/agent/decisions/<request_id> -> one stored decision."""
+    record = _decision_store.get(request_id)
+    if record is None:
+        return api_error("NOT_FOUND", f"Unknown decision request_id: {request_id}", 404)
+    return jsonify(record)
+
+
+@app.route("/api/v1/retrieval/explorer", methods=["GET"])
+def retrieval_explorer():
+    """GET /api/v1/retrieval/explorer?q=&k= -> retrieval-only inspection:
+    top historical cases for a query with the SAME hybrid ranking the agent
+    uses, but no generation, no decision, and no store write."""
+    q = (request.args.get("q") or "").strip()
+    if not q:
+        return api_error("INVALID_REQUEST", "'q' is required.", 400)
+    if len(q) > MAX_MESSAGE_CHARS:
+        return api_error("INVALID_REQUEST", f"q exceeds maximum length of {MAX_MESSAGE_CHARS} characters.", 400)
+    try:
+        k = int(request.args.get("k", 5))
+    except ValueError:
+        return api_error("INVALID_REQUEST", "k must be an integer.", 400)
+    if k < 1 or k > MAX_K:
+        return api_error("INVALID_REQUEST", f"k must be between 1 and {MAX_K}.", 400)
+
+    agent = get_agent()
+    from app.services.text_cleaning import clean_for_modeling
+    intent_probs = agent.classifier.predict([clean_for_modeling(q)])[0].all_scores
+    evidence = agent.retriever.retrieve(q, k=k, intent_probs=intent_probs)
+    return jsonify({
+        "request_id": _request_id(),
+        "query": q,
+        "cases": [
+            {"conversation_id": c.conversation_id, "similarity": round(c.similarity, 4),
+             "customer_message": c.customer_message, "resolution": c.resolution, "intent": c.intent,
+             "created_at": c.created_at,
+             "final_score": (round(c.final_score, 4) if c.final_score is not None else None),
+             "rank_raw": c.rank_raw,
+             "components": ({k2: round(v2, 4) for k2, v2 in c.components.items()}
+                             if c.components else {}),
+             "explanation": c.explanation}
+            for c in evidence.cases
+        ],
+        "intent_agreement_rate": round(evidence.intent_agreement_rate, 4),
+        "resolution_agreement_rate": round(evidence.resolution_agreement_rate, 4),
+        "top_similarity": round(evidence.top_similarity, 4),
+        "hybrid_enabled": evidence.hybrid_enabled,
+    })
 
 
 # --------------------------------------------------------------------------
@@ -743,7 +908,14 @@ def decisions():
                 else:
                     fields[key.lower()] = val
         entries.append({"number": num, "title": title, **fields})
-    return jsonify({"decisions": entries})
+    return jsonify({
+        "decisions": entries,
+        # Runtime decisions live in their own paginated log (see
+        # /api/v1/agent/decisions); surfaced here so one endpoint answers
+        # "what has the agent decided?" AND "why was it designed this way?".
+        "runtime_decisions": _decision_store.list_decisions(limit=20),
+        "runtime_counts": _decision_store.count_by_decision(),
+    })
 
 
 @app.route("/api/v1/system", methods=["GET"])
@@ -789,6 +961,7 @@ def system():
                        "detail": "200 human-verified examples"},
     }
     return jsonify({
+        "product": {"name": PRODUCT_NAME, "subtitle": PRODUCT_SUBTITLE},
         "brand": settings.brand_name or "AmazonHelp",
         "app_env": settings.app_env,
         "llm_provider": provider,

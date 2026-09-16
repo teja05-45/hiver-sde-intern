@@ -21,6 +21,7 @@ build/
 
 data/raw/
 data/processed/
+data/runtime/
 models/*.joblib
 
 *.db
