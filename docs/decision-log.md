@@ -1,6 +1,6 @@
 # Decision Log
 
-19 non-obvious engineering decisions made during this project. Each includes the reason and the
+22 non-obvious engineering decisions made during this project. Each includes the reason and the
 trade-off accepted.
 
 ### 1. Brand selection: log-scale volume scoring, not linear-capped
@@ -216,3 +216,46 @@ than keeping the stale 53.5% artifact, because an honest gap is a diagnostic sig
 flattering artifact is a liability.
 **Important:** Do NOT cite the pre-remap 53.5% as the current golden accuracy. The current,
 reproducible number is 19.5% (`reports/golden_set_evaluation.json`, regenerated 2026-09-14).
+
+### 20. Claim verification is derived from the draft, not from the LLM's self-report
+
+**Decision:** Grounding now extracts claims from the ACTUAL generated draft (sentence
+segmentation) and verifies each against the union of retrieved evidence, attributing the
+best-matching case ID. The LLM's self-reported `grounded_claims`/`unsupported_claims` lists
+are kept in the payload for audit comparison but no longer drive the pipeline or the UI.
+**Reason:** Self-reported claims could fail to correspond to the draft text — the UI could show
+"unsupported claim: refund/timeline" for a draft that never made such a claim, and an LLM can
+mislabeL its own output. Verified claims must literally be substrings of the response.
+**Trade-off:** The verifier is literal (stemmed word-overlap), so paraphrase quality is judged
+mechanically. Measured consequence: suggested actions ("uninstall and reinstall") paraphrase
+recorded resolutions, so claims are classed — assertions verify at 0.6 overlap, suggestions at
+0.45, and consecutive list items group into one suggestion instead of over-counting failures.
+
+### 21. OOD detection from measured signals, not keyword lists
+
+**Decision:** Added `services/novelty.py`: an OOD score computed from saturated classifier
+probability, top-2 margin, nearest-neighbor retrieval similarity, and retrieval intent
+agreement. At/above threshold it adds an ESCALATE-only `OOD_REQUEST` veto.
+**Reason:** Measured on the probe suite: "What is the capital of India?" classified as
+`content_availability_inquiry` at 1.00 confidence. TF-IDF always picks an argmax — classifier
+confidence alone cannot detect novelty. The four subsignals are quantities the pipeline already
+computes, and their combination is thresholded from golden-set measurements, not fitted (24 OOD
+golden examples would overfit a learned detector).
+**Trade-off:** The signal is experimental — direction-tested in unit tests and against the probe
+suite, not validated against a labeled OOD ground truth. It only ever escalates, so failure
+direction is safe; over-flagging costs coverage, not correctness.
+
+### 22. Retrieval disagreement becomes a named reason code; privacy risk escalates before output checks
+
+**Decision:** (a) classifier-vs-retrieval-majority disagreement now surfaces as its own
+`RETRIEVAL_DISAGREEMENT` reason code (plus `WEAK_EVIDENCE` for sparse corroboration) instead of
+hiding inside a generic weak-corroboration flag. (b) A `PRIVACY_RISK` fail-safe escalates
+messages containing credential-shaped strings (16-digit numbers, "password is X", OTP phrasing)
+before any output-level claim check. (c) The multi-intent code is renamed `MULTI_INTENT`.
+**Reason:** Hidden disagreement is worse than visible disagreement — a reviewer must see that
+history points elsewhere than the classifier's argmax (measured: "I was charged twice" →
+classifier `general_other`, retrieval majority `general_other` but payment evidence present).
+Privacy ordering matters: input sensitivity outranks output quality as a reason, because the
+draft may be fine while the context is not — and no automated draft should ever echo credentials.
+**Trade-off:** More reason codes to keep documented; the UI's Why-narrative maps each code to a
+plain-language explanation in one table, and unknown codes fall back to the raw code.
