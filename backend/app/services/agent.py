@@ -28,6 +28,7 @@ from app.services.ambiguity import AmbiguityResult, compute_ambiguity_signals
 from app.services.evidence_scoring import compute_evidence_features, compute_evidence_score
 from app.services.text_cleaning import clean_for_modeling
 from app.generation.generator import generate_response, check_grounding, GeneratedResponse
+from app.generation.claims import verify_claims, ClaimVerificationResult
 from app.escalation.policy import EscalationSignals, EscalationThresholds, decide, EscalationDecision
 from app.providers.llm.base import LLMProvider
 
@@ -49,6 +50,7 @@ class AgentResult:
     evidence_features: dict[str, float] = field(default_factory=dict)
     ambiguity: AmbiguityResult | None = None
     all_scores: dict[str, float] = field(default_factory=dict)
+    claim_verification: ClaimVerificationResult | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -80,8 +82,15 @@ class AgentResult:
                 "grounded": self.grounding_score is not None and self.grounding_score >= 0.6,
                 "grounding_score": self.grounding_score,
                 "is_mock": self.generated.is_mock if self.generated else None,
+                # Self-reported claim lists (kept for audit/comparison only —
+                # the UI renders claim_verification, whose claims are derived
+                # from the actual draft text).
                 "grounded_claims": self.generated.grounded_claims if self.generated else [],
                 "unsupported_claims": self.generated.unsupported_claims if self.generated else [],
+                # Per-claim verification of the ACTUAL draft text. Every
+                # claim_text here is a literal substring of `draft`.
+                "claim_verification": (self.claim_verification.as_dict()
+                                        if self.claim_verification else None),
                 # Stage-level provenance for the Live Agent page: generation is a
                 # first-class pipeline stage with its own PASS/FAILED status.
                 "generation_status": "FAILED" if (self.generated and self.generated.parse_error)
@@ -155,6 +164,7 @@ class SupportAgent:
         grounding_score = None
         generation_failed = False
         unsupported_claims_present = False
+        claim_verification: ClaimVerificationResult | None = None
         if not retrieval_failed:
             generated = generate_response(self.llm_provider, customer_message, intent, evidence)
             if generated.parse_error:
@@ -163,6 +173,12 @@ class SupportAgent:
                 grounding_result = check_grounding(generated, evidence)
                 grounding_score = grounding_result.grounding_score
                 unsupported_claims_present = not grounding_result.grounded and not generated.evidence_insufficient
+                # Independent, draft-derived per-claim verification. Runs even
+                # when the model self-reported no unsupported claims — the
+                # self-report is never trusted.
+                claim_verification = verify_claims(generated.draft_reply, evidence)
+                if claim_verification.unsupported:
+                    unsupported_claims_present = True
         latency["generation_ms"] = round((perf_counter() - t0) * 1000, 1)
 
         escalation_tendency = self.intents_cfg.get(intent, {}).get("escalation_tendency", "high")
@@ -181,4 +197,5 @@ class SupportAgent:
             intent_confidence=intent_confidence, evidence=evidence, evidence_score=evidence_score,
             generated=generated, grounding_score=grounding_score, decision=decision, latency_ms=latency,
             evidence_features=features.as_dict(), ambiguity=ambiguity, all_scores=all_scores,
+            claim_verification=claim_verification,
         )
