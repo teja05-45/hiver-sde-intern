@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from app.core.config import Settings
 from app.providers.llm.base import LLMError
-from app.providers.llm.factory import get_llm_provider
+from app.providers.llm.factory import ProviderConfigError, get_llm_provider
 from app.providers.llm.groq_provider import GroqProvider
 from app.providers.llm.gemini_provider import GeminiProvider
 from app.providers.llm.mock_provider import MockLLMProvider
@@ -18,6 +18,7 @@ def make_settings(**overrides) -> Settings:
     defaults = dict(
         app_env="development",
         llm_provider="mock",
+        llm_mode="",
         groq_api_key="",
         gemini_api_key="",
         llm_model_name="",
@@ -43,14 +44,46 @@ class TestProviderFactory(unittest.TestCase):
         self.assertIsInstance(p, GeminiProvider)
         self.assertEqual(p.provider_name, "gemini")
 
-    def test_groq_without_key_falls_back_to_mock(self):
-        self.assertIsInstance(get_llm_provider(make_settings(llm_provider="groq", groq_api_key="")), MockLLMProvider)
+    # --- Fail-loud contract: a missing key or unknown provider is a
+    # configuration error (NOT_CONFIGURED), NEVER a silent switch to mock.
+    # Mock must be explicitly selected (LLM_PROVIDER=mock / LLM_MODE=mock).
+    def test_groq_without_key_raises_not_falls_back(self):
+        with self.assertRaises(ProviderConfigError) as ctx:
+            get_llm_provider(make_settings(llm_provider="groq", groq_api_key=""))
+        self.assertIn("GROQ_API_KEY", str(ctx.exception))
+        self.assertIn("LLM_PROVIDER=mock", str(ctx.exception))
 
-    def test_gemini_without_key_falls_back_to_mock(self):
-        self.assertIsInstance(get_llm_provider(make_settings(llm_provider="gemini", gemini_api_key="")), MockLLMProvider)
+    def test_gemini_without_key_raises_not_falls_back(self):
+        with self.assertRaises(ProviderConfigError):
+            get_llm_provider(make_settings(llm_provider="gemini", gemini_api_key=""))
 
-    def test_invalid_provider_name_falls_back_to_mock(self):
-        self.assertIsInstance(get_llm_provider(make_settings(llm_provider="claude")), MockLLMProvider)
+    def test_invalid_provider_name_raises(self):
+        with self.assertRaises(ProviderConfigError) as ctx:
+            get_llm_provider(make_settings(llm_provider="claude"))
+        self.assertIn("claude", str(ctx.exception))
+
+    def test_llm_mode_live_without_key_is_not_mock(self):
+        """LLM_MODE=live with a missing key must raise (NOT_CONFIGURED truth),
+        never quietly become a mock provider."""
+        with self.assertRaises(ProviderConfigError):
+            get_llm_provider(make_settings(llm_provider="groq", llm_mode="live", groq_api_key=""))
+
+    def test_llm_mode_mock_forces_mock_even_with_key(self):
+        """Explicit mock selection wins even when a key exists -- mode is what
+        the operator asked for."""
+        p = get_llm_provider(make_settings(llm_provider="groq", llm_mode="mock",
+                                           groq_api_key="k"))
+        self.assertIsInstance(p, MockLLMProvider)
+
+    def test_provider_mode_states(self):
+        s = make_settings(llm_provider="groq", groq_api_key="k")
+        self.assertEqual(s.provider_mode(), "live")
+        s = make_settings(llm_provider="groq", groq_api_key="")
+        self.assertEqual(s.provider_mode(), "not_configured")
+        self.assertFalse(s.is_mock_mode())
+        s = make_settings(llm_provider="mock")
+        self.assertEqual(s.provider_mode(), "mock")
+        self.assertTrue(s.is_mock_mode())
 
     def test_constructing_groq_without_key_raises(self):
         with self.assertRaises(LLMError):

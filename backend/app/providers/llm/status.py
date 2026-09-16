@@ -102,26 +102,33 @@ def get_provider_status(settings: Settings | None = None,
         from app.core.config import get_settings
         s = get_settings()
 
-    is_mock = s.is_mock_mode()
-    effective = "mock" if is_mock else s.llm_provider
+    # provider_mode() is the single config-level source of truth:
+    # "mock" | "live" | "not_configured". A selected-but-keyless provider is
+    # NOT_CONFIGURED -- never mock, never "live that might secretly fall back".
+    mode = s.provider_mode()
+    effective = s.llm_provider if mode != "mock" else "mock"
 
-    if is_mock:
+    if mode == "mock":
         status = ProviderStatus(
             provider="mock", mode="mock", configured=True, healthy=True, reachable=True,
             model="mock-deterministic-v1", checks={"note": "deterministic local provider; no external API used"},
         )
         return status.as_dict()
 
-    key_present = bool(s.groq_api_key if s.llm_provider == "groq" else s.gemini_api_key)
+    key_present = mode == "live"
     model = s.llm_model_name or None
 
     status = ProviderStatus(
-        provider=s.llm_provider, mode="live",
+        provider=s.llm_provider, mode=mode,
         configured=key_present, healthy=None, reachable=None, model=model,
     )
     if not key_present:
         status.error_code = "PROVIDER_NOT_CONFIGURED"
-        status.error_message = "No API key configured for the selected provider."
+        status.error_message = (
+            f"LLM_PROVIDER={s.llm_provider} is selected but no API key is configured. "
+            "Generation requests will fail with PROVIDER_NOT_CONFIGURED until a key is set "
+            "(or offline mode is explicitly selected with LLM_PROVIDER=mock)."
+        )
         return status.as_dict()
 
     if not check_health:

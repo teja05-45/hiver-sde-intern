@@ -57,7 +57,7 @@ from flask import Flask, jsonify, request, send_from_directory
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.core.config import get_settings
-from app.providers.llm.factory import get_llm_provider
+from app.providers.llm.factory import get_llm_provider, ProviderConfigError
 from app.providers.llm.status import get_provider_status
 from app.services.agent import SupportAgent
 from app.escalation.policy import EscalationThresholds
@@ -76,6 +76,7 @@ app = Flask(__name__)
 
 _agent: SupportAgent | None = None
 _intents_cfg: dict | None = None
+_provider_error: str | None = None
 
 # --------------------------------------------------------------------------
 # Rate limiting (simple in-memory sliding window, per client IP).
@@ -273,8 +274,24 @@ def _validated_k(default: int = 5) -> tuple[int, None] | tuple[None, tuple]:
 # Agent singleton
 # --------------------------------------------------------------------------
 
+class _UnconfiguredProvider:
+    """Placeholder provider used ONLY when a real provider is selected but not
+    usable (missing key). Classification and retrieval still work; any attempt
+    to generate raises ProviderConfigError. This object never produces text, so
+    it can never be mistaken for a working provider."""
+
+    provider_name = "unconfigured"
+
+    def complete(self, system_prompt: str, user_prompt: str, *, temperature: float = 0.2,
+                 max_tokens: int = 600):
+        raise ProviderConfigError(
+            "LLM generation is not available: the selected provider is not configured "
+            "(missing API key). Set the key or explicitly select LLM_PROVIDER=mock."
+        )
+
+
 def get_agent() -> SupportAgent:
-    global _agent, _intents_cfg
+    global _agent, _intents_cfg, _provider_error
     if _agent is None:
         import joblib
 
@@ -285,9 +302,26 @@ def get_agent() -> SupportAgent:
         weights = json.loads((MODELS_DIR / "evidence_weights.json").read_text())
         intents_cfg = json.loads((MODELS_DIR / "intents_cfg.json").read_text())
         _intents_cfg = intents_cfg
-        provider = get_llm_provider(settings)
+        try:
+            provider = get_llm_provider(settings)
+            _provider_error = None
+        except ProviderConfigError as e:
+            # NOT_CONFIGURED is a reported state, not a crash: classification
+            # and retrieval keep working, generation fails loudly.
+            provider = _UnconfiguredProvider()
+            _provider_error = str(e)
+            logger.warning("Provider not configured: %s", e)
         _agent = SupportAgent(classifier, retriever, provider, weights, intents_cfg, EscalationThresholds())
     return _agent
+
+
+def _provider_not_configured_error():
+    """503 with the truthful NOT_CONFIGURED code for generation endpoints."""
+    return api_error(
+        "PROVIDER_NOT_CONFIGURED",
+        _provider_error or "The selected LLM provider is not configured (missing API key).",
+        503,
+    )
 
 
 def _log_decision(result) -> None:
@@ -324,11 +358,12 @@ def health():
     provider state, never infer "live and working" from this endpoint.
     """
     settings = get_settings()
+    mode = settings.provider_mode()
     return jsonify({
         "status": "ok",
-        "mock_mode": settings.is_mock_mode(),
-        "llm_provider": "mock" if settings.is_mock_mode() else settings.llm_provider,
-        "provider_mode": "mock" if settings.is_mock_mode() else "live",
+        "mock_mode": mode == "mock",
+        "llm_provider": "mock" if mode == "mock" else settings.llm_provider,
+        "provider_mode": mode,  # "mock" | "live" | "not_configured" -- config truth
         "brand": settings.brand_name or "AmazonHelp",
         "app_env": settings.app_env,
         "model_loaded": _agent is not None,
@@ -419,6 +454,12 @@ def respond():
     if err:
         return err
 
+    settings = get_settings()
+    if settings.provider_mode() == "not_configured":
+        # Fail loudly: a generation request against an unconfigured provider is
+        # a 503 with a stable error code -- never a silent mock draft.
+        return _provider_not_configured_error()
+
     agent = get_agent()
     result = agent.respond(message, k=k)
     _log_decision(result)
@@ -436,7 +477,7 @@ def respond():
             "model": gen.model or ("mock-deterministic-v1" if gen.is_mock else None),
         }
     else:
-        mock = settings.is_mock_mode()
+        mock = settings.provider_mode() == "mock"
         payload["provenance"] = {
             "provider": "mock" if mock else settings.llm_provider,
             "mode": "mock" if mock else "live",
