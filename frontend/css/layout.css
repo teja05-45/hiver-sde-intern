@@ -201,22 +201,45 @@
 .stage.failed .s-status { background: #f04438; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-/* ---------------- Three-pane agent workspace ---------------- */
-.workspace {
+/* ---------------- Two-pane agent workspace (40/60) ---------------- */
+.agent-grid {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(300px, 2fr) minmax(0, 3fr);
   gap: var(--s4);
   align-items: start;
 }
-@media (max-width: 1200px) {
-  .workspace { grid-template-columns: 1fr 1fr; }
-  .workspace .pane-compose { grid-column: 1 / -1; }
-}
-@media (max-width: 780px) {
-  .workspace { grid-template-columns: 1fr; }
+.agent-compose, .agent-detail { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+@media (max-width: 1024px) {
+  .agent-grid { grid-template-columns: 1fr; }
 }
 
 .pane { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+
+/* Pipeline stage numbers */
+.stage .s-num {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.stage .s-name { margin-top: 12px; }
+
+/* Draft quote block */
+.draft-quote {
+  border-left: 3px solid var(--accent-border);
+  padding: 6px 0 6px 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Why-card narrative */
+.why-main { font-size: 13.5px; line-height: 1.55; color: var(--text); }
 
 .decision-banner {
   border-radius: var(--r-lg);
@@ -273,18 +296,34 @@
 }
 .mock-warning .icon { font-size: 14px; line-height: 1.3; }
 
-/* Grounding claim list */
+/* Per-claim verification list (Live Agent) */
 .claim-list { display: flex; flex-direction: column; gap: 6px; }
 .claim {
   font-size: 13px;
-  padding: 7px 10px;
+  padding: 8px 10px;
   border-radius: var(--r-sm);
   border: 1px solid var(--border);
   background: var(--bg-inset);
   color: var(--text-secondary);
 }
-.claim.ok { border-color: var(--green-border); background: var(--green-soft); color: var(--green); }
-.claim.bad { border-color: var(--red-border); background: var(--red-soft); color: var(--red); }
+.claim .claim-mark { font-weight: 800; margin-right: 4px; }
+.claim .claim-text { font-weight: 550; color: var(--text); }
+.claim .claim-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 4px;
+  padding-left: 18px;
+  align-items: center;
+}
+.claim.ok { border-color: var(--green-border); background: var(--green-soft); }
+.claim.ok .claim-mark, .claim.ok .claim-text { color: var(--green); }
+.claim.bad { border-color: var(--red-border); background: var(--red-soft); }
+.claim.bad .claim-mark, .claim.bad .claim-text { color: var(--red); }
+.claim.neutral { opacity: 0.75; }
+.claim.neutral .claim-mark { color: var(--text-faint); }
+.claim.abstain { border-color: var(--accent-border); background: var(--accent-soft); }
+.claim.abstain .claim-mark { color: var(--accent-hover); }
 
 /* Reason-code list */
 .reason-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
