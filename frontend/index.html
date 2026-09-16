@@ -10,10 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="shell">
+  <div class="shell" id="shell">
     <!-- ================= Sidebar ================= -->
-    <aside class="sidebar" aria-label="Primary navigation">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
       <div class="brand">
+        <button class="collapse-btn" id="collapse-btn" aria-label="Collapse sidebar" aria-expanded="true" data-tip="Collapse sidebar ( [ )">«</button>
         <div class="logo" aria-hidden="true">OR</div>
         <div>
           <div class="name">Omniroute</div>
@@ -48,6 +49,7 @@
         <div class="foot-row"><span class="k">Env</span> <span id="foot-env">—</span></div>
       </div>
     </aside>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
     <!-- ================= Main ================= -->
     <div class="main">

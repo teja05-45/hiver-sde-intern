@@ -41,6 +41,65 @@
 
   window.addEventListener("hashchange", navigate);
 
+  /* ---------------- Sidebar collapse + keyboard navigation ---------------- */
+  const KEY_ORDER = ["overview", "agent", "evaluation", "failures", "golden", "judge", "decisions", "system"];
+
+  function setupShell() {
+    const shell = document.getElementById("shell");
+    const sidebar = document.getElementById("sidebar");
+    const collapseBtn = document.getElementById("collapse-btn");
+    const backdrop = document.getElementById("sidebar-backdrop");
+    if (!shell || !collapseBtn) return;
+
+    function setCollapsed(collapsed) {
+      shell.classList.toggle("collapsed", collapsed);
+      collapseBtn.setAttribute("aria-expanded", String(!collapsed));
+      collapseBtn.textContent = collapsed ? "»" : "«";
+      collapseBtn.setAttribute("data-tip", collapsed ? "Expand sidebar ( ] )" : "Collapse sidebar ( [ )");
+      try { localStorage.setItem("omniroute.sidebar", collapsed ? "1" : "0"); } catch (_) { /* private mode */ }
+    }
+    collapseBtn.addEventListener("click", () => setCollapsed(!shell.classList.contains("collapsed")));
+    try { if (localStorage.getItem("omniroute.sidebar") === "1") setCollapsed(true); } catch (_) { /* ignore */ }
+
+    /* Keyboard: [ and ] collapse; g then 1..8 jumps between pages. */
+    let pendingG = false;
+    document.addEventListener("keydown", (e) => {
+      const target = e.target;
+      const typing = target && (target.tagName === "TEXTAREA" || target.tagName === "INPUT" || target.tagName === "SELECT" || target.isContentEditable);
+      if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (pendingG) {
+        pendingG = false;
+        const idx = parseInt(e.key, 10);
+        if (idx >= 1 && idx <= KEY_ORDER.length) { location.hash = "#" + KEY_ORDER[idx - 1]; return; }
+      }
+      if (e.key === "[") { setCollapsed(true); }
+      else if (e.key === "]") { setCollapsed(false); }
+      else if (e.key === "g") { pendingG = true; setTimeout(() => { pendingG = false; }, 1200); }
+      else if (e.key === "Escape" && window.innerWidth <= 900) { shell.classList.remove("open"); }
+    });
+
+    /* Mobile: nav items close the drawer; backdrop click closes it. */
+    if (sidebar && backdrop) {
+      sidebar.addEventListener("click", (e) => {
+        if (e.target.closest(".nav-item") && window.innerWidth <= 900) shell.classList.remove("open");
+      });
+      backdrop.addEventListener("click", () => shell.classList.remove("open"));
+    }
+  }
+
+  function initMobileToggle() {
+    /* Hamburger button (created here to keep index.html clean). */
+    const actions = document.querySelector(".topbar .actions");
+    if (!actions || document.getElementById("nav-toggle")) return;
+    const btn = document.createElement("button");
+    btn.id = "nav-toggle";
+    btn.className = "btn small nav-toggle";
+    btn.setAttribute("aria-label", "Toggle navigation");
+    btn.textContent = "☰";
+    btn.addEventListener("click", () => document.getElementById("shell").classList.toggle("open"));
+    actions.prepend(btn);
+  }
+
   const MODE = {
     MOCK:      { cls: "mock",      label: "MOCK MODE",            tip: "Deterministic local provider. No external LLM/API call is being made." },
     LIVE:      { cls: "live",      label: "LIVE",                 tip: "Live provider verified with a real API call." },
@@ -109,5 +168,7 @@
   }
 
   navigate();
+  setupShell();
+  initMobileToggle();
   initStatus();
 })();
