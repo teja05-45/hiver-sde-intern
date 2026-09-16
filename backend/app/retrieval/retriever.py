@@ -41,10 +41,10 @@ from app.retrieval.embeddings import EmbeddingProvider
 from app.retrieval.lexical import BM25Index
 from app.retrieval.quality import (
     HybridRetrievalConfig,
-    ScoredCase,
     candidate_pool_size,
     resolution_quality,
     score_candidates,
+    score_candidates_full,
 )
 from app.retrieval.vector_store import VectorStore
 from app.services.text_cleaning import clean_for_modeling
@@ -84,6 +84,10 @@ class EvidenceResult:
     # and for the UI's "why this case?" promotion display.
     baseline_cases: list[EvidenceCase] = field(default_factory=list)
     hybrid_enabled: bool = False
+    # Aggregate quality of the FINAL top-k (pool-level when hybrid is on):
+    # intent agreement, usable-resolution share, top similarity, mean final
+    # score. Empty dict when hybrid reranking did not run.
+    retrieval_quality: dict = field(default_factory=dict)
 
     @property
     def top_similarity(self) -> float:
@@ -220,19 +224,20 @@ class HistoricalRetriever:
         if intent_probs is None and intent_provider is not None:
             intent_probs = intent_provider(query_text)
 
-        scored = score_candidates(
+        outcome = score_candidates_full(
             baseline_cases, query_text, intent_probs,
             self.bm25, self._quality_by_id, self.config,
         )
         cases = []
-        for s in scored[:k]:
+        for s in outcome.cases[:k]:
             c = s.case
             c.final_score = s.final_score
             c.components = s.components
             c.explanation = s.explanation
             c.rank_raw = s.rank_raw
             cases.append(c)
-        return EvidenceResult(cases=cases, baseline_cases=baseline_cases, hybrid_enabled=True)
+        return EvidenceResult(cases=cases, baseline_cases=baseline_cases, hybrid_enabled=True,
+                              retrieval_quality=outcome.quality_summary)
 
     def _hybrid_enabled(self) -> bool:
         self._ensure_hybrid_fields()

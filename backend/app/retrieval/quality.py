@@ -277,10 +277,51 @@ def _explain(s: ScoredCase, majority_intent: str) -> str:
         bits.append(f"classifier assigns {s.case.intent} p={c['intent_compatibility']:.2f}")
     bits.append(f"resolution quality {c['resolution_quality']:.1f}/1.0")
     if c["contradiction"] > 0:
-        bits.append(f"demoted: pool majority intent is {majority_intent}")
+        bits.append(f"demoted: pool majority intent mix at retrieval time")
     promoted = s.rank_raw - s.rank_final
     if promoted > 0:
         bits.append(f"promoted {promoted} place(s) by reranking")
     elif promoted < 0:
         bits.append(f"demoted {-promoted} place(s) by reranking")
     return "; ".join(bits)
+
+
+@dataclass
+class RetrievalOutcome:
+    """Full result of one hybrid scoring pass over a query's candidate pool."""
+    cases: list[ScoredCase]            # ranked by final score (pool order)
+    quality_summary: dict              # aggregate quality of the final top-k
+
+
+def compute_quality_summary(cases: list[ScoredCase]) -> dict:
+    """Aggregate retrieval-quality metrics over the FINAL top-k cases.
+    These feed the UI's Retrieval Quality panel and the evaluation report."""
+    n = len(cases)
+    if not n:
+        return {}
+    top_intent = cases[0].case.intent
+    intent_agree = sum(1 for s in cases if s.case.intent == top_intent) / n
+    res_agree = sum(1 for s in cases if s.components["resolution_quality"] >= 0.5) / n
+    return {
+        "intent_agreement": round(intent_agree, 4),
+        "resolution_agreement": round(res_agree, 4),
+        "top_similarity": round(cases[0].components["semantic"], 4),
+        "mean_final_score": round(sum(s.final_score for s in cases) / n, 4),
+    }
+
+
+def score_candidates_full(
+    candidates: list[EvidenceCase],
+    query_text: str,
+    intent_probs: dict[str, float] | None,
+    bm25: BM25Index,
+    quality_by_id: dict[str, float],
+    cfg: HybridRetrievalConfig,
+    k: int | None = None,
+) -> RetrievalOutcome:
+    """Score the candidate pool, rank it, and compute the quality summary.
+    `k` limits the summary (and the UI-facing aggregation) to the final
+    top-k; the full ranked pool is still returned for evaluation use."""
+    scored = score_candidates(candidates, query_text, intent_probs, bm25, quality_by_id, cfg)
+    top = scored[:k] if k else scored
+    return RetrievalOutcome(cases=scored, quality_summary=compute_quality_summary(top))

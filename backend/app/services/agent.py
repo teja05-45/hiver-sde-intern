@@ -196,8 +196,20 @@ class SupportAgent:
         evidence_score = compute_evidence_score(features, self.evidence_weights)
         latency["evidence_scoring_ms"] = round((perf_counter() - t0) * 1000, 1)
 
-        ambiguity = compute_ambiguity_signals(all_scores, customer_message, evidence.cases, self.intents_cfg)
-        novelty = compute_novelty_signals(all_scores, evidence.cases)
+        # Ambiguity and novelty must measure CLASSIFIER-vs-WORLD disagreement.
+        # With hybrid reranking on, `cases` is intent-steered by construction
+        # (the reranker boosts cases compatible with the predicted intent),
+        # so its agreement/scatter is no longer independent evidence: a
+        # confidently-wrong classifier would manufacture retrieval agreement
+        # and suppress its own OOD signal (measured regression: "What is the
+        # capital of India?" went 0.9 -> 0.27 OOD through exactly this loop).
+        # The pre-rerank baseline ranking is the unsteered world evidence,
+        # truncated to the same k the evidence window uses (the candidate
+        # pool is ~4x k; agreement statistics are not comparable across
+        # different window sizes).
+        unsteered_cases = (evidence.baseline_cases or evidence.cases)[:k]
+        ambiguity = compute_ambiguity_signals(all_scores, customer_message, unsteered_cases, self.intents_cfg)
+        novelty = compute_novelty_signals(all_scores, unsteered_cases)
 
         t0 = perf_counter()
         generated = None
