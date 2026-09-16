@@ -203,7 +203,33 @@ decision logging hook. No new dependencies. The store records the request ID, in
 confidence, evidence score, grounding, decision, reason codes, provider, mode, latency,
 and the customer message (already PII-scrubbed display conventions apply).
 
-## 13. Risks and mitigations
+## 13. Git history rewrite record (attribution cleanup)
+
+Completed 2026-09-16 per the pre-redesign audit's safety protocol:
+
+- **OLD HEAD:** `17d9e418f10231afe13de2e14b5849420929326d`
+- **NEW HEAD:** `34606f2d494bac9469017634e000b1f8ff335527`
+- **What changed:** commit messages only — the trailer lines
+  "🤖 Generated with Codebuff" and "Co-Authored-By: Codebuff" were stripped from 12
+  historical commits via `git filter-branch --msg-filter` with
+  `scripts/strip_commit_attribution.py`.
+- **What did NOT change:** source code, file contents, commit count (32 pre = 32
+  post), authors, or dates. Verified with `git diff OLD NEW --stat` (empty) and a
+  commit-count comparison.
+- **Why:** the assignment prohibits generated-AI attribution in history.
+- **Safety:** the working tree was clean; a backup branch
+  (`backup/pre-attribution-cleanup`) and tag (`pre-attribution-cleanup-backup`)
+  were created at the old HEAD before rewriting. Both are LOCAL ONLY — they contain
+  the pre-cleanup messages and must not be pushed; delete them once satisfied:
+  `git branch -D backup/pre-attribution-cleanup && git tag -d pre-attribution-cleanup-backup`.
+- **Verification:** `git log main --format=%B | grep -i codebuff` returns nothing;
+  no repository file contains the attribution strings.
+- **Remote note:** the remote `origin/main` still points at pre-rewrite history.
+  Because SHAs changed, publishing requires a force-push
+  (`git push --force-with-lease origin main`). Coordinate with any collaborators
+  before doing so — do not push unless that is expected for this take-home repo.
+
+## 14. Risks and mitigations
 
 - **Dataset size in browser** — inbox API paginates (page size 25) and returns only the
   fields the list needs; conversation payloads are single threads.
