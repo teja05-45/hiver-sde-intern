@@ -70,7 +70,7 @@
           el("td", null, el("div", { class: "row wrap" },
             (it.reason_codes || []).map((c) => el("span", { class: "rc-reason", text: c })))),
           el("td", { class: "small" }, badge(`${it.provider || "—"}`, it.mode === "mock" ? "outline-mock" : "blue")),
-          el("td", { class: "num", text: it.latency_ms != null ? it.latency_ms + " ms" : "—" })));
+          el("td", { class: "num", text: it.latency_ms != null ? it.latency_ms + " ms" : "—" }));
         const open = () => openInspector(it);
         tr.addEventListener("click", open);
         tr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });

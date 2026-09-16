@@ -447,7 +447,7 @@
       el("ul", { class: "reason-list" },
         items.map(([tone, text]) => el("li", { class: tone },
           el("span", { class: "bullet", text: tone === "good" ? "✓" : "!" }),
-          el("span", { text }))));
+          el("span", { text })))));
   }
 
   window.Pages = window.Pages || {};

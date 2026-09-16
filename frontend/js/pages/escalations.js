@@ -62,7 +62,7 @@
             it.risk_level === "high" ? "red" : it.risk_level === "medium" ? "amber" : "green")),
           el("td", { class: "num", text: it.evidence_score != null ? Number(it.evidence_score).toFixed(2) : "—" }),
           el("td", { class: "small text-muted nowrap", text: (it.created_at || "").replace("T", " ").slice(0, 16) }),
-          el("td", null, el("button", { class: "btn small", type: "button", text: "Inspect", "data-rid": it.request_id }))));
+          el("td", null, el("button", { class: "btn small", type: "button", text: "Inspect", "data-rid": it.request_id })));
         tr.querySelector("button").addEventListener("click", () => openInspector(it));
         return tr;
       })));
