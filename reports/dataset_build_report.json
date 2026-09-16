@@ -1,0 +1,20 @@
+{
+  "brand": "AmazonHelp",
+  "sample_size_requested": 60000,
+  "seed": 42,
+  "conversations_written": 60000,
+  "avg_messages_per_conversation": 3.817,
+  "min_messages": 2,
+  "max_messages": 12,
+  "conversations_with_resolution": 60000,
+  "ingestion_stats": {
+    "rows_seen": 2811774,
+    "rows_valid": 2811774,
+    "rows_missing_text": 0,
+    "rows_missing_tweet_id": 0,
+    "rows_malformed_reference": 0,
+    "rows_duplicate_tweet_id": 0,
+    "valid_rate": 1.0
+  },
+  "elapsed_seconds": 54.5
+}

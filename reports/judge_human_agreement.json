@@ -1,0 +1,266 @@
+{
+  "run_id": "judge_20260915_223604",
+  "generated_at": "2026-09-15T17:06:04Z",
+  "n_examples": 50,
+  "n_judged": 0,
+  "n_failed": 50,
+  "is_mock_judge": false,
+  "judge_model": "openai/gpt-oss-120b",
+  "judge_provider": "groq",
+  "human_scoring_method": "proxy_scores_from_golden_labels (scripts/score_human_proxy.py) \u2014 NOT real human judgments",
+  "human_scoring_note": "Human scores in this CSV are PROXY scores derived from golden labels \u2014 they are NOT real human judgments. This artifact validates that the judge pipeline executes end-to-end; it does NOT establish human agreement.",
+  "human_agreement": "NOT_AVAILABLE",
+  "per_dimension": [],
+  "per_example": [
+    {
+      "id": "golden_164",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_029",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_007",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_190",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_071",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_063",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_058",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_036",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_189",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_027",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_174",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_140",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_023",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_152",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_109",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_009",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_008",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_024",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_056",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_060",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_130",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_155",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_198",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_144",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_051",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_167",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_192",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_108",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_057",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_115",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_151",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_072",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_002",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_041",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_186",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_088",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_169",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_040",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_182",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_087",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_191",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_183",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_098",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_025",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_092",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_089",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_068",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_012",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_118",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    },
+    {
+      "id": "golden_138",
+      "status": "FAILED",
+      "error": "judge call failed or returned invalid JSON"
+    }
+  ]
+}

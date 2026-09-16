@@ -1,0 +1,208 @@
+# Intent taxonomy for AmazonHelp, derived from data.
+#
+# Provenance: built by human inspection (see reports/intent_clusters.md) of
+# TF-IDF/MiniBatchKMeans clusters over 44,375 English-filtered customer
+# messages from 60,000 reconstructed AmazonHelp conversations.
+#
+# RE-MAPPED 2026-09-12 (see docs/decision-log.md #19): the previous
+# source_clusters mapping was written against an earlier clustering run and
+# had gone stale when clustering was re-run with k selected to 15. Evidence:
+# the committed cluster report shows cluster 10 dominated by refund/return
+# vocabulary while mapped to app_or_device_technical_issue, cluster 6
+# (app/alexa/kindle) mapped to delivery_delay, etc. That stale mapping was
+# the dominant root cause of the 53.5% golden-set accuracy. The mapping
+# below was re-derived from the committed per-cluster top terms and sample
+# messages, and now covers all 15 clusters. Cluster 14 (52.4% of corpus;
+# top terms 'amazon, order, help, just' -- low-coherence noise, not a
+# topic) maps to general_other, the deliberate "I'm not sure / none of the
+# above" bucket: force-fitting noise into a real intent is exactly the
+# confidently-wrong behavior this system refuses, and general_other's
+# high escalation tendency routes those messages to humans. Where a raw
+# cluster blended two real topics (10: refund vs return, 13: prime vs
+# delivery, 3: money intents, 4: delivered-but-missing vs wrong-item),
+# it is a SPLIT source for multiple intents and messages are
+# disambiguated per-message via each candidate's positive_signals
+# (ties default to the first-listed candidate, in yaml order).
+#
+# Escalation tendency values: low | medium | high
+#   - Used as one input (not the sole input) to the escalation policy in
+#     backend/app/escalation/. High-risk intents (financial, account
+#     security) default toward escalation even with strong retrieval
+#     evidence; low-risk intents (status/tracking questions) are the
+#     primary candidates for auto-handling when evidence is strong.
+
+intents:
+
+  - name: delivery_delay
+    description: >
+      Order or package has not arrived by the promised, guaranteed, or
+      expected delivery date. Customer is reporting lateness, not a fully
+      missing/lost package.
+    source_clusters: [5, 8, 11, 13]
+    examples:
+      - "Last month I ordered a wifi extender & paid $15 for next day delivery. It arrived 24 hr after. I was promised a refund. W/is it?"
+      - "Really pissed right now. Paid for 2 day shipping and item never arrived. Now wont be delivered until Friday"
+      - "Prime says guaranteed delivery within 2 days and now email it says delivery in 4 days"
+    positive_signals: ["late", "delayed", "guaranteed delivery", "still hasn't arrived", "day shipping", "supposed to arrive"]
+    confusable_intents: [delivery_not_received, prime_membership_issue]
+    escalation_tendency: low
+
+  - name: delivery_not_received
+    description: >
+      Tracking/carrier shows the package as delivered (or a delivery
+      attempt was made), but the customer says they did not actually
+      receive it -- distinct from delivery_delay because there is no
+      further "in transit" status to check; this typically requires
+      an investigation/claim rather than just waiting.
+    source_clusters: [7, 12, 4]
+    examples:
+      - "my package shows delivered but I did not receive it. I've asked postal service and apartment manager and nothing!"
+      - "says they delivered a package but didn't."
+      - "Where d hell is my package, it's showing as it is in Chennai frm day1."
+    positive_signals: ["shows delivered but", "never received", "didn't receive", "marked delivered", "not here"]
+    confusable_intents: [delivery_delay, order_status_inquiry]
+    escalation_tendency: medium
+
+  - name: order_status_inquiry
+    description: >
+      General question about the current status of an order (tracking,
+      order ID lookup) without an explicit complaint framing -- the
+      customer wants information, not necessarily compensation.
+    source_clusters: [0, 4]
+    examples:
+      - "Struggling to get solution from last 20 days. Order (405-1322311-9018741) was placed on 12th aug and return requested."
+      - "Order status shows delivered bt havnt rcvd. CS says technical glitch but other says need to verify with courier."
+    positive_signals: ["order id", "order status", "placed on", "order #"]
+    confusable_intents: [delivery_not_received, cancellation_or_refund_request]
+    escalation_tendency: low
+
+  - name: cancellation_or_refund_request
+    description: >
+      Customer explicitly wants to cancel an order, or is requesting or
+      following up on a refund (including refund amount/timeline
+      disputes). Financial-action intent.
+    source_clusters: [10, 3]
+    examples:
+      - "wrost service from amazon. my refund still not initiated in my account"
+      - "please can you tell me why it is taken you over 1 month to refund me my money back after sending a parcel back to you??"
+      - "Want to cancel order please"
+    positive_signals: ["refund", "cancel order", "money back", "return requested"]
+    confusable_intents: [order_status_inquiry, payment_or_billing_issue]
+    escalation_tendency: high
+
+  - name: payment_or_billing_issue
+    description: >
+      Problem with a charge, payment method, or Amazon Pay balance --
+      being charged multiple times, payment declined, incorrect amount
+      charged. Financial-action intent, account-specific verification
+      usually required.
+    source_clusters: [3]
+    examples:
+      - "My card has been charged 3 times for prime membership I have cancelled 3x now. Out $321, still don't have the funds"
+      - "I've had payments declined 12 times on Amazon. each time you say it's working I try again"
+      - "purchased prime membership by adding gift card to pay balance. Will i eligible for rs. 250 cashback."
+    positive_signals: ["charged", "declined", "amazon pay", "double charged", "wrong amount"]
+    confusable_intents: [cancellation_or_refund_request, account_access_issue]
+    escalation_tendency: high
+
+  - name: account_access_issue
+    description: >
+      Customer is locked out of their account, believes it was hacked,
+      or had account details (email, region) changed without their
+      action. Security-sensitive.
+    source_clusters: [3]
+    examples:
+      - "An outside third party has changed the email address on my account and I cannot get into the account to change it back"
+      - "I've been locked out of my account due to something with my card"
+      - "-had my account hacked & they've switched email address - now Russian!"
+    positive_signals: ["locked out", "hacked", "can't access", "changed my email", "verify my identity", "account suspended", "account was hacked"]
+    confusable_intents: [payment_or_billing_issue]
+    escalation_tendency: high
+
+  - name: return_or_replacement_request
+    description: >
+      Customer received a wrong, damaged, defective, or counterfeit
+      product and wants a return, replacement, or exchange (as opposed
+      to simply wanting money back, though these can overlap).
+    source_clusters: [1, 10, 4]
+    examples:
+      - "Got a phone with some defects. Tried for exchange but neither you provide hand2hand exchange nor u provide a spare phone."
+      - "I ordered apple SE 32 gb on 17th oct 2017 but i got today a itel phone wich is cost 1690/-. What should i do?"
+      - "i don't like the product,, i want refund.. can u help"
+    positive_signals: ["defective", "wrong item", "damaged", "exchange", "replacement", "counterfeit"]
+    confusable_intents: [cancellation_or_refund_request]
+    escalation_tendency: medium
+
+  - name: prime_membership_issue
+    description: >
+      Question or complaint specifically about Prime membership itself --
+      signup, billing, benefits, or Prime's delivery-speed promise as a
+      membership-value issue (distinct from a one-off delivery_delay).
+    source_clusters: [13]
+    examples:
+      - "activated a free trial of amazon prime about an hour ago and it still says your membership should be active in a few minutes..."
+      - "any reason why prime delivery of products showing as Monday? I ordered something on Friday thinking it would arrive today."
+    positive_signals: ["prime membership", "prime trial", "prime delivery", "prime member"]
+    confusable_intents: [delivery_delay, payment_or_billing_issue]
+    escalation_tendency: low
+
+  - name: app_or_device_technical_issue
+    description: >
+      Technical bug or malfunction in an Amazon app, Kindle, Alexa/Echo,
+      or Fire TV -- not an order/delivery issue at all.
+    source_clusters: [6]
+    examples:
+      - "Fed up with this automatic fast forward bug in your nonsense app."
+      - "Could you plz add Text to Speech in Android app.. I hv been requesting this from ages."
+      - "I get messages like 'I don't know how to complete that request.' [Alexa]"
+    positive_signals: ["app", "alexa", "kindle app", "echo", "bug", "won't load"]
+    confusable_intents: [content_availability_inquiry]
+    escalation_tendency: medium
+
+  - name: content_availability_inquiry
+    description: >
+      Question about whether specific content (a show, movie, season, or
+      book) is available, in what region, or when it will be released --
+      a Prime Video / Kindle catalog question, not a technical bug report.
+    source_clusters: [9]
+    examples:
+      - "when will MR.ROBOT season 3 be live?"
+      - "That stuff doesn't available on Amazon India. What should I ..."
+      - "In item page its showing COD eligible ... but on checkout page its showing POD not available."
+    positive_signals: ["is available on", "available in my region", "what season", "which season", "episode", "release date", "coming to prime"]
+    confusable_intents: [app_or_device_technical_issue]
+    escalation_tendency: low
+
+  - name: customer_service_complaint
+    description: >
+      General dissatisfaction or venting about support quality itself
+      ("worst customer service", "pathetic") without a distinct,
+      actionable request beyond "fix this." High escalation risk because
+      there is often no single retrievable resolution -- the underlying
+      issue is usually one of the other intents, expressed as a
+      complaint about *how* it was (mis)handled.
+    source_clusters: [2]
+    examples:
+      - "the #worst #experience with your service.. call me back"
+      - "Very poor customer service. My acc got locked, raised complaint, more than 24 hrs, no revert."
+      - "amazon you have the worst customer service I have ever experienced"
+    positive_signals: ["worst customer service", "pathetic", "customer care", "no one is responding"]
+    confusable_intents: [account_access_issue, delivery_not_received]
+    escalation_tendency: high
+
+  - name: general_other
+    description: >
+      Does not clearly fit another category -- includes promotional/
+      off-topic mentions, ambiguous one-line messages, multi-topic
+      messages, and messages that need more context than the root
+      message alone provides. This is the deliberate "I'm not sure"
+      bucket rather than forcing a low-confidence fit into another
+      intent; it should route toward escalation/abstention, not toward a
+      guessed intent.
+    source_clusters: [14]
+    examples:
+      - "People why are call being ignored on to reach out you it's pain full"
+      - "Am I not being understood? What reply do you expect?"
+    positive_signals: []
+    confusable_intents: []
+    escalation_tendency: high

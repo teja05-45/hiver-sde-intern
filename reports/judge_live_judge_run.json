@@ -1,0 +1,215 @@
+{
+  "run_id": "live_judge_20260915_224336",
+  "generated_at": "2026-09-15T17:13:36Z",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "n_examples": 10,
+  "n_generation_ok": 10,
+  "n_generation_failed": 0,
+  "n_judged": 10,
+  "n_judge_failed": 0,
+  "is_mock_judge": false,
+  "mean_judge_scores": {
+    "correctness": 3.5,
+    "groundedness": 3.4,
+    "helpfulness": 3.4,
+    "completeness": 3.0,
+    "actionability": 3.8,
+    "brand_consistency": 3.9,
+    "safety": 4.0
+  },
+  "human_agreement": "NOT_AVAILABLE",
+  "human_agreement_note": "This run produced JUDGE scores only. No human has rated these replies, so no human-agreement number exists and none is claimed.",
+  "per_example": [
+    {
+      "id": "golden_164",
+      "message": "@AmazonHelp can u help this keeps popping up every time i want to buy my friend something from their wishlist and it\u2019s done this to EVERY item in the wishlist https://t.co/JrrX9IY0k3",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there, sorry you\u2019re seeing that pop\u2011up when trying to purchase items from a wishlist. Here are a few things you can try:\n1) Close the Amazon app (or your browser) and reopen it.\n2) Check that the app or your browser is up\u2011to\u2011date.\n3) Clear your browser\u2019s cache and cookies (or clear the app\u2019s cache on your device).\n4) Try using a different device or browser.\nIf the problem still occurs, please contact our support team here: https://t.co/vlvfJr4nN9 so we can investigate further.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 4,
+        "helpfulness": 4,
+        "completeness": 4,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_029",
+      "message": "@115850 Order# 405-2797358-2470712 No update; only DTDC tracking no Z44698404 which says package delivered to a wrong address",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there,\n\nI\u2019m sorry to hear that the tracking information for Order #\u202f405\u20112797358\u20112470712 shows delivery to the wrong address. To help us investigate this for you, could you please report the issue using this link: https://t.co/vlvfJr4nN9? Once we have the details, we\u2019ll look into the delivery status and work with the carrier to resolve it.\n\nIn the meantime, if you haven\u2019t already, you might also want to reach out to DTDC directly to confirm the delivery address they have on file and see if they can provide any additional information.\n\nThank you for your patience \u2013 we\u2019ll do our best to get th",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 3,
+        "groundedness": 2,
+        "helpfulness": 3,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_007",
+      "message": "@AmazonHelp hello,I have received my order but as you can see it is already opened and the cd \"who built the moon\" is missing, customer service have reordered it for me,either it's been opened deliberately or the seal has failed and the cd has fallen out https://t.co/uHlTenrTTk",
+      "generation_status": "PASS",
+      "generated_reply": "Hi, I\u2019m sorry to hear that your order arrived opened and the CD was missing. I see that a replacement has already been processed for you. If you have any further concerns or need additional assistance, please reach out to us via chat or phone here: https://t.co/JzP7hlA23B. Thank you for bringing this to our attention.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 4,
+        "helpfulness": 3,
+        "completeness": 4,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_190",
+      "message": "Wonder if @115830 delivery are under so much pressure to hit targets they\u2019re marking parcels delivered when they\u2019re not. 2nd item in as many weeks not received despite notification of delivery. Stress and worry, not a great customer experience. \ud83d\ude27",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there, I'm really sorry to hear that your parcel was marked as delivered but you haven't received it. That can definitely be stressful. Have you had a chance to check with any neighbours or see if a redelivery attempt was made? To help us investigate this further, could you please reach out using this link so we can look into the specific order details? https://t.co/qy3J24VGxb",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 4,
+        "helpfulness": 4,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_071",
+      "message": "@115830 (2/2) I\u2019ve contacted the seller and was told to wait 2 days for a response. if I\u2019m paying for prime then I shouldn\u2019t have to wait for my delivery when I was given a specific date for delivery that it has not been met??? ignore the monkey. Hiding the birthday gift",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there,\n\nI\u2019m sorry to hear that your Prime delivery didn\u2019t arrive on the date you were expecting. We understand how important it is to receive a birthday gift on time.\n\nOur goal is to deliver orders by the delivery date that\u2019s provided in your confirmation email. Delivery windows are calculated from the moment an order is dispatched, not from when the order is placed, so occasional delays can happen if there are unforeseen issues in processing or shipping.\n\nCould you please share your order number so we can look into the specific status and see why the promised date wasn\u2019t met? In the meanti",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 4,
+        "helpfulness": 4,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_063",
+      "message": "Remember when @115821 got upset when @115817 and @81 missed deliveries?  So Amazon set up their own logistics?  Yea, @115821 missed today\u2019s delivery and is only giving a date range for next attempt. I miss @115817 and @81.",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there,\n\nI\u2019m really sorry to hear that your delivery was missed again. I understand how frustrating that can be. To help us investigate this for you, could you please share the order number(s) and let us know which carrier was handling the delivery? Once we have that information, we\u2019ll be able to look into what happened and work on getting your package to you as soon as possible.\n\nIn the meantime, you can also reach out directly through our support link so an agent can assist you further: https://t.co/2n73phHPtG\n\nThank you for your patience, and we\u2019ll do our best to resolve this quickly.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 4,
+        "helpfulness": 4,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_058",
+      "message": "Hey @115821 and @118706, Thatnks for delivering my package to the side of my driveway nowhere near my mailbox of my door. It was really fun looking for it in the middle of the night....DO BETTER. It looks like someone just literally tossed it in my lawn. WTF",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there,\n\nI\u2019m really sorry to hear that your package was left in the middle of your driveway \u2013 that\u2019s not the experience we want you to have. Could you let us know if the item was damaged in any way? We\u2019d like to look into this for you.\n\nPlease share a few more details using this form: https://t.co/RHUI1ew188, or you can reach us directly by phone or chat here: https://t.co/eJXKURvpr8.\n\nThank you for bringing this to our attention, and we\u2019ll do our best to make it right.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 3,
+        "groundedness": 4,
+        "helpfulness": 3,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_036",
+      "message": "Its been 4 days already and I havenot recieved any call or update regarding the counterfeiting of @112482 . And fake sellers are selling without any fear on your platform. @Amazonhelp @115851 https://t.co/XTyoD4yLo1",
+      "generation_status": "PASS",
+      "generated_reply": "We\u2019re sorry to hear you\u2019ve encountered a counterfeit product on our platform. We take these concerns very seriously and want to investigate this for you. Please report the issue to our support team using this link: https://t.co/rS49hgaADF. When you do, you don\u2019t need to share any order numbers or personal details \u2013 we treat that information as private. Once we receive your report, we\u2019ll review the seller and the listing internally and take appropriate action. Thank you for bringing this to our attention.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 2,
+        "groundedness": 1,
+        "helpfulness": 2,
+        "completeness": 1,
+        "actionability": 2,
+        "brand_consistency": 3,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_189",
+      "message": "Ordered a work colleagues leaving present from @115830. I've only got half the items I've ordered and they all say they are delivered. I cannot find a phone number or anything helpful on the website. Help!",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there,\n\nI\u2019m sorry to hear that only part of your order has arrived even though the tracking shows it as delivered. To help us investigate this for you, could you please double\u2011check the order details in your account and confirm the order number? Once we have that information, an agent will be able to look into the missing items.\n\nIn the meantime, the quickest way to get personalized assistance is to reach out through our support link: https://t.co/hApLpMlfHN. A member of our team will review your case and work with you to resolve it.\n\nThank you for your patience, and we\u2019ll do our best to ge",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 4,
+        "groundedness": 3,
+        "helpfulness": 4,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    },
+    {
+      "id": "golden_027",
+      "message": "@115850 Unable to add Money to Amazon Pay.. Not receiving verification text mesaage! https://t.co/ogyF6qBqS7",
+      "generation_status": "PASS",
+      "generated_reply": "Hi there, sorry to hear you\u2019re having trouble adding money to your Amazon Pay balance and not receiving the verification text. Could you please share a few more details (such as the phone number you\u2019re using for the OTP and any error messages you see) using this link: https://t.co/GIJyeYqKE0? Once we have that information we\u2019ll investigate and get back to you as soon as possible. Thank you for your patience.",
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "is_mock": false,
+      "judge_status": "OK",
+      "judge_scores": {
+        "correctness": 3,
+        "groundedness": 4,
+        "helpfulness": 3,
+        "completeness": 3,
+        "actionability": 4,
+        "brand_consistency": 4,
+        "safety": 4
+      }
+    }
+  ]
+}

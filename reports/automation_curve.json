@@ -1,0 +1,863 @@
+{
+  "brand": "AmazonHelp",
+  "n_scored": 2500,
+  "target_auto_precision": 0.99,
+  "target_achieved": true,
+  "chosen_operating_point": {
+    "evidence_score_threshold": 0.6,
+    "intent_confidence_threshold": 0.7,
+    "coverage": 0.0236,
+    "auto_precision": 1.0,
+    "n_auto": 59
+  },
+  "full_curve": [
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.3308,
+      "auto_precision": 0.9057,
+      "n_auto": 827
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.3228,
+      "auto_precision": 0.9145,
+      "n_auto": 807
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.2988,
+      "auto_precision": 0.9411,
+      "n_auto": 747
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.2836,
+      "auto_precision": 0.9563,
+      "n_auto": 709
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.2688,
+      "auto_precision": 0.9688,
+      "n_auto": 672
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.2528,
+      "auto_precision": 0.9731,
+      "n_auto": 632
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.2304,
+      "auto_precision": 0.9774,
+      "n_auto": 576
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.2108,
+      "auto_precision": 0.9829,
+      "n_auto": 527
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.19,
+      "auto_precision": 0.9832,
+      "n_auto": 475
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.1652,
+      "auto_precision": 0.9831,
+      "n_auto": 413
+    },
+    {
+      "evidence_score_threshold": 0.3,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.132,
+      "auto_precision": 0.9818,
+      "n_auto": 330
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.2284,
+      "auto_precision": 0.9194,
+      "n_auto": 571
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.2228,
+      "auto_precision": 0.9318,
+      "n_auto": 557
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.208,
+      "auto_precision": 0.9519,
+      "n_auto": 520
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.1992,
+      "auto_precision": 0.9639,
+      "n_auto": 498
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.188,
+      "auto_precision": 0.9745,
+      "n_auto": 470
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.1796,
+      "auto_precision": 0.9755,
+      "n_auto": 449
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.168,
+      "auto_precision": 0.9786,
+      "n_auto": 420
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.1548,
+      "auto_precision": 0.9819,
+      "n_auto": 387
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.142,
+      "auto_precision": 0.9831,
+      "n_auto": 355
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.1272,
+      "auto_precision": 0.9811,
+      "n_auto": 318
+    },
+    {
+      "evidence_score_threshold": 0.4,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.1,
+      "auto_precision": 0.976,
+      "n_auto": 250
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.1152,
+      "auto_precision": 0.941,
+      "n_auto": 288
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.1136,
+      "auto_precision": 0.9542,
+      "n_auto": 284
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.1072,
+      "auto_precision": 0.9664,
+      "n_auto": 268
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.1056,
+      "auto_precision": 0.9659,
+      "n_auto": 264
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.102,
+      "auto_precision": 0.9725,
+      "n_auto": 255
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0988,
+      "auto_precision": 0.9717,
+      "n_auto": 247
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0944,
+      "auto_precision": 0.9746,
+      "n_auto": 236
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0864,
+      "auto_precision": 0.9769,
+      "n_auto": 216
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0808,
+      "auto_precision": 0.9752,
+      "n_auto": 202
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0736,
+      "auto_precision": 0.9728,
+      "n_auto": 184
+    },
+    {
+      "evidence_score_threshold": 0.5,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0604,
+      "auto_precision": 0.9669,
+      "n_auto": 151
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0632,
+      "auto_precision": 0.962,
+      "n_auto": 158
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0632,
+      "auto_precision": 0.962,
+      "n_auto": 158
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0608,
+      "auto_precision": 0.9605,
+      "n_auto": 152
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.06,
+      "auto_precision": 0.96,
+      "n_auto": 150
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0576,
+      "auto_precision": 0.9722,
+      "n_auto": 144
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0556,
+      "auto_precision": 0.9712,
+      "n_auto": 139
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0544,
+      "auto_precision": 0.9779,
+      "n_auto": 136
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0504,
+      "auto_precision": 0.9762,
+      "n_auto": 126
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.048,
+      "auto_precision": 0.975,
+      "n_auto": 120
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0448,
+      "auto_precision": 0.9732,
+      "n_auto": 112
+    },
+    {
+      "evidence_score_threshold": 0.55,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0368,
+      "auto_precision": 0.9674,
+      "n_auto": 92
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0272,
+      "auto_precision": 0.9706,
+      "n_auto": 68
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0272,
+      "auto_precision": 0.9706,
+      "n_auto": 68
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0264,
+      "auto_precision": 0.9697,
+      "n_auto": 66
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0264,
+      "auto_precision": 0.9697,
+      "n_auto": 66
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.026,
+      "auto_precision": 0.9846,
+      "n_auto": 65
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0244,
+      "auto_precision": 0.9836,
+      "n_auto": 61
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0236,
+      "auto_precision": 1.0,
+      "n_auto": 59
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.022,
+      "auto_precision": 1.0,
+      "n_auto": 55
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.022,
+      "auto_precision": 1.0,
+      "n_auto": 55
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0212,
+      "auto_precision": 1.0,
+      "n_auto": 53
+    },
+    {
+      "evidence_score_threshold": 0.6,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0192,
+      "auto_precision": 1.0,
+      "n_auto": 48
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0104,
+      "auto_precision": 1.0,
+      "n_auto": 26
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0104,
+      "auto_precision": 1.0,
+      "n_auto": 26
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0096,
+      "auto_precision": 1.0,
+      "n_auto": 24
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0096,
+      "auto_precision": 1.0,
+      "n_auto": 24
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0096,
+      "auto_precision": 1.0,
+      "n_auto": 24
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0096,
+      "auto_precision": 1.0,
+      "n_auto": 24
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0096,
+      "auto_precision": 1.0,
+      "n_auto": 24
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0092,
+      "auto_precision": 1.0,
+      "n_auto": 23
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0092,
+      "auto_precision": 1.0,
+      "n_auto": 23
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0092,
+      "auto_precision": 1.0,
+      "n_auto": 23
+    },
+    {
+      "evidence_score_threshold": 0.65,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0088,
+      "auto_precision": 1.0,
+      "n_auto": 22
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0036,
+      "auto_precision": 1.0,
+      "n_auto": 9
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0036,
+      "auto_precision": 1.0,
+      "n_auto": 9
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0028,
+      "auto_precision": 1.0,
+      "n_auto": 7
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0028,
+      "auto_precision": 1.0,
+      "n_auto": 7
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0028,
+      "auto_precision": 1.0,
+      "n_auto": 7
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0028,
+      "auto_precision": 1.0,
+      "n_auto": 7
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0028,
+      "auto_precision": 1.0,
+      "n_auto": 7
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0024,
+      "auto_precision": 1.0,
+      "n_auto": 6
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0024,
+      "auto_precision": 1.0,
+      "n_auto": 6
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0024,
+      "auto_precision": 1.0,
+      "n_auto": 6
+    },
+    {
+      "evidence_score_threshold": 0.7,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0024,
+      "auto_precision": 1.0,
+      "n_auto": 6
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.002,
+      "auto_precision": 1.0,
+      "n_auto": 5
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.002,
+      "auto_precision": 1.0,
+      "n_auto": 5
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.75,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0016,
+      "auto_precision": 1.0,
+      "n_auto": 4
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.8,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0008,
+      "auto_precision": 1.0,
+      "n_auto": 2
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.85,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0004,
+      "auto_precision": 1.0,
+      "n_auto": 1
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.3,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.4,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.5,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.55,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.6,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.65,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.7,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.75,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.8,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.85,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    },
+    {
+      "evidence_score_threshold": 0.9,
+      "intent_confidence_threshold": 0.9,
+      "coverage": 0.0,
+      "auto_precision": null,
+      "n_auto": 0
+    }
+  ],
+  "scope_note": "Intent-correctness proxy only; does not yet include grounding_score (no live LLM in this sandbox). See script docstring."
+}

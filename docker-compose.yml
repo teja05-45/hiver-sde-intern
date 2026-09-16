@@ -1,0 +1,57 @@
+# Run the full stack (backend API + dashboard UI) with mock or live LLM mode.
+#
+# Prerequisites:
+#   1. Model artifacts exist under models/ and reports/ (see README quickstart).
+#   2. Copy .env.example -> .env and set LLM_PROVIDER / API key for live mode.
+#
+#   docker compose up --build
+#
+# Then open:
+#   Dashboard (nginx + API proxy): http://localhost:3000
+#   Backend API (also serves the UI): http://localhost:8000
+#
+# SECURITY: never ship CORS_ORIGINS=* to production. Set it to the exact
+# frontend origin(s). In APP_ENV=production the backend refuses wildcard CORS.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - APP_ENV=production
+      - LLM_PROVIDER=${LLM_PROVIDER:-mock}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-openai/gpt-oss-120b}
+      - BRAND_NAME=${BRAND_NAME:-AmazonHelp}
+      # Production + wildcard CORS is rejected by the backend; be explicit.
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,http://localhost:8000}
+      - WEB_CONCURRENCY=${WEB_CONCURRENCY:-2}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+    volumes:
+      - ./models:/app/models:ro
+      - ./reports:/app/reports:ro
+      - ./data/golden:/app/data/golden:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

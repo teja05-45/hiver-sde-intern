@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omniroute — Evidence-First Support Operations</title>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="shell">
+    <!-- ================= Sidebar ================= -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">OR</div>
+        <div>
+          <div class="name">Omniroute</div>
+          <span class="tagline">Evidence-First Support Ops</span>
+        </div>
+      </div>
+
+      <nav class="nav-section" aria-label="Workspace">
+        <div class="nav-label">Workspace</div>
+        <a class="nav-item" data-page="overview" href="#overview"><span class="icon">◧</span> Overview</a>
+        <a class="nav-item" data-page="agent" href="#agent"><span class="icon">◉</span> Live Agent</a>
+      </nav>
+
+      <nav class="nav-section" aria-label="Evaluation">
+        <div class="nav-label">Evaluation</div>
+        <a class="nav-item" data-page="evaluation" href="#evaluation"><span class="icon">▤</span> Evaluation</a>
+        <a class="nav-item" data-page="failures" href="#failures"><span class="icon">✕</span> Failure Analysis</a>
+        <a class="nav-item" data-page="golden" href="#golden"><span class="icon">✓</span> Golden Set</a>
+        <a class="nav-item" data-page="judge" href="#judge"><span class="icon">⚖</span> LLM Judge</a>
+      </nav>
+
+      <nav class="nav-section" aria-label="Operations">
+        <div class="nav-label">Operations</div>
+        <a class="nav-item" data-page="decisions" href="#decisions"><span class="icon">❯</span> Decision Log</a>
+        <a class="nav-item" data-page="system" href="#system"><span class="icon">⬡</span> System</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="foot-row"><span class="k">Brand</span> <span id="foot-brand">—</span></div>
+        <div class="foot-row"><span class="k">Provider</span> <span id="foot-provider">—</span></div>
+        <div class="foot-row"><span class="k">Mode</span> <span id="foot-mode">—</span></div>
+        <div class="foot-row"><span class="k">Env</span> <span id="foot-env">—</span></div>
+      </div>
+    </aside>
+
+    <!-- ================= Main ================= -->
+    <div class="main">
+      <header class="topbar">
+        <div class="crumbs">
+          <span class="page-title" id="page-title">Overview</span>
+          <span class="page-sub" id="page-sub"></span>
+        </div>
+        <div class="actions">
+          <span id="mode-pill" class="mode-pill mock" data-tip="Loading provider status…">
+            <span class="dot"></span><span id="mode-pill-text">…</span>
+          </span>
+        </div>
+      </header>
+
+      <main class="page" id="page-root" tabindex="-1">
+        <!-- pages render here -->
+      </main>
+    </div>
+  </div>
+
+  <!-- Page renderers (order matters: utils -> pages -> app) -->
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/overview.js"></script>
+  <script src="js/pages/agent.js"></script>
+  <script src="js/pages/evaluation.js"></script>
+  <script src="js/pages/failures.js"></script>
+  <script src="js/pages/golden.js"></script>
+  <script src="js/pages/judge.js"></script>
+  <script src="js/pages/decisions.js"></script>
+  <script src="js/pages/system.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

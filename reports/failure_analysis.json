@@ -1,0 +1,198 @@
+{
+  "brand": "AmazonHelp",
+  "golden_set_size": 200,
+  "n_failures": 161,
+  "failure_rate": 0.805,
+  "top_failure_modes": [
+    {
+      "category": "out_of_distribution",
+      "count": 39,
+      "pct_of_failures": 0.242,
+      "hypothesis": "Message doesn't cleanly match any of the 12 taxonomy intents (promotional content, meta-questions about the support account itself, vague venting). This is partly by design (general_other exists to catch these and route to escalation) but the classifier sometimes assigns high confidence to a specific wrong intent instead of recognizing OOD. Fix: dedicated OOD/novelty detection layer, not just relying on general_other cluster membership.",
+      "examples": [
+        {
+          "id": "golden_007",
+          "message": "@AmazonHelp hello,I have received my order but as you can see it is already opened and the cd \"who built the moon\" is missing, customer service have reordered it for me,either it's been opened deliberately or the seal has failed and the cd has fallen out https://t.co/uHlTenrTTk",
+          "true_intent": "delivery_not_received",
+          "predicted_intent": "customer_service_complaint",
+          "confidence": 0.534,
+          "difficulty": "hard",
+          "categories": "common,ood",
+          "failure_category": "out_of_distribution"
+        },
+        {
+          "id": "golden_047",
+          "message": "@AmazonHelp The first pic was the USPS status update. Very obviously unhelpful. You can see it went from being on a truck to being \"someday\".",
+          "true_intent": "general_other",
+          "predicted_intent": "order_status_inquiry",
+          "confidence": 0.691,
+          "difficulty": "hard",
+          "categories": "rare,ood",
+          "failure_category": "out_of_distribution"
+        },
+        {
+          "id": "golden_051",
+          "message": "Did not receive order no. 405-6021334-3005910. Received sms, item delivered to me &amp; signed by me! @118919",
+          "true_intent": "general_other",
+          "predicted_intent": "delivery_not_received",
+          "confidence": 0.969,
+          "difficulty": "hard",
+          "categories": "medium,ood,high_risk",
+          "failure_category": "out_of_distribution"
+        }
+      ]
+    },
+    {
+      "category": "other_classifier_error",
+      "count": 38,
+      "pct_of_failures": 0.236,
+      "hypothesis": "Errors not explained by any of the above structural categories -- likely genuine TF-IDF feature-overlap between semantically related intents.",
+      "examples": [
+        {
+          "id": "golden_002",
+          "message": "the one day I have a day off work and I \"missed\" my package from Amazon \ud83d\ude2d",
+          "true_intent": "return_or_replacement_request",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.698,
+          "difficulty": "easy",
+          "categories": "common",
+          "failure_category": "other_classifier_error"
+        },
+        {
+          "id": "golden_008",
+          "message": "I never actually receive my \u201csame day\u201d orders from amazon on the same day. Maybe they\u2019ll show up tomorrow? They say delivered. Who knows. It\u2019s always a mystery. @AmazonHelp",
+          "true_intent": "customer_service_complaint",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.84,
+          "difficulty": "easy",
+          "categories": "common",
+          "failure_category": "other_classifier_error"
+        },
+        {
+          "id": "golden_009",
+          "message": "@115850 seems they have got a huge population of prime members in india and now they don't want more customers in india https://t.co/Cngg7ux6Kr",
+          "true_intent": "delivery_delay",
+          "predicted_intent": "content_availability_inquiry",
+          "confidence": 0.997,
+          "difficulty": "easy",
+          "categories": "common",
+          "failure_category": "other_classifier_error"
+        }
+      ]
+    },
+    {
+      "category": "ambiguous_intent",
+      "count": 33,
+      "pct_of_failures": 0.205,
+      "hypothesis": "Two or more intents genuinely fit the message about equally well (classifier's own top-2 margin was <0.15); TF-IDF surface features can't resolve this the way semantic context could. Fix: real sentence embeddings, or a second-pass LLM classification specifically for low-margin cases.",
+      "examples": [
+        {
+          "id": "golden_025",
+          "message": ".@115830 Just spoken to your team in a chat to discuss a Prime order of mine due yesterday that was not arriving until today. Without discussing it with me, they've scheduled a re-delivery which means it will be further delayed. Not happy with this service at all!",
+          "true_intent": "cancellation_or_refund_request",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.456,
+          "difficulty": "hard",
+          "categories": "common,ambiguous,multi_intent",
+          "failure_category": "ambiguous_intent"
+        },
+        {
+          "id": "golden_026",
+          "message": "@115821 I\ufe0f don\u2019t understand that I\ufe0f ordered something that was to be delivered today only to find out there\u2019s no delivery update. I\ufe0f need it by Monday.",
+          "true_intent": "app_or_device_technical_issue",
+          "predicted_intent": "delivery_not_received",
+          "confidence": 0.527,
+          "difficulty": "hard",
+          "categories": "rare,ambiguous",
+          "failure_category": "ambiguous_intent"
+        },
+        {
+          "id": "golden_064",
+          "message": "@115850 @115821 @AmazonHelp @115821 Order # 402-0726587-9868359. It's been 18 days, haven't recvd item so far. Why so late? When will I receive product? Today is last expected day to deliver.",
+          "true_intent": "general_other",
+          "predicted_intent": "delivery_not_received",
+          "confidence": 0.535,
+          "difficulty": "hard",
+          "categories": "medium,ambiguous,multi_intent,ood,high_risk",
+          "failure_category": "ambiguous_intent"
+        }
+      ]
+    },
+    {
+      "category": "multi_intent_message",
+      "count": 24,
+      "pct_of_failures": 0.149,
+      "hypothesis": "Message raises multiple issues at once (e.g. a late delivery AND a billing complaint); the taxonomy assumes one intent per message. Fix: multi-label classification, or explicit 'primary vs secondary intent' extraction.",
+      "examples": [
+        {
+          "id": "golden_015",
+          "message": "@115850 @AmazonHelp I'm a prime member and placed order for prime fulfilled product on 21st Nov. Forget quick delivery, it is not yet dispatched. ORDER # 404-1465394-9701149. https://t.co/BjArOZaiiC",
+          "true_intent": "delivery_delay",
+          "predicted_intent": "prime_membership_issue",
+          "confidence": 0.732,
+          "difficulty": "hard",
+          "categories": "common,multi_intent",
+          "failure_category": "multi_intent_message"
+        },
+        {
+          "id": "golden_057",
+          "message": "Enough of I am sorry @115821, a classic trademark of perverse organizational dynamics @115821. FULL REFUND IS THE ONLY ANSWER WHEN A SELLER DELIBERATELY SENDS A DAMAGED ITEM AND ACKNOWLEDGES IT ON THE SALES SLIP. CHECK 112-28550003-9905044. SHAME https://t.co/sciqR2C6om",
+          "true_intent": "prime_membership_issue",
+          "predicted_intent": "cancellation_or_refund_request",
+          "confidence": 0.493,
+          "difficulty": "hard",
+          "categories": "medium,multi_intent,noisy,ood,high_risk",
+          "failure_category": "multi_intent_message"
+        },
+        {
+          "id": "golden_102",
+          "message": "@115830 hey, whats happening with your Prime delivery dates ? used to be next day, now been quoted Thursday Delivery ???",
+          "true_intent": "return_or_replacement_request",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.877,
+          "difficulty": "hard",
+          "categories": "common,multi_intent,noisy",
+          "failure_category": "multi_intent_message"
+        }
+      ]
+    },
+    {
+      "category": "noisy_short_message",
+      "count": 17,
+      "pct_of_failures": 0.106,
+      "hypothesis": "Very short or heavily-punctuated messages lack enough token signal for TF-IDF to disambiguate. Fix: use conversation context (later customer turns), not just the root message, for classification.",
+      "examples": [
+        {
+          "id": "golden_001",
+          "message": "It REALLY annoys me that each and every time I order something from Amazon prime and USPS is the carrier, they NEVER deliver my items on time!",
+          "true_intent": "cancellation_or_refund_request",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.825,
+          "difficulty": "medium",
+          "categories": "common,noisy",
+          "failure_category": "noisy_short_message"
+        },
+        {
+          "id": "golden_021",
+          "message": "I pay $100+/year for @115821 Prime and in 5+ years I\u2019ve never had any issues. Until yesterday, when a Prime package was \u201cGuaranteed\u201d to arrive by the 1st and now it\u2019s not until the 3rd?? Wtf do I pay for?! Guarantee means nothing to @AmazonHelp",
+          "true_intent": "content_availability_inquiry",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.877,
+          "difficulty": "medium",
+          "categories": "common,noisy",
+          "failure_category": "noisy_short_message"
+        },
+        {
+          "id": "golden_071",
+          "message": "@115830 (2/2) I\u2019ve contacted the seller and was told to wait 2 days for a response. if I\u2019m paying for prime then I shouldn\u2019t have to wait for my delivery when I was given a specific date for delivery that it has not been met??? ignore the monkey. Hiding the birthday gift",
+          "true_intent": "prime_membership_issue",
+          "predicted_intent": "delivery_delay",
+          "confidence": 0.937,
+          "difficulty": "medium",
+          "categories": "medium,noisy",
+          "failure_category": "noisy_short_message"
+        }
+      ]
+    }
+  ]
+}

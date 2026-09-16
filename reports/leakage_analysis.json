@@ -1,0 +1,118 @@
+{
+  "brand": "AmazonHelp",
+  "total_labeled_conversations": 44375,
+  "split_sizes": {
+    "train": 28228,
+    "dev": 8587,
+    "test": 7560
+  },
+  "split_cutoffs": {
+    "cutoff1": "2017-11-10T00:00:00+00:00",
+    "cutoff2": "2017-11-25T00:00:00+00:00"
+  },
+  "duplicate_analysis": {
+    "n_documents": 44375,
+    "n_unique_normalized_texts": 32626,
+    "n_duplicate_groups": 8186,
+    "n_documents_in_duplicate_groups": 19935,
+    "duplicate_rate": 0.4492,
+    "dup_groups_sample": {
+      "1b4252057721c0a58379234bc1451d02d04aa2d5": [
+        "AmazonHelp_1723",
+        "AmazonHelp_1725"
+      ],
+      "f41dc2bd26116ba3914dc669cfd1da0cdb645d0a": [
+        "AmazonHelp_1747",
+        "AmazonHelp_1749"
+      ],
+      "296eaf165714ca596946efae76d5f9c83cbcb45e": [
+        "AmazonHelp_2542",
+        "AmazonHelp_2545"
+      ],
+      "eba398be99c3d8a0599726f729c471b4e77f8b16": [
+        "AmazonHelp_2554",
+        "AmazonHelp_2558"
+      ],
+      "4b5f3cbb4f59e8cbf1f7bb5daec3375f0faa9c8a": [
+        "AmazonHelp_2592",
+        "AmazonHelp_2595"
+      ],
+      "21df919a898a9d6d48e365ee9bd4d33305ad7deb": [
+        "AmazonHelp_4846",
+        "AmazonHelp_4852",
+        "AmazonHelp_4856"
+      ],
+      "2a3ba366a817966463541c0ae1ea2f55fbec72c3": [
+        "AmazonHelp_5154",
+        "AmazonHelp_43694",
+        "AmazonHelp_43696",
+        "AmazonHelp_101225",
+        "AmazonHelp_115947"
+      ],
+      "dd7b55c4291c2af77418404054e48f642c495a79": [
+        "AmazonHelp_5306",
+        "AmazonHelp_5309",
+        "AmazonHelp_5313",
+        "AmazonHelp_2078535"
+      ],
+      "b55cd3c7549bd829c4a6dcb8cb5e1b67726f8dda": [
+        "AmazonHelp_5326",
+        "AmazonHelp_5330"
+      ],
+      "c5c61019e3c886b74dc1ef137be736befaa13b72": [
+        "AmazonHelp_5794",
+        "AmazonHelp_5795"
+      ]
+    }
+  },
+  "temporal_split_cross_split_duplicates": {
+    "duplicate_groups_spanning_multiple_splits": 16,
+    "documents_in_cross_split_duplicate_groups": 65
+  },
+  "naive_random_split_cross_split_duplicates": {
+    "duplicate_groups_spanning_multiple_splits": 2701,
+    "documents_in_cross_split_duplicate_groups": 7365
+  },
+  "intent_distribution": {
+    "train": {
+      "general_other": 15478,
+      "delivery_not_received": 3416,
+      "content_availability_inquiry": 601,
+      "delivery_delay": 3710,
+      "app_or_device_technical_issue": 581,
+      "order_status_inquiry": 397,
+      "customer_service_complaint": 1238,
+      "cancellation_or_refund_request": 1381,
+      "return_or_replacement_request": 856,
+      "prime_membership_issue": 466,
+      "payment_or_billing_issue": 98,
+      "account_access_issue": 6
+    },
+    "dev": {
+      "general_other": 4215,
+      "app_or_device_technical_issue": 210,
+      "delivery_delay": 1347,
+      "cancellation_or_refund_request": 430,
+      "delivery_not_received": 1182,
+      "prime_membership_issue": 200,
+      "customer_service_complaint": 510,
+      "content_availability_inquiry": 180,
+      "return_or_replacement_request": 200,
+      "order_status_inquiry": 81,
+      "payment_or_billing_issue": 32
+    },
+    "test": {
+      "general_other": 3576,
+      "delivery_delay": 1306,
+      "app_or_device_technical_issue": 139,
+      "return_or_replacement_request": 186,
+      "delivery_not_received": 1211,
+      "customer_service_complaint": 455,
+      "cancellation_or_refund_request": 306,
+      "order_status_inquiry": 81,
+      "prime_membership_issue": 162,
+      "content_availability_inquiry": 119,
+      "payment_or_billing_issue": 19
+    }
+  }
+}

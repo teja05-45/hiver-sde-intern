@@ -1,0 +1,70 @@
+id,message,true_intent,generated_reply,is_mock,human_correctness,human_groundedness,human_helpfulness,human_completeness,human_actionability,human_brand_consistency,human_safety
+golden_164,@115850 really disappointed for not supporting a loyal customer. OnePlus Adapter is not present on Amazon by OnePlus . Then also saying to buy from amazon. Should I buy a duplicate charger or should not,general_other,,False,3,4,1,1,0,0,4
+golden_029,"@115830 You abandon £100s worth of our Christmas presents on a countryside wall in the pouring rain and have the gall to send a status update to say ""delivered""? Ridiculous.",order_status_inquiry,,False,3,4,1,1,0,0,4
+golden_007,When you realized something you ordered off @115821 Prime is going to take more than 2 days https://t.co/c9y6IoMrqb,delivery_delay,,False,3,4,1,1,0,0,4
+golden_190,"Dear @115821, good thing no one stole the #Fingerlings!!! 😂😂😂 #almostthere #AmazonPrime #amazon https://t.co/JCRFDogT4V",general_other,,False,3,4,1,1,0,0,4
+golden_071,@115851 @115821 been a customer since 2002 and placed well over 1100 orders and today marks the worst customer service experience.  Guess it was a good run,customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_063,Idk what’s going on with @115821 but this is the second time in a month they’ve sent me the wrong item 😒,return_or_replacement_request,,False,3,4,1,1,0,0,4
+golden_058,"Hey @119625, why no subtitles for 'Newton'  the latest hindi movie nominated for Oscar from India ? Please enable the subtitles man...",content_availability_inquiry,,False,3,4,1,1,0,0,4
+golden_036,@115850 your add address form resets after switching apps. Please address the issue in upcoming update. https://t.co/O0vTN1oEwQ,order_status_inquiry,,False,3,4,1,1,0,0,4
+golden_189,Still haven’t heard back from @115821 regarding the horrible  condition my most recent order was received in. #amazonfail,general_other,,False,3,4,1,1,0,0,4
+golden_027,@115830 still waiting on a delivery/just an update on the delivery #theseareallgoodtimes ? #thesearenotgoodtimes,order_status_inquiry,,False,3,4,1,1,0,0,4
+golden_174,"@115850 If you cant honor orders, stop taking orders and then cancelling it once we lose opportunity to buy from your competitor!! Check OrderId 407-3570338-2876318 and 407-8674147-6797957. Get mature to do business !!",general_other,,False,3,4,1,1,0,0,4
+golden_140,@115821 why do I pay for a Prime account if my package still gets delayed 3-5 days every time I order something????,delivery_delay,,False,3,4,1,1,0,0,4
+golden_023,"@115850 @AmazonHelp  @120543 @20666 @1198 @118342 sir, my parcel's tracking id- AW919025074IN was supposed to be delivered at PIN-249135 PO Bhatwari, District Uttarkashi by 24th Nov. However instead of PO Bhatwari it is being tossed from Haridwar2",delivery_not_received,,False,3,4,1,1,0,0,4
+golden_152,"Every time @115821 uses their amzn delivery service, my stuff never comes on time. I'm really annoyed.",general_other,,False,3,4,1,1,0,0,4
+golden_109,@115830 appalling customer service. Appalling delivery system. Two items apparently delivered but NOT. Why are there no supervisors or managers available? Prime membership seems to mean nothing to @115830,prime_membership_issue,,False,3,4,1,1,0,0,4
+golden_009,@115833 need to get Alexa to close my window.,general_other,,False,3,4,1,1,0,0,4
+golden_008,"Hey @117795, server down or is it me? #amazonprimenow",general_other,,False,3,4,1,1,0,0,4
+golden_024,"@AmazonHelp @115821 
+surely there's been some mistake? Is my mailman gonna come by right before bedtime or is it coming tomorrow? https://t.co/UqKblnaRvQ",general_other,,False,3,4,1,1,0,0,4
+golden_056,"@115851 , Hi, Amazon@India failing multiple times. Eroding business values, Customer Service gives false data...Deliveries don't happen. Are you really in serious business in India? Latest failed delivery was a gift for my wife. Believed Amazon &amp; have been left high &amp; dry now.",customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_060,"Goodbye @115830. You are a disgusting company. I've never known such poor customer service as I have just experienced, let alone your UK tax avoidance. I will be cancelling every single subscription and service I have with you and never using you again. Good riddance.",customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_130,@115821 Why did your delivery driver just ring my doorbell three times at 10:10 PM?!?! Scared us to near death and woke up every creature in the house. I am NOT HAPPY.,general_other,,False,3,4,1,1,0,0,4
+golden_155,Dear @115850 please do not use @149473 as your courier partner. They really have no interest in doing their job.,general_other,,False,3,4,1,1,0,0,4
+golden_198,@115830 @115821 this is frustrating! You promised refund also items were not delivered to the said address and the person you named doesn't live there!,delivery_not_received,,False,3,4,1,1,0,0,4
+golden_144,"AMAZON ORDER UPDATE: 
+
+First, they said my package would be delayed but I was still getting it today. Now it's says I'll get it between November 26th and November 30th. So, what is the point of even paying for Prime to get free 2 day shipping if THIS is the end result?! https://t.co/qfv0boWnx7",delivery_delay,,False,3,4,1,1,0,0,4
+golden_051,"@165092 
+#Help Have purchased Moto G5plus on 11th July during #AmazonPrimeDays, supposed to receive the cashback into my HDFC Bank account by 12th Oct but haven't. Called and mailed Amazon customer service several times, asked to wait for 7days since 3rd Nov. What can I do?",customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_167,@AmazonHelp you cancelled my order 😣,general_other,,False,3,4,1,1,0,0,4
+golden_192,@115821 is getting an email from   “ __email__ “ telling me my order hasn’t been shipped because i need to fax credit card information and the billing adress legit or a scam ?,general_other,,False,3,4,1,1,0,0,4
+golden_108,So the bathroom tap I bought from @115821 has broke but they won't send a replacement until a pay a plumber to take it off then they will refund me to buy a new one and pay for a plumber to come back out and fit . Absolute joke @115830 @AmazonHelp,cancellation_or_refund_request,,False,3,4,1,1,0,0,4
+golden_057,@115830 please stop using @122232 for your delivery services. Every Christmas they’re the carriers that return parcels without even an attempt to deliver.,general_other,,False,3,4,1,1,0,0,4
+golden_115,"@111522 I am seriously annoyed with @116316 right now. I've been preordering Legend of the Galactic Heroes since volume 2, and every single one has had its delivery delayed for at least a week, a month twice. It is happening again with Vol.5",general_other,,False,3,4,1,1,0,0,4
+golden_151,"Amazon at it again with the delayed shippings with no explanation 🤔
+@AmazonHelp https://t.co/0yjT14tQxX",general_other,,False,3,4,1,1,0,0,4
+golden_072,Why as a @117795 customer do I now have to wait 3 days for delivery??,general_other,,False,3,4,1,1,0,0,4
+golden_002,Why did I order a 5 pound bag of gummy bears from @115821 on Black Friday? https://t.co/h8sCTNzFYr,general_other,,False,3,4,1,1,0,0,4
+golden_041,"@115850 @AmazonHelp Who is the winner for the #OnePlus5TAppQuiz ? Publish the winner list,waiting for your update.",order_status_inquiry,,False,3,4,1,1,0,0,4
+golden_186,"Thanks @149789 and @115821 ! I always wanted 3 corsets instead of my Wacom Cintiq Pro 13"". /s
+
+But seriously, where is my Cintiq?!?
+
+#wacom #amazon #scammer https://t.co/VqpaZuOXir",general_other,,False,3,4,1,1,0,0,4
+golden_088,@115850 orders worth 18 k more coming. All getting Returned! Customer care isn't helping. I need the no. &amp; Addr of Angul Amazon center. https://t.co/GgOuyQM7Iy,customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_169,"@115850 GM, I just wish to say that if you ask me Aadhar mandatory for any shopping that I did or its tracking , it will be last purchase of mine. I have been a customer over 18 years. So you know @115821 @AmazonHelp",general_other,,False,3,4,1,1,0,0,4
+golden_040,"Ready to throw this @116439 off the nearest bridge. Since whatever update, I get kicked out of Hulu constantly because of a “poor connection” smfh get it together",order_status_inquiry,,False,3,4,1,1,0,0,4
+golden_182,"@115850 when will ur next sale start, need to buy things, and that hdfc offer buy now pay after 3 months.",general_other,,False,3,4,1,1,0,0,4
+golden_087,"Dear @AmazonHelp @115850 ,
+I haven't ordered any thing to any one but why these mails to my account and actually I don't have any of your app in my Mobile.
+This is not only one but I have got 4 - 5 frequent mails of the orders.
+Kindly look into this asap
+Ty https://t.co/6oNyfFwg4Z",app_or_device_technical_issue,,False,3,4,1,1,0,0,4
+golden_191,Omg been expecting a delivery from @115830 and @6841 for one week. Said address not valid. Have had other deliveries from @6841 😢,general_other,,False,3,4,1,1,0,0,4
+golden_183,"Oh @115821 why did I forsake thee? @Walmart has crushed my soul with their utter lack of customer service. NEVER AGAIN YOU RETAIL DEVIL!!
+
+Amazon, my love, please forgive me. https://t.co/6YwDScXf5o",customer_service_complaint,,False,3,4,1,1,0,0,4
+golden_098,"@AmazonHelp @115821 #primefail : when your order is guaranteed to arrive on the Wed. before the holiday, but arrives days late, after you’ve already left town. Added bonus: your other order is now delayed another week. Ordered 11/19, delivery 12/6. I’ll take my $99 back, thanks.",delivery_delay,,False,3,4,1,1,0,0,4
+golden_025,"Hi @AmazonHelp please could you explain why my next day prime orders are scheduled to arrive on Friday and next Monday, instead of arriving tomorrow?",delivery_delay,,False,3,4,1,1,0,0,4
+golden_092,"@AmazonHelp placed the order yesterday at £289 and it was temporarily out of stock. Price has gone up today, do I still pay £289 https://t.co/cQEujpryWk",general_other,,False,3,4,1,1,0,0,4
+golden_089,"@115830 Prime delivery, ordered 21st Nov. PAID FOR delivery today.  not even ""Out for delivery"" yet.  #DemandARefund",prime_membership_issue,,False,3,4,1,1,0,0,4
+golden_068,@AmazonHelp @115850 BUT IT ISN’T working ALREADY. What do I do?????  I need an exchange or a return ASAP !!!!! https://t.co/8uIoIGsHWe,return_or_replacement_request,,False,3,4,1,1,0,0,4
+golden_012,@AmazonHelp Hi I’ve ordered something and don’t know if payment has been taken or not?  Is payment immediate or does it take a while?,general_other,,False,3,4,1,1,0,0,4
+golden_118,"I wake up to my @116090 account being hacked, but no purchase being made yet.
+
+Little did the hacker know, I was able to sign into my account via the mobile app with touch ID to remove my credit card.
+
+Out-Played.",app_or_device_technical_issue,,False,3,4,1,1,0,0,4
+golden_138,.@115830 @AmazonHelp Really Amazon? Was this box necessary? A 12 inch rule in a 4ft box! This cost me an additional €14.95 in shipping costs &amp; you sent me the wrong product. Not impressed. How can we sort this? https://t.co/be1QnBaZmX,general_other,,False,3,4,1,1,0,0,4

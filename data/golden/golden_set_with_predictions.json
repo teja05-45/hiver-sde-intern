@@ -1,0 +1,2861 @@
+{
+ "brand": "AmazonHelp",
+ "note": "Gold labels are human-verified (see data/golden/README.md). Predictions are from the trained classifier artifact.",
+ "total": 200,
+ "examples": [
+  {
+   "id": "golden_001",
+   "customer_message": "It REALLY annoys me that each and every time I order something from Amazon prime and USPS is the carrier, they NEVER deliver my items on time!",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.825,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_002",
+   "customer_message": "the one day I have a day off work and I \"missed\" my package from Amazon 😭",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.6977,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_003",
+   "customer_message": "Can someone explain to me why I paid for 1 day shipping for something off @115821 and fed ex delayed the package till tomorrow.... bruhhhh",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7299,
+   "correct": true,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_004",
+   "customer_message": "So...from what I gather... if we use @115821 prime's next day service in Toronto and they don't have any drivers available they just cancel your order. They make no attempt to deliver? Seriously?!?! What is happening to this company!",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7631,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_005",
+   "customer_message": "Furious with @115830 #prime.  Debiting my account for a service I didn’t sign up for them saying I would be refunded and then debiting it again! #pathetic @AmazonHelp @115821",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8011,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_006",
+   "customer_message": "@115821 Don’t know why I bother to pay prime really... not the first time this has happened! @AmazonHelp",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.4565,
+   "correct": true,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_007",
+   "customer_message": "@AmazonHelp hello,I have received my order but as you can see it is already opened and the cd \"who built the moon\" is missing, customer service have reordered it for me,either it's been opened deliberately or the seal has failed and the cd has fallen out https://t.co/uHlTenrTTk",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.5341,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_008",
+   "customer_message": "I never actually receive my “same day” orders from amazon on the same day. Maybe they’ll show up tomorrow? They say delivered. Who knows. It’s always a mystery. @AmazonHelp",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8396,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_009",
+   "customer_message": "@115850 seems they have got a huge population of prime members in india and now they don't want more customers in india https://t.co/Cngg7ux6Kr",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "content_availability_inquiry",
+   "confidence": 0.9966,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_010",
+   "customer_message": "@AmazonHelp what’s happened here, it’s nowhere near 8pm? I’ve been in all day waiting so there’s been no attempt to deliver it to me! https://t.co/2wUXKbpbVm",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9585,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_011",
+   "customer_message": "@115821 Your customer service is great! Your delivery service not so much! https://t.co/g5LniQHDV5",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.9999,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_012",
+   "customer_message": "@AmazonHelp ordered a JBL CHARGE3 on Black Friday. Unplugged it the first time it does this help!  @164902 maybe you can help too?  I don’t want a return just a new cord. https://t.co/UbEAakQCcI",
+   "gold_intent": "general_other",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.753,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_013",
+   "customer_message": "Please help me with your customer service @115850 @AmazonHelp",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 1.0,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_014",
+   "customer_message": "@AmazonHelp You people have been taking hard earned money of the sellers like us who are selling on Amazon india",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "content_availability_inquiry",
+   "confidence": 0.8856,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_015",
+   "customer_message": "@115850 @AmazonHelp I'm a prime member and placed order for prime fulfilled product on 21st Nov. Forget quick delivery, it is not yet dispatched. ORDER # 404-1465394-9701149. https://t.co/BjArOZaiiC",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.7323,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_016",
+   "customer_message": "It is 8:26pm on delivery day and no sign that @115817 are going to make this delivery on time. Hey @115821, please, please stop using UPS for next day service. They never manage it. Every package is late. No exceptions. (Last one they lost completely.) https://t.co/mvjXaG86qF",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8133,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_017",
+   "customer_message": "@AmazonHelp 800 Kindergarten to Grade 5 students are waiting for a special delivery via PRIME &amp; it’s not going to make it?? 😥#disappointed",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9839,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_018",
+   "customer_message": "What is the use of having prime membership when the order placed 5 days ago from a prime seller is not delivered by given timeline... @115850 #PrimeNotUseful\nDidn't expect this from #Amazon",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.7409,
+   "correct": true,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_019",
+   "customer_message": "So disappointed in @115821 customer service, spoke to 5 different reps who all were rude and didn't have a reason about why my package has been late for a week. @AmazonHelp please help!",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.7878,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_020",
+   "customer_message": "@AmazonHelp Why offer same day delivery if it never happens? If I would have selected tomorrow would I️ still not receive my pkg for 4 days as you’re now “promising”? https://t.co/t2T6hoGHA4",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.893,
+   "correct": true,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_021",
+   "customer_message": "I pay $100+/year for @115821 Prime and in 5+ years I’ve never had any issues. Until yesterday, when a Prime package was “Guaranteed” to arrive by the 1st and now it’s not until the 3rd?? Wtf do I pay for?! Guarantee means nothing to @AmazonHelp",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8768,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_022",
+   "customer_message": ".@AmazonHelp please provide a smooth delivery of my product\nYour boys delivered goods at this address prior,but now my address is not locating.Check your distribution/delivery depmnt many companies sank due to this.Solve my issue ASAP https://t.co/lI78E0Nf6i",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5188,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_023",
+   "customer_message": "@115850 very poor service and cheating done by amazon.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.6955,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_024",
+   "customer_message": "@115830 how do i download the wwe app on an amazon fire tablet?!",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "app_or_device_technical_issue",
+   "confidence": 0.9835,
+   "correct": false,
+   "categories": [
+    "common"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_025",
+   "customer_message": ".@115830 Just spoken to your team in a chat to discuss a Prime order of mine due yesterday that was not arriving until today. Without discussing it with me, they've scheduled a re-delivery which means it will be further delayed. Not happy with this service at all!",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.4558,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_026",
+   "customer_message": "@115821 I️ don’t understand that I️ ordered something that was to be delivered today only to find out there’s no delivery update. I️ need it by Monday.",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.527,
+   "correct": false,
+   "categories": [
+    "rare",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_027",
+   "customer_message": "@115850 Unable to add Money to Amazon Pay.. Not receiving verification text mesaage! https://t.co/ogyF6qBqS7",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "payment_or_billing_issue",
+   "confidence": 0.9906,
+   "correct": true,
+   "categories": [
+    "rare",
+    "high_risk"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_028",
+   "customer_message": "@115830 still waiting on a delivery/just an update on the delivery #theseareallgoodtimes ? #thesearenotgoodtimes",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.8131,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_029",
+   "customer_message": "@115850 Order# 405-2797358-2470712 No update; only DTDC tracking no Z44698404 which says package delivered to a wrong address",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.918,
+   "correct": true,
+   "categories": [
+    "rare",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_030",
+   "customer_message": "@213587 Can i have any update on this ?",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9997,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_031",
+   "customer_message": "@115821 can y'all update my account so I can get my camera through prime. Im not about to wait weeks for it to come through",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.6018,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_032",
+   "customer_message": "@115821 how can I update my email address? I've gone through it a dozen times with a dozen passwords and I get this. https://t.co/CoAW8igTO4",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.8471,
+   "correct": true,
+   "categories": [
+    "rare",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_033",
+   "customer_message": "@115850 @AmazonHelp Who is the winner for the #OnePlus5TAppQuiz ? Publish the winner list,waiting for your update.",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.6051,
+   "correct": true,
+   "categories": [
+    "rare",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_034",
+   "customer_message": "@AmazonHelp My package has been “delayed” two days in a row, and there’s no tracking update yet today despite a CSR telling me I’d definitely get it today. Just tell me they lost it and send me another one already.",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5626,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_035",
+   "customer_message": "@115830 You abandon £100s worth of our Christmas presents on a countryside wall in the pouring rain and have the gall to send a status update to say \"delivered\"? Ridiculous.",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.7698,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_036",
+   "customer_message": "Its been 4 days already and I havenot recieved any call or update regarding the counterfeiting of @112482 . And fake sellers are selling without any fear on your platform. @Amazonhelp @115851 https://t.co/XTyoD4yLo1",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.5672,
+   "correct": true,
+   "categories": [
+    "rare",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_037",
+   "customer_message": "The new printer we ordered, on Nov. 22nd, was supposed to be here from Nov. 29th - Dec 1st. Now I got an update it may not be here until Dec. 7th?What the hell @AmazonHelp @115821",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.5415,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_038",
+   "customer_message": "@AmazonHelp Order no. 171-8264819-8281921. I have ordered the product on 9th Nov 2017, still didn't received the product yet neither any update from your side regarding the product.Still not yet dispatched. Dissapointing purchase it is.",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.7528,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_039",
+   "customer_message": "@115850 need to update its app services to update address after order . I ordered some books and paid by @115823 but want to update my address because i’m not available there even you should help me out to deliver all my orders at same day.\n#helpmeout",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9997,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_040",
+   "customer_message": "@119625 since your last update on iPhone 📱 it doesn’t cast on @115858 TV 📺. Please help",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9846,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_041",
+   "customer_message": "Please update the result ? \n#AmazonRechargeQuiz \n@AmazonHelp \n@115850",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9996,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_042",
+   "customer_message": "@AmazonHelp My package has been “delayed” two days in a row, and there’s no tracking update yet today despite a CSR telling me I’d definitely get it today. Just tell me they lost it and send me another one already.",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5626,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_043",
+   "customer_message": "Ready to throw this @116439 off the nearest bridge. Since whatever update, I get kicked out of Hulu constantly because of a “poor connection” smfh get it together",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.6238,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_044",
+   "customer_message": "@AmazonHelp My package has been “delayed” two days in a row, and there’s no tracking update yet today despite a CSR telling me I’d definitely get it today. Just tell me they lost it and send me another one already.",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5626,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_045",
+   "customer_message": "So many days yet no update. @AmazonHelp \nThere are cases of fraud pick ups.\nGuys be aware @130725 @130726 @17497 @130727 @115530 @130728 @115531 @115532 @130729 @115533 @130730 https://t.co/dLyuiAUNro",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.979,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_046",
+   "customer_message": "@116935 shuffle isn’t working since the last update on iPhone.",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9902,
+   "correct": true,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_047",
+   "customer_message": "@AmazonHelp The first pic was the USPS status update. Very obviously unhelpful. You can see it went from being on a truck to being \"someday\".",
+   "gold_intent": "general_other",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.6914,
+   "correct": false,
+   "categories": [
+    "rare",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_048",
+   "customer_message": "@AmazonHelp i have an order that is supposed to get here tonight, but the problem is that when i click \"see all updates\" it only has one update which doesnt really help.",
+   "gold_intent": "general_other",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.5527,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_049",
+   "customer_message": "@AmazonHelp is there anyway to get an update on return that was delivered to Amazon 2 days ago?",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.9477,
+   "correct": false,
+   "categories": [
+    "rare"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_050",
+   "customer_message": "How can @115830 say payment is declined when the money came out my account the day before? Like I can actually see the funds have left my bank.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.455,
+   "correct": false,
+   "categories": [
+    "rare",
+    "high_risk"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_051",
+   "customer_message": "Did not receive order no. 405-6021334-3005910. Received sms, item delivered to me &amp; signed by me! @118919",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9688,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_052",
+   "customer_message": "Our @115821 Dot was delivered today...and thanks to shoddy mailbox keys (the package key they left in our box does NOT work) it's going to sit in below freezing temps in the box until probably Monday when @118706 gets back into their office. Hope it survives....@123967 ideas?",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9636,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_053",
+   "customer_message": "@115830 Hi, how can I return a faulty item after a month? I have an @5516 in-ear mic that doesn't record and it's costing me my job and my sanity. Thanks.",
+   "gold_intent": "general_other",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.8208,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_054",
+   "customer_message": "@AmazonHelp Sir, how you can send me subscription item on one time purchase rate, after numerous reminders in these 2 days your side response is pathetic. After subscribing, rarely i see the amount of subscribed product you send.",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "general_other",
+   "confidence": 0.3815,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_055",
+   "customer_message": "@AmazonHelp @115830 @24466 I pre-ordered this in January, released in October, told I would get it in November, but am still waiting, with no estimated delivery date (but other UK sellers have it) https://t.co/s429TDUsk9",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9805,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_056",
+   "customer_message": "@115850 @115851 @4773 __email__,Reg Mob-9717597841.I have placed an order on Amazon.in on 21NOV. Order ID-4__credit_card__.Not received order Still.Estimated Delivery Date of Order was 27Nov &amp;Today is30Nov.I need token of Apology of Rs1000 in AmazonPayBal https://t.co/EarpjMSZBi",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7724,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_057",
+   "customer_message": "Enough of I am sorry @115821, a classic trademark of perverse organizational dynamics @115821. FULL REFUND IS THE ONLY ANSWER WHEN A SELLER DELIBERATELY SENDS A DAMAGED ITEM AND ACKNOWLEDGES IT ON THE SALES SLIP. CHECK 112-28550003-9905044. SHAME https://t.co/sciqR2C6om",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.4935,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "noisy",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_058",
+   "customer_message": "Hey @115821 and @118706, Thatnks for delivering my package to the side of my driveway nowhere near my mailbox of my door. It was really fun looking for it in the middle of the night....DO BETTER. It looks like someone just literally tossed it in my lawn. WTF",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7365,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_059",
+   "customer_message": "Why did amazon take a picture of my package on my doorstep after they delivered it? Is that a thing now? ..",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9927,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_060",
+   "customer_message": "@117795 Can you get your UK counterparts to stop being the funny guys.  Why would a refund for an item not be the full amount I paid for it?",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5195,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_061",
+   "customer_message": "My kindle was supposed to come today. It didn’t. I checked the tracking and now it says “on the way” and “Now expected November 30 - December 2.” Why even have prime, @115821? This is my 2nd late package this week.",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.6035,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_062",
+   "customer_message": "Dear @1107 @115821@AmazonHelp @115850 am I wrong in asking refund for this? #nokiascam #scamdeal #amazonscam #NewsAlert #news #harassment https://t.co/DSokF3IqDu",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9569,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_063",
+   "customer_message": "Remember when @115821 got upset when @115817 and @81 missed deliveries?  So Amazon set up their own logistics?  Yea, @115821 missed today’s delivery and is only giving a date range for next attempt. I miss @115817 and @81.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7709,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_064",
+   "customer_message": "@115850 @115821 @AmazonHelp @115821 Order # 402-0726587-9868359. It's been 18 days, haven't recvd item so far. Why so late? When will I receive product? Today is last expected day to deliver.",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5348,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "multi_intent",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_065",
+   "customer_message": "@AmazonHelp The item doesn't appear on that page 😬",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9154,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_066",
+   "customer_message": "Can I cancel the order of my recently ordered Redmi 4A @115850..  Payment is already done, would I get my refund?",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.8448,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_067",
+   "customer_message": "@115830 come back and deliver my package I've been here all day bruv",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8079,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_068",
+   "customer_message": "@AmazonHelp I have not received my refund ..",
+   "gold_intent": "general_other",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9998,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_069",
+   "customer_message": "Really wish @115821 would deliver my packages on time. STILL 2 days late on nearly every purchase. Why do I even have Prime? Waste of money.",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.5871,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_070",
+   "customer_message": "And there's literally no option for me to report that my package wasn't delivered as claimed @115821",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9902,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_071",
+   "customer_message": "@115830 (2/2) I’ve contacted the seller and was told to wait 2 days for a response. if I’m paying for prime then I shouldn’t have to wait for my delivery when I was given a specific date for delivery that it has not been met??? ignore the monkey. Hiding the birthday gift",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9371,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_072",
+   "customer_message": "So not only had @115821 taken $100 unauthorized from me without consent or reason, they admit their fault in email and NO ONE is helping to refund it even though they said they would.  Liars.",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.5747,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_073",
+   "customer_message": "every time @115821 delivers a package there’s a problem. just use @115817 or @81, y’all suck",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.87,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_074",
+   "customer_message": "@AmazonHelp seller id: __email__\nOrder#4__credit_card__ returned by buyer 17 days ago yet not received. As per your Modi style commitment refund the amount.\nPS You ain't Modi! Tumse na ho payega let it be!😂 https://t.co/AeF5VqZaUZ",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.83,
+   "correct": false,
+   "categories": [
+    "medium"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_075",
+   "customer_message": "@AmazonHelp I ordered something from the marketplace and the seller has disappeared with my money, isn’t accepting contact through the form and I never got the item. Help?",
+   "gold_intent": "general_other",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.431,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_076",
+   "customer_message": "Not happy with @115830 @AmazonHelp atm! When you are a prime member your stuff should be delivered in one day not in 4 days! then call to talk to them and face a load of people laughing, shouting and swearing in the background. Totally unprofessional - waste of £79 per year!",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.4361,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_077",
+   "customer_message": "Brother @115850 I put a return request on a order like three weeks back. You don't seem to care about it, BUT I WANT MY FUCKING MONEY BACK.",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.5896,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_078",
+   "customer_message": "Amazon said they’d have my package here by 8 today, and I’ve been sitting here staring at my porch camera waiting for the UPS truck",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.4857,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_079",
+   "customer_message": "@115850 I order the item on 18 nov but till now I didn’t receive worst delivery service you are provide and your courier don’t even pick the call worst experience",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4971,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_080",
+   "customer_message": "@118919 hey guys I had ordered for a refund for this product.. But no one has showed up for the past 2 days.. &amp; initiation of money is being highlighted.. How? https://t.co/w6lvLaKoU0",
+   "gold_intent": "general_other",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9842,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_081",
+   "customer_message": "@AmazonHelp  I used to be happy signed up for Prime but the past few deliveries I have had. I haven’t felt like a Prime member.   Maybe I should switch back probably get better customer service and service.",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.7102,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_082",
+   "customer_message": "@115821 Your customer service is atrocious! 2nd order in the last 90 days that shows \"delivered\" but yet I have no merchandise. Spoke to 7 different reps with 7 different versions as to why! Now it's delayed until Dec 4th? https://t.co/JkPs9c6j0L",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.6514,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_083",
+   "customer_message": "@115821 @UPSHelp and this is why #surepost is a waste of time and money. Package has been in the destination city since yesterday! #uspssucks @118706 #dumbpost #unsurepost oh and yes a #ups truck drove by the destination today. https://t.co/8P7spoZW2C",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.5671,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_084",
+   "customer_message": "@AmazonHelp I want to exchange a faulty item, but I can only seem to be able return it, and it's now gone up in price",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.9842,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_085",
+   "customer_message": "@AmazonHelp Amazon delivered my package to the wrong address.  They replaced the item but now want me to send back the original that I never got.  What do I do?",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.989,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_086",
+   "customer_message": "@115850 OD-171-2957972-5490713 This item is not Fitting to my laptop. After discussing with CSR over phone that return will be done will receive refund,booked new product, CSR tells only replacement What is going on? Please create return pick up and refund. Verify my call det",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.9345,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_087",
+   "customer_message": "Furious with @115830 carrier: package containing 3 orders claims to have been delivered but I don't have it &amp; I have checked everywhere and checked with my neighbours. I want to find it as weather is not good.",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.941,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_088",
+   "customer_message": "@AmazonHelp, I paid extra to have a package delivered yesterday. Mail has already come today and it's still not here (which should have been here today even without paying extra since I have prime). How do I get back my money I paid for early delivery that never happened?",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7063,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_089",
+   "customer_message": "@AmazonHelp  i ordered bluetooth speaker worth 1799/-INR and got a prime membership of worth 459/-INR  i cancelled both bluetooth speaker and prime  membership.So they initiated my refund but unfortunately i haven't  received it yet.I also call to help center but prblm remainsame https://t.co/GEAsFcCmnG",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.9249,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_090",
+   "customer_message": "Dear @118706 @123967 @115821 - could someone please explain to me why my package didn’t get delivered twice.  I live in a 24-7 doorman building / Hotel.  Packages are delivered all day.  I’ve never had an issue until today.  And now, I have to trek to the post office.   Why????",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.972,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_091",
+   "customer_message": "??? amazon declined my bank account even after phone call\n\ni pay all orders and i have enough on it to pay for what i just ordered\n\nthey literally got paid 3 times in the last 2 days from that account\n\nAMAZON PLS",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "general_other",
+   "confidence": 0.4091,
+   "correct": false,
+   "categories": [
+    "rare",
+    "ambiguous",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_092",
+   "customer_message": "@115850 Reported a fraudulent seller ( Shipping cheaper models than mentioned in listing ). Requested RTO / Refund once found out. Vineet told me that my order will be RTO and no delivery would be attempted. Suddenly the app shows delivery would be done by Tue. @115851",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "app_or_device_technical_issue",
+   "confidence": 0.4718,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_093",
+   "customer_message": "I'm no longer an @115821 customer. I placed two orders with them in the past month that never made it to my door (I was home during delivery times too) and I was a prime customer. Really disappointing.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.3789,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_094",
+   "customer_message": "I was supposed to get a package guaranteed delivery by today from @115821 and it's now pushed back like 3 days 😩😩😩😕😕",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5402,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_095",
+   "customer_message": "@115821 you've disappointed me again. 2-day prime delivery actually means \"maybe it'll be there in 2 days but probably not for 3 or 4\"",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7499,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_096",
+   "customer_message": "@115850 hi team connect to customer care is not working through Amazon app, could you please arrange a call back?",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "app_or_device_technical_issue",
+   "confidence": 0.783,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_097",
+   "customer_message": "absolutely pathetic customer service from @115830 been passed around 6 different people, no continuity. Still waiting for my parcel, still no confirmation if it'll actually arrive today. Ridiculous.",
+   "gold_intent": "order_status_inquiry",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.7894,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_098",
+   "customer_message": "@AmazonHelp I used one of your lockers to return an item on the 22nd of November and it says I will get a refund once my product is back but I haven't heard anything since? The order number is # 202-4125944-1540341 and my name is Lilian Harvey",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.6779,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_099",
+   "customer_message": "ordered my mic ... today i hope i get it delivered in two days so that i can start recording as soon as i finish the writing cuz i havent uploaded anything in a week i am i am sorry for that exams suck . still going on but i have a two day gap i hope i can upload @115850",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.3523,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_100",
+   "customer_message": "@AmazonHelp  i ordered bluetooth speaker worth 1799/-INR and got a prime membership of worth 459/-INR  i cancelled both bluetooth speaker and prime  membership.So they initiated my refund but unfortunately i haven't  received it yet.I also call to help center but prblm remainsame https://t.co/GEAsFcCmnG",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.9249,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_101",
+   "customer_message": "@AmazonHelp I bought a computer monitor during the cyber monday sales, and now its suddenly being refunded. It's back to the original price. Why does an error that is out of my control mean that I don't get what I paid for, when you clearly have the item in stock? Disappointing",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5799,
+   "correct": true,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_102",
+   "customer_message": "@115830 hey, whats happening with your Prime delivery dates ? used to be next day, now been quoted Thursday Delivery ???",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8774,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_103",
+   "customer_message": "@AmazonHelp what's going on with deliveries? Ordered last Thursday with Prime, said guaranteed delivery Friday by 8pm, still not here today 😔",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9597,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_104",
+   "customer_message": "@115821 and @AmazonHelp I have contacted you twice about being double charged for an order. I received a refund, and then was double charged again, literally just taking the refund back. So if ya'll could get it together and actually refund me my $50 that would be choice.",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9955,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_105",
+   "customer_message": "Dear @115821 if i order something today on the first and pay for two day shipping and you ship it on the 13th.. do i get a refund on my shipping upgrade?",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8307,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_106",
+   "customer_message": "@115850  406-5643992-6124355 is the order ID, 3000 times return initiated, no one comes to pick up...What a pathetic support..all sleeping",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.9775,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_107",
+   "customer_message": "Well done @115830 ! It arrived a day late in see-through wrapping. That’s one Christmas gift spoiled.",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.4778,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_108",
+   "customer_message": "@115830 Very disappointed with the poor customer service at Amazon UK! Never buying TVs from them again. Long delivery times, faulty items and nightmare to get replaced! Please can someone  @115830 sort this out! All I now want to do is cancel the order and get a refund!",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.771,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_109",
+   "customer_message": "@115821, against our complaint and refund request against order no.402-573-4541-1452349,for MOTO G5S PLUS GOLD 64 GB , sorry to say that nothing positive has been done till date. It has been a sad, frustrating and pathetic experience for us. Soooo sad !",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.5878,
+   "correct": true,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_110",
+   "customer_message": "@AmazonHelp could really use some help from someone that can actually do something. Prime member. Delivery promised yesterday. Didn’t happen. I’m gone now until Monday and paper product is out for delivery. Was a gift for this weekend.",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.7337,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_111",
+   "customer_message": "I return my order by DTDC courier that's the courier receipt, Amazon India say you send your product on courier than Amazon pay your courier charges\nMy total courier charges is 170 RS\nBut Amazon India refund only 40 RS. I requested you\nPay my 170rs as soon as possible@AmazonHelp https://t.co/FCTdiTIVHm",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "content_availability_inquiry",
+   "confidence": 0.9082,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_112",
+   "customer_message": "@AmazonHelp Exact same items sent to me, damaged, 3 times in a row. Nobody willing to help prevent this from happening, no solution. Release-day delivery order delayed for 3 days. Nobody willing to help get it delivered the next day. Amazon sure knows how to treat their customers",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8438,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_113",
+   "customer_message": "@115850 solve my all issues.. provide me a better replacement or refund me my money.\n\n9636096361\n__email__",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9991,
+   "correct": true,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_114",
+   "customer_message": "I’ve been very disappointed with @115821 the past year or so. I keep getting my prime orders late. I just had to cancel another late order because it’s not going to be here in time for my work’s donation to the @136275. I ordered it a week in advance.",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.558,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_115",
+   "customer_message": "@AmazonHelp how can I get a refund for a product never received that the seller will not respond to",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9234,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_116",
+   "customer_message": "@AmazonHelp just sent me a refund for the wrong item, at the wrong price 😶",
+   "gold_intent": "general_other",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.7672,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_117",
+   "customer_message": "@AmazonHelp I have an order where your portal says the package is delayed, but UPS says they have never received anything at all... so it's stuck somewhere in between. Would you be able to check on what's actually going on?",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8662,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_118",
+   "customer_message": ".@115830 last 5 of 10 Amazon Prime orders either no shows, late or chucked over back gate &amp; left out in the rain. Beyond frustrating 2 b paying for a service which is not being delivered!Probs happened 2 start when delivery driver changed... HOW WILL YOUU SORT THIS OUT PLEASE?!",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4307,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_119",
+   "customer_message": "@115830 Prime delivery, ordered 21st Nov. PAID FOR delivery today.  not even \"Out for delivery\" yet.  #DemandARefund",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.5362,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_120",
+   "customer_message": "Dear @AmazonHelp\n\nIf @132988 fails, yet again, to deliver a parcel on time can I have my annual Prime membership fee refunded.\n\nIt's getting beyond a joke now.",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.8781,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_121",
+   "customer_message": "@115830 been charged £79 for prime been told I was still on the free trial looking for refund please",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.4911,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_122",
+   "customer_message": "Charged £79.00 for @115830 Prime account I don't have. Email from Amazon basically reads: \"We can confirm you do not have prime, however someone you may know has it, and paid for it with your card. But we can't tell you who it is to protect them.\" I would like a refund please.",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.576,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_123",
+   "customer_message": "@115850 no response being received for email to customer care through app. Done the below twice. No response https://t.co/QzlON9jrpK",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "app_or_device_technical_issue",
+   "confidence": 0.7083,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_124",
+   "customer_message": "@AmazonHelp have to say I just had the worst customer service ever in all my time as a prime member. On chat and on phone. @115851",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.9333,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_125",
+   "customer_message": "@115821 @115850 @AmazonHelp \n I askd for the refund on 21-11-17 on Amazon app. I entered my bank details. I haven't received the refund till now. On Amazon support they are saying that i'll get a cheque. Why will I get cheque i entered the bank details. I want my refund today. https://t.co/KgrKE3rc6C",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.989,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_126",
+   "customer_message": "Ever since @115821 decided to switch to their own drivers they’ve been delaying most of my packages. What’s the point of paying for Prime when they can’t meet the expected date??? https://t.co/zIwcO40AON",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9889,
+   "correct": true,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_127",
+   "customer_message": "@115830 Hi I need to return something that has been received but not marked as delivered in my account!! What do I do?",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5419,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_128",
+   "customer_message": "So @115821 had my shit delivered AGAIN TODAY by @118706. As I was cooking we heard a loud thump, the USPS asshole THREW JUAN'S COMPUTER EQUIPMENT AT THE DOOR, AND WALKED AWAY. I heard the thump of it over a TV and Brayden watching YouTube videos. I HATE YOU @123967.",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4904,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_129",
+   "customer_message": "When your amazon prime package was to be delivered yesterday and tracking says they don't know when now???  Really???",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9778,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_130",
+   "customer_message": "@AmazonHelp my item was broken when I received it yesterday! States no refunds? Why? Should I dispute the charge?",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8135,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_131",
+   "customer_message": "I don't know what is going on with @115821 but why have they lost the ability to properly pack a box?  Ever heard of making sure you properly size the package?  C'mon!!!!!!!  #stupid",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5322,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_132",
+   "customer_message": "@AmazonHelp Do I have pay for postage to return an item for replacement when you have sent the wrong item???",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.9988,
+   "correct": true,
+   "categories": [
+    "medium",
+    "noisy",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_133",
+   "customer_message": "@AmazonHelp How do I talk to someone who speaks English? My delayed item arrived USED and previously OPENED!",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5928,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_134",
+   "customer_message": "@115821 @115830 is a joke! I have cancelled an order (that I diddnt even buy) I was assured a refund, I haven’t got my refund or the delivery that cost 40 pound are you having a laugh! You’ve literally just taken 40 pound out my wallet and given nothing back! Useless",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.988,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_135",
+   "customer_message": "@115821 Hey so my package didnt arrive and Im traveling tomorrow. I paid extra $$$  for  you to deliver.....what do we https://t.co/bDCdv8kwyP???",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8388,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_136",
+   "customer_message": "@115830 What exactly am I paying £79 per yr for with Prime. Placed an order today for a Prime item and estimated delivery is 5th December !! - in what way does that constitute free next day delivery?  #AmazonPrime #customerservicefail",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9923,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_137",
+   "customer_message": ".@115821 unacceptable that a package I have been waiting a week for, that was to be delivered today is mysteriously delayed until Thursday. Do better. Don’t use unreliable delivery services. I NEED my order. You should use UPS, FEDEX and USPS only during busy seasons. 😡",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8779,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_138",
+   "customer_message": "Why is it @115821 that whenever we call for a simple, simple question your Seller Support agents don't know the answer? Why? #WTF is wrong with you guys? How you are a billion dollar company is beyond me. Bunch of fucking idiots work in customer service.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.6826,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_139",
+   "customer_message": "@AmazonHelp Ordered Forza 7 on the Black Friday deal, £20. Sold out with a estimated delivery date of JANUARY. However, if I cancel, reorder and pay £40 and get it delivered TOMORROW . How is that fair???",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7927,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_140",
+   "customer_message": "@115830 4 days of supposed \"attempted deliveries\" really????\nUr driver is having every1 on. What's the point of being a prime cust? #wrong",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7838,
+   "correct": true,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_141",
+   "customer_message": "@115830 attempted delivery 😡 we are in a brightly lit office, still blatantly open and no attempt has been made to deliver, no phone call, nothing. We constantly get amazon deliveries. So annoyed it did not come today when I am still here waiting for it!!!!",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7832,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_142",
+   "customer_message": "@AmazonHelp 5 times your logistics co has said they have tried to deliver - 3 times spoken to yr Cust Servs, polite but POWERLESS - NOTHING - we are here all day - NO DELIVERY. WHY CANT YOU SORT THIS OUT????? Multiple orders NO DELIVERIES - AWFUL SERVICE",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "general_other",
+   "confidence": 0.4117,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_143",
+   "customer_message": "Getting really fed up with ordering things on @115830 Prime and them not being delivered when they're supposed to be!!!",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4972,
+   "correct": true,
+   "categories": [
+    "common",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_144",
+   "customer_message": "Worst customer experience ever! Been told every day for last 4 days that my parcel will arrive tomorrow but nothing! Where is the customer obsession? @AmazonHelp",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.6291,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_145",
+   "customer_message": "@115830 WHY am I paying for PRIME and items clearly state PRIME and then am emailed to say expected BETWEEN the 3rd &amp; 5th DEC? What exactly am I paying for if not next day delivery??? Please explain.",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.995,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_146",
+   "customer_message": "@AmazonHelp  I need help! My friend @229464 had his package stolen from his porch the other day it got delivered! Can we help him out with his options as far as what you guys can help with? Thank you!",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8145,
+   "correct": false,
+   "categories": [
+    "medium",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_147",
+   "customer_message": "@115830 saying you've attempted a delivery!! When actually you over ran your deliveries for the day!! The cameras dont lie but you clearly do!!",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.6585,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_148",
+   "customer_message": "AMAZON ORDER UPDATE: \n\nFirst, they said my package would be delayed but I was still getting it today. Now it's says I'll get it between November 26th and November 30th. So, what is the point of even paying for Prime to get free 2 day shipping if THIS is the end result?! https://t.co/qfv0boWnx7",
+   "gold_intent": "payment_or_billing_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8979,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_149",
+   "customer_message": "@115830 little bit confused to what’s going on with my order, as it’s says you have recieved it on 20th Nov however it’s not been dispatched yet but I can order it again and have it delivered tomorrow? What’s going on??",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7112,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "medium",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_150",
+   "customer_message": "So...from what I gather... if we use @115821 prime's next day service in Toronto and they don't have any drivers available they just cancel your order. They make no attempt to deliver? Seriously?!?! What is happening to this company!",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.7631,
+   "correct": true,
+   "categories": [
+    "common",
+    "ambiguous",
+    "noisy"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_151",
+   "customer_message": "@115850 promised to deliver by today morning 11am but yet not delivered. Missed my train because of such improper service by you. https://t.co/SF7n1OpO4A",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7947,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_152",
+   "customer_message": "@AmazonHelp I made an order on Wednesday and selected one day shipping at checkout, and I did not receive the item on Thursday or Friday. I talked to a representative on Friday, and they said that my order would receive priority shipping, yet I still have not received my item.",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7654,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_153",
+   "customer_message": "@115850 @AmazonHelp I didn't know that ordering car speakers from u would be a night mare for me..they didn't deliver the item but I received a delivery confirmation msg..had to go to ware house to confirm the same..the item was right infront but they denied to hand over..",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8082,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_154",
+   "customer_message": "@AmazonHelp both my roommate and I ordered Prime and Prime Now packages and both were delivered to a wrong address across town! ☹️ Already contacted support but not much help. Is there a way to better provide delivery directions?",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.6485,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_155",
+   "customer_message": "Just got an email asking me for feedback on the stuff I ordered from @116090 last week.  They really didn't have an option for \"I don't know because Amazon f***ed up my 'guaranteed 2-day delivery' and I'm still waiting for it five days later\".  cc: @AmazonHelp  #NotImpressed",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.9887,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_156",
+   "customer_message": "@115821 Is there a way to get in touch with a rep for our local distribution center? My past 3 shipments have been poorly packaged, with 2 of the 3 damaged. Support reps have been able to refund/compensate case by case, but I really just want my stuff to arrive intact.",
+   "gold_intent": "content_availability_inquiry",
+   "predicted_intent": "general_other",
+   "confidence": 0.4113,
+   "correct": false,
+   "categories": [
+    "medium",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_157",
+   "customer_message": "Dear @115850 either you are sending me my order or you aren't. But please be clear about it. App says its on way while @AmazonHelp says it's not. On d top of it your representative is saying that I should \"accept\" the fact that my @132995 5T isn't coming! https://t.co/5tnEXDaAUC",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "app_or_device_technical_issue",
+   "confidence": 0.4638,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_158",
+   "customer_message": "@115821 @115850 @1840 @115851 @2517 @120320 @118341 @132458 @7291 @25348 This is the amazon services they will make a daily new excause and daily they raise a new complain...how can i trust on them tell me anyone........please close amazon in India https://t.co/U3hxViLIFS",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "content_availability_inquiry",
+   "confidence": 0.8687,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_159",
+   "customer_message": "I am really dissatisfied with Amazon for having given me a refurbished model of Note 8 twice, even the replacement issued was refurbished.  I really hate to say that being an Amazon prime customer, hasn't paid back off much.\nORDER1 # 114-1472962-1281006 @AmazonHelp",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.6314,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_160",
+   "customer_message": "@115821 not a good time of year to ship packages with a picture of the item on the outside of the box 🤦🏻‍♂️",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.6345,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_161",
+   "customer_message": "@AmazonHelp why are my orders saying out for delivery and then getting delayed to another day?  Maybe you should leave the deliveries to the companies that do it well.",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.5248,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_162",
+   "customer_message": "@115830 By mistake I ordered a kindle copy of a book I had written to check the price. Amazon tried to use an old card to pay for it.I am stuck going round in circles as there is NO CUSTOMER SERVICE!!",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.5841,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_163",
+   "customer_message": "@115821 hey Amazon! An item I purchased is supposed to arrive tomorrow but hasn't shipped yet. Customer Service chat is giving me the runaround and hasn't even displayed sympathy or apologized. What gives with that?",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.6331,
+   "correct": false,
+   "categories": [
+    "common",
+    "ambiguous",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_164",
+   "customer_message": "@AmazonHelp can u help this keeps popping up every time i want to buy my friend something from their wishlist and it’s done this to EVERY item in the wishlist https://t.co/JrrX9IY0k3",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4025,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_165",
+   "customer_message": "Idk what’s going on with @115821 but this is the second time in a month they’ve sent me the wrong item 😒",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "return_or_replacement_request",
+   "confidence": 0.5991,
+   "correct": true,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_166",
+   "customer_message": "@115830 @115821 Ordered Clinique happy aftershave on Friday 24th of November, yesterday I checked to see when it would be delivered, stated Thursday (today). I checked again this morning and it now says payment declined, this is NOT the case! Cust service is a joke!",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7166,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_167",
+   "customer_message": "Yo, I wanted to check the price of an item since it was like bugged in sales screen, so I continued until the last page and accidentally clicked checkout with an unvalid card. I'm getting mails about giving info about a card thats no longer valid(also it was virtual)@AmazonHelp",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5248,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_168",
+   "customer_message": "can bath and body works come to india we have only the most generic candle scents available here it sucks",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "content_availability_inquiry",
+   "confidence": 0.9858,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_169",
+   "customer_message": "I am not getting what you have done and how I will get my refund today in my bank account. I have 2 messages from your end both says different story. @115821 @115850 @AmazonHelp\n\nThat means I will only need to wait for today? https://t.co/Xto0qhF2t1",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.8391,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_170",
+   "customer_message": "Preordered a book for my stepson on @115821 and forgot to change the address when I moved. So of course it got delivered to my old house. \n\nThey just shipped me a replacement product (my fault) for free. How awesome is Amazon’s Customer Service?",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "customer_service_complaint",
+   "confidence": 0.5486,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_171",
+   "customer_message": "@115850 hi guys - have an urgent query regarding delivery of an item. How do I connect with someone at amazon and speak to them? Thank you",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4801,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_172",
+   "customer_message": "@AmazonHelp So apparently the 2 day Prime delivery goes out tge window this time of year? Amazon rep giving me all kinds of assurances that my orders that have yet to ship will arrive tomorrow. A day late.",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.8912,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_173",
+   "customer_message": "@AmazonHelp ALREADY REPLIED ON MAIL. WHY DID YOU GUYS NOT UPDATE? HAVE BEEN WAITING FOR MY MONEY FOR 15 DAYS. IF THIS IS NOT RESOLVED BY TOMORROW, I WILL GO LEGAL AND START WITH AN FIR AGAINST SENIOR MANAGEMENT. @115850 @115851 #AmazonFails #AmazonFraud #AmazonPay #AmazonPayQuiz",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "order_status_inquiry",
+   "confidence": 0.3333,
+   "correct": false,
+   "categories": [
+    "rare",
+    "noisy",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_174",
+   "customer_message": "@115821 why you force prime membership on users? Today my card was charge for 10.90 USD, if no cc alerts set it would hv silently went under carpet. This is second time it's happened.",
+   "gold_intent": "prime_membership_issue",
+   "predicted_intent": "prime_membership_issue",
+   "confidence": 0.82,
+   "correct": true,
+   "categories": [
+    "common",
+    "multi_intent",
+    "ood"
+   ],
+   "difficulty": "hard",
+   "label_source": "keyword_rule(2_hits)"
+  },
+  {
+   "id": "golden_175",
+   "customer_message": "@AmazonHelp picked up an order from amazon locker this morning, box was already open and one item missing..who do i contact to receive my item, it is urgent!",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8558,
+   "correct": true,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_176",
+   "customer_message": "@AmazonHelp Amazon delivered wrong product.. I ordered a black berry phone and I get a Sony wireless headset... https://t.co/oGI2mrMzzR",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7627,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_177",
+   "customer_message": "is it possible that there is not ONE single person to talk about AMAZON STEALING MONEY FROM CLIENTS, this is JUST RIDICULOUS @115830 @AmazonHelp WHERE ARE THE LAWS @2308 @1370 @26226 There should be some law or protection for the clients in this giants",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "general_other",
+   "confidence": 0.3816,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_178",
+   "customer_message": "@115830 can you explain why you've taken money from my gift card balance when it wasn't used to buy anything, thanks",
+   "gold_intent": "return_or_replacement_request",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.8034,
+   "correct": false,
+   "categories": [
+    "medium",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_179",
+   "customer_message": "Hey @AmazonHelp, my order was supposed to be delivered today as One-day delivery, but it hasn't even been dispatched yet! Please assist.",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5857,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_180",
+   "customer_message": "@115821 I think someone’s last day involved packaging my item. 😞 https://t.co/gU04FuB7TC",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8705,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_181",
+   "customer_message": "@AmazonHelp what kind of staff do you employ?!! Order cannot be delivered as can’t find the address, why don’t you use the number registered to get directions. 2 failed attempts #commonsense #badcustomerservice #amazon #wherismyparcelamazon",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5996,
+   "correct": false,
+   "categories": [
+    "common",
+    "noisy",
+    "high_risk"
+   ],
+   "difficulty": "medium",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_182",
+   "customer_message": "Ugh @115821 this is my third prime order in 2 weeks that will be delivered late. What’s the deal? #nothappy @AmazonHelp",
+   "gold_intent": "delivery_delay",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.708,
+   "correct": false,
+   "categories": [
+    "common",
+    "multi_intent",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_183",
+   "customer_message": "Two delayed packages from @115821 this week and their customer support is a joke. One of the packages is needed to be delivered today for an early Christmas gift for this Sunday.",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7309,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_184",
+   "customer_message": "@115850 @AmazonHelp @115821 @15704 This is the product link\n https://t.co/pVVaUtYbaT \n \n( This product can’t delivered to your place 600039 - pin code ) \n\n Will I get this product to my home (Chennai) please tell me? I’m ready to pay 59$ if it delivers to my home. Help me",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.6172,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_185",
+   "customer_message": "@AmazonHelp Hello. If I cancel an order that was back ordered and you've taken the money from my account. How long do refunds take?",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.8932,
+   "correct": true,
+   "categories": [
+    "medium",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_186",
+   "customer_message": "Order Honor 8. Order no. 406-7219817-1950749. Ordered on 21 Nov. Received this pack of salt. @AmazonHelp @115850 Look into it. https://t.co/GUQfBsKGcF",
+   "gold_intent": "customer_service_complaint",
+   "predicted_intent": "general_other",
+   "confidence": 0.5512,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_187",
+   "customer_message": "@115850 @115851 This is how you guys get rich? By taking money from Customers and then asking them to make payments again? Refer order 403-0807629-1426714. Even so called escalation team disconnects the call without proper resolution.",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.6683,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_188",
+   "customer_message": "Getting a parcel delivered today at some point between 6am and 10pm, which yeno like totally narrows it down",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9344,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_189",
+   "customer_message": "Ordered a work colleagues leaving present from @115830. I've only got half the items I've ordered and they all say they are delivered. I cannot find a phone number or anything helpful on the website. Help!",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.4822,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_190",
+   "customer_message": "Wonder if @115830 delivery are under so much pressure to hit targets they’re marking parcels delivered when they’re not. 2nd item in as many weeks not received despite notification of delivery. Stress and worry, not a great customer experience. 😧",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.816,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ambiguous",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_191",
+   "customer_message": "@115821 @AmazonHelp shocking service received. Been sent the wrong item &amp; what’s the point of paying for Prime &amp; taking 4 days for delivery.",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_delay",
+   "confidence": 0.5852,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_192",
+   "customer_message": "So I order a tv from @115830 and is to be delivered by @24123 on Saturday the 25th now they say they will be delivering it on Monday the 29th I get one day off work which is Saturday what a joke 👎👎",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.5041,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_193",
+   "customer_message": "@AmazonHelp @BofA_Help my money hasn’t been refunded back on my account",
+   "gold_intent": "delivery_not_received",
+   "predicted_intent": "cancellation_or_refund_request",
+   "confidence": 0.9819,
+   "correct": false,
+   "categories": [
+    "medium",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_194",
+   "customer_message": "I dead ass think someone stole my amazon and bestbuy packages that where delivered today.",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9492,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_195",
+   "customer_message": "@115821 don't buy anything.I order a book 15 days back and that book was delivered to someone else which i paid already.what a fool.",
+   "gold_intent": "account_access_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.7681,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_196",
+   "customer_message": "Annoyed with @115830. Why do you charge post and packaging for every item when they are ordered as a batch to the same address! #annoyed #daylightrobbery",
+   "gold_intent": "app_or_device_technical_issue",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.6007,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_197",
+   "customer_message": "@120533 very disappointed with not receiving my item supposed to be delivered today after pre ordering, whats the point on having #AmazonPrime if you don't fulfil expectations!!",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.9784,
+   "correct": false,
+   "categories": [
+    "common",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_198",
+   "customer_message": "@AmazonHelp please see my message. My parcel is set as delivered and I haven't received it",
+   "gold_intent": "cancellation_or_refund_request",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.977,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  },
+  {
+   "id": "golden_199",
+   "customer_message": "@115830  I received a parcel today but when I opened it, it was empty. Do I really have to take an empty box to an Amazon locker? Or can I get the item somehow?",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.6683,
+   "correct": false,
+   "categories": [
+    "medium",
+    "ood",
+    "high_risk"
+   ],
+   "difficulty": "hard",
+   "label_source": "classifier_fallback"
+  },
+  {
+   "id": "golden_200",
+   "customer_message": "Disappointed @115830 delivery due on Saturday and still hasn’t been delivered 😩",
+   "gold_intent": "general_other",
+   "predicted_intent": "delivery_not_received",
+   "confidence": 0.8397,
+   "correct": false,
+   "categories": [
+    "common",
+    "high_risk"
+   ],
+   "difficulty": "easy",
+   "label_source": "manual_primary_labeler_review"
+  }
+ ]
+}

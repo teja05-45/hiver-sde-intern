@@ -1,0 +1,41 @@
+{
+  "total_examples": 200,
+  "intent_distribution": {
+    "cancellation_or_refund_request": 13,
+    "return_or_replacement_request": 26,
+    "delivery_delay": 29,
+    "delivery_not_received": 21,
+    "customer_service_complaint": 17,
+    "general_other": 24,
+    "prime_membership_issue": 9,
+    "content_availability_inquiry": 15,
+    "order_status_inquiry": 15,
+    "app_or_device_technical_issue": 16,
+    "payment_or_billing_issue": 8,
+    "account_access_issue": 7
+  },
+  "difficulty_distribution": {
+    "medium": 40,
+    "easy": 44,
+    "hard": 116
+  },
+  "expected_escalation_distribution": {
+    "True": 122,
+    "False": 78
+  },
+  "category_membership_counts": {
+    "common": 100,
+    "rare": 27,
+    "medium": 73,
+    "ambiguous": 40,
+    "multi_intent": 45,
+    "noisy": 46,
+    "ood": 62,
+    "high_risk": 61
+  },
+  "label_source_distribution": {
+    "manual_primary_labeler_review": 86,
+    "classifier_fallback": 107,
+    "keyword_rule(2_hits)": 7
+  }
+}

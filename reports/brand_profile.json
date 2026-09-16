@@ -1,0 +1,190 @@
+{
+  "ingestion_stats": {
+    "rows_seen": 2811774,
+    "rows_valid": 2811774,
+    "rows_missing_text": 0,
+    "rows_missing_tweet_id": 0,
+    "rows_malformed_reference": 0,
+    "rows_duplicate_tweet_id": 0,
+    "valid_rate": 1.0
+  },
+  "num_candidate_brands": 108,
+  "min_outbound_threshold": 500,
+  "ranked_top_n": [
+    {
+      "brand": "AmazonHelp",
+      "score": 0.9843,
+      "outbound_tweets": 169840,
+      "direct_engagements": 168814,
+      "unique_customers_engaged": 71048,
+      "engagement_rate": 0.994,
+      "avg_reply_depth": 3.811,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.5791
+    },
+    {
+      "brand": "VerizonSupport",
+      "score": 0.9137,
+      "outbound_tweets": 17966,
+      "direct_engagements": 17805,
+      "unique_customers_engaged": 7778,
+      "engagement_rate": 0.991,
+      "avg_reply_depth": 4.452,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.5632
+    },
+    {
+      "brand": "MicrosoftHelps",
+      "score": 0.8967,
+      "outbound_tweets": 11304,
+      "direct_engagements": 11215,
+      "unique_customers_engaged": 4105,
+      "engagement_rate": 0.9921,
+      "avg_reply_depth": 4.146,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.634
+    },
+    {
+      "brand": "VirginTrains",
+      "score": 0.8906,
+      "outbound_tweets": 27817,
+      "direct_engagements": 27416,
+      "unique_customers_engaged": 12626,
+      "engagement_rate": 0.9856,
+      "avg_reply_depth": 3.496,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.5395
+    },
+    {
+      "brand": "AppleSupport",
+      "score": 0.8866,
+      "outbound_tweets": 106860,
+      "direct_engagements": 106646,
+      "unique_customers_engaged": 76365,
+      "engagement_rate": 0.998,
+      "avg_reply_depth": 2.723,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.2839
+    },
+    {
+      "brand": "idea_cares",
+      "score": 0.8835,
+      "outbound_tweets": 15724,
+      "direct_engagements": 15591,
+      "unique_customers_engaged": 6021,
+      "engagement_rate": 0.9915,
+      "avg_reply_depth": 3.663,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.6138
+    },
+    {
+      "brand": "GWRHelp",
+      "score": 0.8785,
+      "outbound_tweets": 19364,
+      "direct_engagements": 19237,
+      "unique_customers_engaged": 7602,
+      "engagement_rate": 0.9934,
+      "avg_reply_depth": 3.485,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.6048
+    },
+    {
+      "brand": "SpotifyCares",
+      "score": 0.8777,
+      "outbound_tweets": 43265,
+      "direct_engagements": 43092,
+      "unique_customers_engaged": 27793,
+      "engagement_rate": 0.996,
+      "avg_reply_depth": 3.063,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.355
+    },
+    {
+      "brand": "GloCare",
+      "score": 0.8713,
+      "outbound_tweets": 6308,
+      "direct_engagements": 6300,
+      "unique_customers_engaged": 2399,
+      "engagement_rate": 0.9987,
+      "avg_reply_depth": 3.927,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.6192
+    },
+    {
+      "brand": "Tesco",
+      "score": 0.8705,
+      "outbound_tweets": 38573,
+      "direct_engagements": 38468,
+      "unique_customers_engaged": 15593,
+      "engagement_rate": 0.9973,
+      "avg_reply_depth": 3.02,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.5947
+    },
+    {
+      "brand": "TMobileHelp",
+      "score": 0.867,
+      "outbound_tweets": 34317,
+      "direct_engagements": 34215,
+      "unique_customers_engaged": 19942,
+      "engagement_rate": 0.997,
+      "avg_reply_depth": 3.032,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.4172
+    },
+    {
+      "brand": "sainsburys",
+      "score": 0.8649,
+      "outbound_tweets": 19466,
+      "direct_engagements": 19399,
+      "unique_customers_engaged": 10334,
+      "engagement_rate": 0.9966,
+      "avg_reply_depth": 3.289,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.4673
+    },
+    {
+      "brand": "Delta",
+      "score": 0.8642,
+      "outbound_tweets": 42253,
+      "direct_engagements": 42114,
+      "unique_customers_engaged": 22329,
+      "engagement_rate": 0.9967,
+      "avg_reply_depth": 2.893,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.4698
+    },
+    {
+      "brand": "Uber_Support",
+      "score": 0.8642,
+      "outbound_tweets": 56270,
+      "direct_engagements": 56160,
+      "unique_customers_engaged": 38299,
+      "engagement_rate": 0.998,
+      "avg_reply_depth": 2.745,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.318
+    },
+    {
+      "brand": "XboxSupport",
+      "score": 0.8635,
+      "outbound_tweets": 24557,
+      "direct_engagements": 23235,
+      "unique_customers_engaged": 13149,
+      "engagement_rate": 0.9462,
+      "avg_reply_depth": 3.348,
+      "max_reply_depth": 12,
+      "repeat_customer_rate": 0.4341
+    }
+  ],
+  "recommended_brand": "AmazonHelp",
+  "recommended_brand_stats": {
+    "outbound_tweets": 169840,
+    "direct_engagements": 168814,
+    "unique_customers_engaged": 71048,
+    "engagement_rate": 0.994,
+    "avg_reply_depth": 3.811,
+    "max_reply_depth": 12,
+    "repeat_customer_rate": 0.5791
+  }
+}

@@ -1,0 +1,603 @@
+{
+  "brand": "AmazonHelp",
+  "golden_set_size": 200,
+  "results": {
+    "majority": {
+      "accuracy": 0.12,
+      "macro_precision": 0.01,
+      "macro_recall": 0.0833,
+      "macro_f1": 0.0179,
+      "weighted_f1": 0.0257,
+      "per_intent": {
+        "account_access_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "app_or_device_technical_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 16
+        },
+        "cancellation_or_refund_request": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 13
+        },
+        "content_availability_inquiry": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15
+        },
+        "customer_service_complaint": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 17
+        },
+        "delivery_delay": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 29
+        },
+        "delivery_not_received": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 21
+        },
+        "general_other": {
+          "precision": 0.12,
+          "recall": 1.0,
+          "f1": 0.2143,
+          "support": 24
+        },
+        "order_status_inquiry": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15
+        },
+        "payment_or_billing_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "prime_membership_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 9
+        },
+        "return_or_replacement_request": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 26
+        }
+      },
+      "confusion_matrix": {
+        "account_access_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 7,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "app_or_device_technical_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 16,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "cancellation_or_refund_request": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 13,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "content_availability_inquiry": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 15,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "customer_service_complaint": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 17,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "delivery_delay": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 29,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "delivery_not_received": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 21,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "general_other": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 24,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "order_status_inquiry": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 15,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "payment_or_billing_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 8,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "prime_membership_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 9,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "return_or_replacement_request": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 0,
+          "general_other": 26,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        }
+      },
+      "labels": [
+        "account_access_issue",
+        "app_or_device_technical_issue",
+        "cancellation_or_refund_request",
+        "content_availability_inquiry",
+        "customer_service_complaint",
+        "delivery_delay",
+        "delivery_not_received",
+        "general_other",
+        "order_status_inquiry",
+        "payment_or_billing_issue",
+        "prime_membership_issue",
+        "return_or_replacement_request"
+      ],
+      "support": {
+        "account_access_issue": 7,
+        "app_or_device_technical_issue": 16,
+        "cancellation_or_refund_request": 13,
+        "content_availability_inquiry": 15,
+        "customer_service_complaint": 17,
+        "delivery_delay": 29,
+        "delivery_not_received": 21,
+        "general_other": 24,
+        "order_status_inquiry": 15,
+        "payment_or_billing_issue": 8,
+        "prime_membership_issue": 9,
+        "return_or_replacement_request": 26
+      },
+      "n_examples": 200
+    },
+    "tfidf_logreg": {
+      "accuracy": 0.195,
+      "macro_precision": 0.2458,
+      "macro_recall": 0.1946,
+      "macro_f1": 0.1821,
+      "weighted_f1": 0.1774,
+      "per_intent": {
+        "account_access_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "app_or_device_technical_issue": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 16
+        },
+        "cancellation_or_refund_request": {
+          "precision": 0.1364,
+          "recall": 0.2308,
+          "f1": 0.1714,
+          "support": 13
+        },
+        "content_availability_inquiry": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15
+        },
+        "customer_service_complaint": {
+          "precision": 0.0667,
+          "recall": 0.0588,
+          "f1": 0.0625,
+          "support": 17
+        },
+        "delivery_delay": {
+          "precision": 0.2558,
+          "recall": 0.3793,
+          "f1": 0.3056,
+          "support": 29
+        },
+        "delivery_not_received": {
+          "precision": 0.0469,
+          "recall": 0.1429,
+          "f1": 0.0706,
+          "support": 21
+        },
+        "general_other": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 24
+        },
+        "order_status_inquiry": {
+          "precision": 0.6,
+          "recall": 0.8,
+          "f1": 0.6857,
+          "support": 15
+        },
+        "payment_or_billing_issue": {
+          "precision": 1.0,
+          "recall": 0.125,
+          "f1": 0.2222,
+          "support": 8
+        },
+        "prime_membership_issue": {
+          "precision": 0.4444,
+          "recall": 0.4444,
+          "f1": 0.4444,
+          "support": 9
+        },
+        "return_or_replacement_request": {
+          "precision": 0.4,
+          "recall": 0.1538,
+          "f1": 0.2222,
+          "support": 26
+        }
+      },
+      "confusion_matrix": {
+        "account_access_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 1,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 0,
+          "delivery_not_received": 5,
+          "general_other": 1,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "app_or_device_technical_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 7,
+          "content_availability_inquiry": 1,
+          "customer_service_complaint": 1,
+          "delivery_delay": 3,
+          "delivery_not_received": 4,
+          "general_other": 0,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "cancellation_or_refund_request": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 3,
+          "content_availability_inquiry": 1,
+          "customer_service_complaint": 0,
+          "delivery_delay": 3,
+          "delivery_not_received": 4,
+          "general_other": 1,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 1
+        },
+        "content_availability_inquiry": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 1,
+          "delivery_not_received": 13,
+          "general_other": 1,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "customer_service_complaint": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 1,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 1,
+          "delivery_delay": 2,
+          "delivery_not_received": 12,
+          "general_other": 1,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "delivery_delay": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 4,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 3,
+          "customer_service_complaint": 3,
+          "delivery_delay": 11,
+          "delivery_not_received": 3,
+          "general_other": 0,
+          "order_status_inquiry": 2,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 3,
+          "return_or_replacement_request": 0
+        },
+        "delivery_not_received": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 1,
+          "cancellation_or_refund_request": 3,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 8,
+          "delivery_delay": 3,
+          "delivery_not_received": 3,
+          "general_other": 0,
+          "order_status_inquiry": 1,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 2
+        },
+        "general_other": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 3,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 1,
+          "delivery_not_received": 15,
+          "general_other": 0,
+          "order_status_inquiry": 2,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 3
+        },
+        "order_status_inquiry": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 0,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 1,
+          "delivery_delay": 1,
+          "delivery_not_received": 1,
+          "general_other": 0,
+          "order_status_inquiry": 12,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "payment_or_billing_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 1,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 1,
+          "delivery_not_received": 2,
+          "general_other": 2,
+          "order_status_inquiry": 1,
+          "payment_or_billing_issue": 1,
+          "prime_membership_issue": 0,
+          "return_or_replacement_request": 0
+        },
+        "prime_membership_issue": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 1,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 0,
+          "delivery_delay": 4,
+          "delivery_not_received": 0,
+          "general_other": 0,
+          "order_status_inquiry": 0,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 4,
+          "return_or_replacement_request": 0
+        },
+        "return_or_replacement_request": {
+          "account_access_issue": 0,
+          "app_or_device_technical_issue": 0,
+          "cancellation_or_refund_request": 2,
+          "content_availability_inquiry": 0,
+          "customer_service_complaint": 1,
+          "delivery_delay": 13,
+          "delivery_not_received": 2,
+          "general_other": 0,
+          "order_status_inquiry": 2,
+          "payment_or_billing_issue": 0,
+          "prime_membership_issue": 2,
+          "return_or_replacement_request": 4
+        }
+      },
+      "labels": [
+        "account_access_issue",
+        "app_or_device_technical_issue",
+        "cancellation_or_refund_request",
+        "content_availability_inquiry",
+        "customer_service_complaint",
+        "delivery_delay",
+        "delivery_not_received",
+        "general_other",
+        "order_status_inquiry",
+        "payment_or_billing_issue",
+        "prime_membership_issue",
+        "return_or_replacement_request"
+      ],
+      "support": {
+        "account_access_issue": 7,
+        "app_or_device_technical_issue": 16,
+        "cancellation_or_refund_request": 13,
+        "content_availability_inquiry": 15,
+        "customer_service_complaint": 17,
+        "delivery_delay": 29,
+        "delivery_not_received": 21,
+        "general_other": 24,
+        "order_status_inquiry": 15,
+        "payment_or_billing_issue": 8,
+        "prime_membership_issue": 9,
+        "return_or_replacement_request": 26
+      },
+      "n_examples": 200
+    }
+  },
+  "tfidf_logreg_rare_intent_f1": {
+    "rare_intents": [
+      "account_access_issue",
+      "app_or_device_technical_issue",
+      "cancellation_or_refund_request",
+      "content_availability_inquiry",
+      "customer_service_complaint",
+      "delivery_delay",
+      "delivery_not_received",
+      "general_other",
+      "order_status_inquiry",
+      "payment_or_billing_issue",
+      "prime_membership_issue",
+      "return_or_replacement_request"
+    ],
+    "avg_f1": 0.1821,
+    "per_intent": {
+      "account_access_issue": 0.0,
+      "app_or_device_technical_issue": 0.0,
+      "cancellation_or_refund_request": 0.1714,
+      "content_availability_inquiry": 0.0,
+      "customer_service_complaint": 0.0625,
+      "delivery_delay": 0.3056,
+      "delivery_not_received": 0.0706,
+      "general_other": 0.0,
+      "order_status_inquiry": 0.6857,
+      "payment_or_billing_issue": 0.2222,
+      "prime_membership_issue": 0.4444,
+      "return_or_replacement_request": 0.2222
+    },
+    "threshold": 500
+  },
+  "silver_vs_golden_comparison": {
+    "tfidf_logreg_silver_test_accuracy": 0.9357,
+    "tfidf_logreg_golden_accuracy": 0.195,
+    "gap": 0.7407
+  }
+}

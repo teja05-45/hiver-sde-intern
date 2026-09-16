@@ -1,0 +1,19 @@
+{
+  "brand": "AmazonHelp",
+  "index_source_splits": [
+    "train",
+    "dev"
+  ],
+  "index_size": 36815,
+  "eval_split": "test",
+  "relevance_proxy": "retrieved case shares query's silver intent label (see script docstring)",
+  "n_queries": 1500,
+  "recall_at_k": {
+    "recall@1": 0.574,
+    "recall@3": 0.768,
+    "recall@5": 0.8593
+  },
+  "mrr": 0.6797,
+  "avg_evidence_count": 5.0,
+  "avg_top_similarity": 0.2993
+}
