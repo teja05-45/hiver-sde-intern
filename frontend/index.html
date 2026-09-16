@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Omniroute — Evidence-First Support Operations</title>
+  <meta name="description" content="EvidenceDesk — AI Customer Support Operations. Evidence-backed auto-handling with human-in-the-loop escalation." />
+  <title>EvidenceDesk — AI Customer Support Operations</title>
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,35 +16,43 @@
     <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
       <div class="brand">
         <button class="collapse-btn" id="collapse-btn" aria-label="Collapse sidebar" aria-expanded="true" data-tip="Collapse sidebar ( [ )">«</button>
-        <div class="logo" aria-hidden="true">OR</div>
+        <div class="logo" aria-hidden="true">ED</div>
         <div>
-          <div class="name">Omniroute</div>
-          <span class="tagline">Evidence-First Support Ops</span>
+          <div class="name">EvidenceDesk</div>
+          <span class="tagline">AI Customer Support Operations</span>
         </div>
       </div>
 
-      <nav class="nav-section" aria-label="Workspace">
-        <div class="nav-label">Workspace</div>
-        <a class="nav-item" data-page="overview" href="#overview"><span class="icon">◧</span> Overview</a>
-        <a class="nav-item" data-page="agent" href="#agent"><span class="icon">◉</span> Live Agent</a>
+      <nav class="nav-section" aria-label="Support">
+        <div class="nav-label">Support</div>
+        <a class="nav-item" data-page="inbox" href="#inbox" data-tip="Support inbox"><span class="icon">▤</span> Inbox</a>
+        <a class="nav-item" data-page="assistant" href="#assistant" data-tip="Analyze any customer message"><span class="icon">✦</span> AI Assistant</a>
+        <a class="nav-item" data-page="escalations" href="#escalations" data-tip="Queue waiting for a human"><span class="icon">⚠</span> Escalated</a>
+        <a class="nav-item" data-page="resolved" href="#resolved" data-tip="AI-handled conversations"><span class="icon">✓</span> Resolved</a>
+      </nav>
+
+      <nav class="nav-section" aria-label="Insights">
+        <div class="nav-label">Insights</div>
+        <a class="nav-item" data-page="overview" href="#overview" data-tip="Operational overview"><span class="icon">◧</span> Overview</a>
+        <a class="nav-item" data-page="aiperformance" href="#aiperformance" data-tip="Classifier and automation quality"><span class="icon">◈</span> AI Performance</a>
+        <a class="nav-item" data-page="retrieval" href="#retrieval" data-tip="Historical evidence quality"><span class="icon">⌕</span> Retrieval Quality</a>
+        <a class="nav-item" data-page="failures" href="#failures" data-tip="Where the AI fails"><span class="icon">✕</span> Failure Analysis</a>
       </nav>
 
       <nav class="nav-section" aria-label="Evaluation">
         <div class="nav-label">Evaluation</div>
-        <a class="nav-item" data-page="evaluation" href="#evaluation"><span class="icon">▤</span> Evaluation</a>
-        <a class="nav-item" data-page="failures" href="#failures"><span class="icon">✕</span> Failure Analysis</a>
-        <a class="nav-item" data-page="golden" href="#golden"><span class="icon">✓</span> Golden Set</a>
-        <a class="nav-item" data-page="judge" href="#judge"><span class="icon">⚖</span> LLM Judge</a>
+        <a class="nav-item" data-page="golden" href="#golden" data-tip="Human-verified benchmark"><span class="icon">◎</span> Golden Set</a>
+        <a class="nav-item" data-page="judge" href="#judge" data-tip="Response quality judging"><span class="icon">⚖</span> LLM Judge</a>
       </nav>
 
-      <nav class="nav-section" aria-label="Operations">
-        <div class="nav-label">Operations</div>
-        <a class="nav-item" data-page="decisions" href="#decisions"><span class="icon">❯</span> Decision Log</a>
-        <a class="nav-item" data-page="system" href="#system"><span class="icon">⬡</span> System</a>
+      <nav class="nav-section" aria-label="Admin">
+        <div class="nav-label">Admin</div>
+        <a class="nav-item" data-page="decisions" href="#decisions" data-tip="Every agent decision"><span class="icon">❯</span> Decision Log</a>
+        <a class="nav-item" data-page="system" href="#system" data-tip="System state and providers"><span class="icon">⬡</span> System</a>
       </nav>
 
       <div class="sidebar-footer">
-        <div class="foot-row"><span class="k">Brand</span> <span id="foot-brand">—</span></div>
+        <div class="foot-row"><span class="k">Workspace</span> <span id="foot-brand">—</span></div>
         <div class="foot-row"><span class="k">Provider</span> <span id="foot-provider">—</span></div>
         <div class="foot-row"><span class="k">Mode</span> <span id="foot-mode">—</span></div>
         <div class="foot-row"><span class="k">Env</span> <span id="foot-env">—</span></div>
@@ -55,7 +64,7 @@
     <div class="main">
       <header class="topbar">
         <div class="crumbs">
-          <span class="page-title" id="page-title">Overview</span>
+          <span class="page-title" id="page-title">Inbox</span>
           <span class="page-sub" id="page-sub"></span>
         </div>
         <div class="actions">
@@ -74,9 +83,13 @@
   <!-- Page renderers (order matters: utils -> pages -> app) -->
   <script src="js/api.js"></script>
   <script src="js/ui.js"></script>
+  <script src="js/pages/inbox.js"></script>
+  <script src="js/pages/assistant.js"></script>
+  <script src="js/pages/escalations.js"></script>
+  <script src="js/pages/resolved.js"></script>
   <script src="js/pages/overview.js"></script>
-  <script src="js/pages/agent.js"></script>
-  <script src="js/pages/evaluation.js"></script>
+  <script src="js/pages/aiperformance.js"></script>
+  <script src="js/pages/retrieval.js"></script>
   <script src="js/pages/failures.js"></script>
   <script src="js/pages/golden.js"></script>
   <script src="js/pages/judge.js"></script>

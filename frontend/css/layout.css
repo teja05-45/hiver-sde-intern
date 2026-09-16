@@ -524,6 +524,146 @@
 .system-status.warn .dot { background: #f79009; }
 .system-status.err .dot { background: #f04438; }
 
+/* ---------------- Inbox: 3-pane support workspace ---------------- */
+.inbox {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr) minmax(300px, 380px);
+  gap: var(--s4);
+  align-items: stretch;
+  min-height: calc(100vh - var(--topbar-h) - 120px);
+}
+@media (max-width: 1180px) {
+  .inbox { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); }
+  .inbox .copilot-pane { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .inbox { grid-template-columns: 1fr; }
+}
+
+.inbox-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+.inbox-list .list-scroll { overflow-y: auto; max-height: 68vh; }
+.ticket {
+  width: 100%;
+  text-align: left;
+  padding: var(--s3) var(--s4);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-family: var(--font);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ticket:hover { background: var(--bg-subtle); }
+.ticket.active { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+.ticket .t-main { flex: 1; min-width: 0; }
+.ticket .t-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.ticket .t-ref { font-weight: 650; font-size: 13px; }
+.ticket .t-time { font-size: 11px; color: var(--text-faint); white-space: nowrap; }
+.ticket .t-preview {
+  font-size: 12.5px; color: var(--text-secondary); margin-top: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ticket .t-meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; align-items: center; }
+.ticket.unread .t-ref::after {
+  content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 6px; vertical-align: middle;
+}
+
+.convo-pane {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  min-width: 0;
+  overflow: hidden;
+}
+.convo-head {
+  padding: var(--s4) var(--s5);
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.convo-scroll { overflow-y: auto; max-height: 52vh; padding: var(--s4) var(--s5); display: flex; flex-direction: column; gap: var(--s4); }
+.msg { max-width: 82%; display: flex; flex-direction: column; gap: 3px; }
+.msg .who { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); }
+.msg .bubble {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--bg-inset);
+  color: var(--text);
+}
+.msg.agent { align-self: flex-end; align-items: flex-end; }
+.msg.agent .bubble { background: var(--accent-soft); border-color: var(--accent-border); }
+.convo-composer { border-top: 1px solid var(--border); padding: var(--s4) var(--s5); display: flex; flex-direction: column; gap: var(--s3); }
+
+.copilot-pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  min-width: 0;
+}
+.copilot-section { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+
+/* Confidence visualization with threshold marker */
+.confidence-viz { margin-top: 8px; }
+.confidence-viz .cv-scale {
+  position: relative; height: 8px; border-radius: 999px;
+  background: linear-gradient(90deg, #f04438 0%, #f79009 55%, #12b76a 78%);
+  overflow: visible;
+}
+.confidence-viz .cv-marker {
+  position: absolute; top: -3px; width: 3px; height: 14px; border-radius: 2px;
+  background: var(--text); left: 75%;
+}
+.confidence-viz .cv-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10.5px; color: var(--text-faint); margin-top: 4px;
+}
+
+/* Escalation reason / decision summary rows in lists */
+.rc-reason {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11px;
+  background: var(--bg-subtle); border: 1px solid var(--border);
+  color: var(--text-secondary); border-radius: 5px; padding: 1px 6px;
+}
+
+/* Detail drawer (mobile copilot / escalation inspector) */
+.drawer-backdrop {
+  position: fixed; inset: 0; background: rgba(16, 24, 40, 0.35);
+  z-index: 90; display: none;
+}
+.drawer {
+  position: fixed; top: 0; right: -420px; bottom: 0; width: min(420px, 92vw);
+  background: var(--surface); border-left: 1px solid var(--border);
+  z-index: 95; transition: right 0.22s ease; overflow-y: auto;
+  padding: var(--s5); display: flex; flex-direction: column; gap: var(--s4);
+}
+.drawer.open { right: 0; box-shadow: var(--shadow-2); }
+.drawer-open .drawer-backdrop { display: block; }
+.drawer .drawer-close { align-self: flex-end; }
+
+@media (max-width: 600px) {
+  .ticket .t-preview { white-space: normal; }
+}
+
 /* Interactive pipeline explainer */
 .pipe-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .pipe-stage {

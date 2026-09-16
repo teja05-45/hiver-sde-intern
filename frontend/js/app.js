@@ -3,14 +3,18 @@
   "use strict";
 
   const PAGES = {
-    overview: { title: "Overview", sub: "Can I trust this system?", render: () => Pages.overview },
-    agent: { title: "Live Agent", sub: "Why did the system make this decision?", render: () => Pages.agent },
-    evaluation: { title: "Evaluation", sub: "How well does it actually perform?", render: () => Pages.evaluation },
-    failures: { title: "Failure Analysis", sub: "Where does it fail?", render: () => Pages.failures },
-    golden: { title: "Golden Set", sub: "Are the evaluation labels trustworthy?", render: () => Pages.golden },
-    judge: { title: "LLM Judge", sub: "Can I trust the evaluator?", render: () => Pages.judge },
-    decisions: { title: "Decision Log", sub: "Why was the system designed this way?", render: () => Pages.decisions },
-    system: { title: "System", sub: "What is this built from?", render: () => Pages.system },
+    inbox:        { title: "Inbox",             sub: "What customer problem am I solving?",        render: () => Pages.inbox },
+    assistant:    { title: "AI Assistant",      sub: "Analyze any customer message",               render: () => Pages.assistant },
+    escalations:  { title: "Escalated",         sub: "Conversations waiting for a human",          render: () => Pages.escalations },
+    resolved:     { title: "Resolved",          sub: "Conversations the AI handled",               render: () => Pages.resolved },
+    overview:     { title: "Overview",          sub: "Operational health and automation quality",  render: () => Pages.overview },
+    aiperformance:{ title: "AI Performance",    sub: "Intent and automation quality, verified",    render: () => Pages.aiperformance },
+    retrieval:    { title: "Retrieval Quality", sub: "Is the historical evidence the right one?",  render: () => Pages.retrieval },
+    failures:     { title: "Failure Analysis",  sub: "How the AI fails, from real cases",          render: () => Pages.failures },
+    golden:       { title: "Golden Set",        sub: "The human-verified benchmark",               render: () => Pages.golden },
+    judge:        { title: "LLM Judge",         sub: "Can response quality be measured?",          render: () => Pages.judge },
+    decisions:    { title: "Decision Log",      sub: "Every agent decision, traceable",            render: () => Pages.decisions },
+    system:       { title: "System",            sub: "Live state of every component",              render: () => Pages.system },
   };
 
   const root = document.getElementById("page-root");
@@ -18,8 +22,8 @@
   const pillText = document.getElementById("mode-pill-text");
 
   function currentRoute() {
-    const hash = (location.hash || "#overview").replace("#", "");
-    return PAGES[hash] ? hash : "overview";
+    const hash = (location.hash || "#inbox").replace("#", "");
+    return PAGES[hash] ? hash : "inbox";
   }
 
   function navigate() {
@@ -31,7 +35,7 @@
 
     document.getElementById("page-title").textContent = page.title;
     document.getElementById("page-sub").textContent = page.sub;
-    document.title = `${page.title} — Omniroute`;
+    document.title = `${page.title} — EvidenceDesk`;
 
     root.replaceChildren();
     page.render()(root);
@@ -42,7 +46,7 @@
   window.addEventListener("hashchange", navigate);
 
   /* ---------------- Sidebar collapse + keyboard navigation ---------------- */
-  const KEY_ORDER = ["overview", "agent", "evaluation", "failures", "golden", "judge", "decisions", "system"];
+  const KEY_ORDER = Object.keys(PAGES);
 
   function setupShell() {
     const shell = document.getElementById("shell");
@@ -56,12 +60,12 @@
       collapseBtn.setAttribute("aria-expanded", String(!collapsed));
       collapseBtn.textContent = collapsed ? "»" : "«";
       collapseBtn.setAttribute("data-tip", collapsed ? "Expand sidebar ( ] )" : "Collapse sidebar ( [ )");
-      try { localStorage.setItem("omniroute.sidebar", collapsed ? "1" : "0"); } catch (_) { /* private mode */ }
+      try { localStorage.setItem("evidencedesk.sidebar", collapsed ? "1" : "0"); } catch (_) { /* private mode */ }
     }
     collapseBtn.addEventListener("click", () => setCollapsed(!shell.classList.contains("collapsed")));
-    try { if (localStorage.getItem("omniroute.sidebar") === "1") setCollapsed(true); } catch (_) { /* ignore */ }
+    try { if (localStorage.getItem("evidencedesk.sidebar") === "1") setCollapsed(true); } catch (_) { /* ignore */ }
 
-    /* Keyboard: [ and ] collapse; g then 1..8 jumps between pages. */
+    /* Keyboard: [ and ] collapse; g then 1..9 jumps between pages. */
     let pendingG = false;
     document.addEventListener("keydown", (e) => {
       const target = e.target;
@@ -155,7 +159,7 @@
       }
 
       const modeLabel = isMock ? "MOCK" : (providerHealth?.healthy ? "LIVE" : providerHealth?.healthy === false ? "ERROR" : "UNVERIFIED");
-      document.getElementById("foot-brand").textContent = health.brand || "—";
+      document.getElementById("foot-brand").textContent = health.product?.name || "EvidenceDesk";
       document.getElementById("foot-provider").textContent = provider;
       document.getElementById("foot-mode").textContent = modeLabel;
       document.getElementById("foot-env").textContent = health.app_env || "—";

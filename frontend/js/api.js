@@ -45,7 +45,20 @@
 
     classify: (message) => request("POST", "/api/v1/agent/classify", { message }),
     retrieve: (message, k) => request("POST", "/api/v1/agent/retrieve", { message, k }),
-    respond: (message, k) => request("POST", "/api/v1/agent/respond", { message, k }),
+    respond: (message, k, conversationId) =>
+      request("POST", "/api/v1/agent/respond",
+        conversationId ? { message, k, conversation_id: conversationId } : { message, k }),
+
+    // Support workspace
+    inbox: (params) => request("GET", "/api/v1/inbox?" + new URLSearchParams(
+      Object.entries(params || {}).filter(([, v]) => v !== undefined && v !== null && v !== ""))),
+    conversation: (id) => request("GET", "/api/v1/conversations/" + encodeURIComponent(id)),
+    escalations: () => request("GET", "/api/v1/escalations"),
+    resolved: () => request("GET", "/api/v1/resolved"),
+    runtimeDecisions: (params) => request("GET", "/api/v1/agent/decisions?" + new URLSearchParams(
+      Object.entries(params || {}).filter(([, v]) => v !== undefined && v !== null && v !== ""))),
+    runtimeDecision: (requestId) => request("GET", "/api/v1/agent/decisions/" + encodeURIComponent(requestId)),
+    retrievalExplorer: (q, k) => request("GET", "/api/v1/retrieval/explorer?" + new URLSearchParams({ q, k: k || 5 })),
 
     evaluationSummary: () => request("GET", "/api/v1/evaluation/summary"),
     failures: () => request("GET", "/api/v1/evaluation/failures"),
