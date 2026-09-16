@@ -1,0 +1,67 @@
+{
+  "brand": "AmazonHelp",
+  "tuned_on": "dev (index built from train only -- no test leakage)",
+  "n_queries": 1500,
+  "k": 5,
+  "selection_rule": "maximize recall@1 subject to recall@5 within 1pp of the grid best",
+  "grid": [
+    {
+      "w_intent": 0.05,
+      "recall_at_1": 0.6793,
+      "recall_at_5": 0.8113,
+      "mrr": 0.7296,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.6776,
+      "seconds": 42.0
+    },
+    {
+      "w_intent": 0.1,
+      "recall_at_1": 0.7193,
+      "recall_at_5": 0.8307,
+      "mrr": 0.7625,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.6766,
+      "seconds": 50.6
+    },
+    {
+      "w_intent": 0.15,
+      "recall_at_1": 0.7533,
+      "recall_at_5": 0.852,
+      "mrr": 0.7907,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.6756,
+      "seconds": 63.8
+    },
+    {
+      "w_intent": 0.2,
+      "recall_at_1": 0.7833,
+      "recall_at_5": 0.8733,
+      "mrr": 0.8183,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.6749,
+      "seconds": 63.9
+    },
+    {
+      "w_intent": 0.3,
+      "recall_at_1": 0.8327,
+      "recall_at_5": 0.8927,
+      "mrr": 0.8557,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.6729,
+      "seconds": 64.6
+    }
+  ],
+  "chosen": {
+    "w_intent": 0.3,
+    "recall_at_1": 0.8327,
+    "recall_at_5": 0.8927,
+    "mrr": 0.8557,
+    "resolution_supported_rate": 1.0,
+    "mean_resolution_quality": 0.6729,
+    "seconds": 64.6
+  },
+  "applied_defaults": {
+    "RETRIEVAL_W_INTENT": 0.3,
+    "note": "set as env var or HybridRetrievalConfig default at build time"
+  }
+}

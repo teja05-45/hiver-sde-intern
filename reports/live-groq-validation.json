@@ -1,0 +1,39 @@
+{
+  "run_at": "2026-09-16T13:49:58.757403+00:00",
+  "mode": "live",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "provider_latency_ms": 961,
+  "probes": [
+    {
+      "label": "delivery_not_received (canonical AUTO demo)",
+      "intent": "delivery_not_received",
+      "decision": "ESCALATE",
+      "codes": [
+        "UNSUPPORTED_CLAIMS"
+      ],
+      "generation": "PASS",
+      "total_ms": 2276
+    },
+    {
+      "label": "refund",
+      "intent": "cancellation_or_refund_request",
+      "decision": "ESCALATE",
+      "codes": [
+        "UNSUPPORTED_CLAIMS"
+      ],
+      "generation": "PASS",
+      "total_ms": 2017
+    },
+    {
+      "label": "technical issue",
+      "intent": "app_or_device_technical_issue",
+      "decision": "ESCALATE",
+      "codes": [
+        "UNSUPPORTED_CLAIMS"
+      ],
+      "generation": "PASS",
+      "total_ms": 1722
+    }
+  ]
+}
