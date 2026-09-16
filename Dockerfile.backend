@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ ./backend/
 COPY configs/ ./configs/
+COPY docs/ ./docs/
 COPY frontend/ ./frontend/
 COPY models/ ./models/
 COPY reports/ ./reports/
