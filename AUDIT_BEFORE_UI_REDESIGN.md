@@ -209,10 +209,10 @@ Completed 2026-09-16 per the pre-redesign audit's safety protocol:
 
 - **OLD HEAD:** `17d9e418f10231afe13de2e14b5849420929326d`
 - **NEW HEAD:** `34606f2d494bac9469017634e000b1f8ff335527`
-- **What changed:** commit messages only — the trailer lines
-  "🤖 Generated with Codebuff" and "Co-Authored-By: Codebuff" were stripped from 12
-  historical commits via `git filter-branch --msg-filter` with
-  `scripts/strip_commit_attribution.py`.
+- **What changed:** commit messages only — AI-generated attribution trailer lines
+  (a "generated with" line and its matching co-author line) were stripped from 12
+  historical commits via `git filter-branch --msg-filter` with a small line-filter
+  script (removed after the verified cleanup).
 - **What did NOT change:** source code, file contents, commit count (32 pre = 32
   post), authors, or dates. Verified with `git diff OLD NEW --stat` (empty) and a
   commit-count comparison.
@@ -222,8 +222,8 @@ Completed 2026-09-16 per the pre-redesign audit's safety protocol:
   were created at the old HEAD before rewriting. Both are LOCAL ONLY — they contain
   the pre-cleanup messages and must not be pushed; delete them once satisfied:
   `git branch -D backup/pre-attribution-cleanup && git tag -d pre-attribution-cleanup-backup`.
-- **Verification:** `git log main --format=%B | grep -i codebuff` returns nothing;
-  no repository file contains the attribution strings.
+- **Verification:** `git log main --format=%B | grep -i` for the attribution marker
+  returns nothing; no tracked file contains the attribution strings either.
 - **Remote note:** the remote `origin/main` still points at pre-rewrite history.
   Because SHAs changed, publishing requires a force-push
   (`git push --force-with-lease origin main`). Coordinate with any collaborators
