@@ -6,14 +6,72 @@
   ],
   "index_size": 36815,
   "eval_split": "test",
-  "relevance_proxy": "retrieved case shares query's silver intent label (see script docstring)",
-  "n_queries": 1500,
-  "recall_at_k": {
-    "recall@1": 0.574,
-    "recall@3": 0.768,
-    "recall@5": 0.8593
+  "relevance_proxy": "retrieved case shares query's silver intent label. PROXY/SILVER evaluation derived from cluster labels -- NOT human-verified relevance (see script docstring)",
+  "baseline": {
+    "description": "plain TF-IDF cosine ranking (pre-hybrid system)",
+    "n_queries": 3000,
+    "recall_at_k": {
+      "recall@1": 0.5793,
+      "recall@5": 0.861,
+      "recall@10": 0.932
+    },
+    "mrr": 0.6943,
+    "intent_consistent_rate": 0.5793,
+    "resolution_supported_rate": 1.0,
+    "mean_resolution_quality": 0.6438,
+    "mean_top_similarity": 0.299
   },
-  "mrr": 0.6797,
-  "avg_evidence_count": 5.0,
-  "avg_top_similarity": 0.2993
+  "hybrid": {
+    "description": "reranked: semantic + lexical(BM25) + intent-compatibility (classifier p) + resolution-quality - contradiction penalty",
+    "intent_channel_active": true,
+    "n_queries": 3000,
+    "recall_at_k": {
+      "recall@1": 0.861,
+      "recall@5": 0.9183,
+      "recall@10": 0.9413
+    },
+    "mrr": 0.8859,
+    "intent_consistent_rate": 0.861,
+    "resolution_supported_rate": 1.0,
+    "mean_resolution_quality": 0.6814,
+    "mean_top_similarity": 0.25
+  },
+  "ablations": {
+    "hybrid_without_intent_channel": {
+      "description": "same hybrid scoring with intent compatibility forced to 0: isolates the lexical+quality contribution from classifier steering",
+      "n_queries": 3000,
+      "recall_at_k": {
+        "recall@1": 0.65,
+        "recall@5": 0.813,
+        "recall@10": 0.854
+      },
+      "mrr": 0.7172,
+      "intent_consistent_rate": 0.65,
+      "resolution_supported_rate": 1.0,
+      "mean_resolution_quality": 0.686,
+      "mean_top_similarity": 0.2536
+    }
+  },
+  "caveats": [
+    "PROXY CIRCULARITY: relevance is defined as sharing the query's silver intent label; the classifier was trained on those same silver labels; the hybrid's intent channel steers retrieval toward the classifier's argmax. The baseline->hybrid Recall@1 delta therefore overstates independent retrieval relevance -- read it as 'intent-aligned reranking works as designed against the silver proxy,' not as a human-verified improvement. The ablation row is the circularity-free view.",
+    "Resolution-supported rate saturates at 1.0 because the index only contains conversations with recorded resolutions; the meaningful number is mean_resolution_quality (usable vs placeholder resolutions)."
+  ],
+  "delta": {
+    "recall@1": 0.2817,
+    "recall@5": 0.0573,
+    "recall@10": 0.0093,
+    "mrr": 0.1916,
+    "intent_consistent_rate": 0.2817,
+    "resolution_supported_rate": 0.0,
+    "mean_resolution_quality": 0.0376
+  },
+  "recall_at_k": {
+    "recall@1": 0.861,
+    "recall@5": 0.9183,
+    "recall@10": 0.9413
+  },
+  "mrr": 0.8859,
+  "avg_evidence_count": 10,
+  "avg_top_similarity": 0.25,
+  "n_queries": 3000
 }
