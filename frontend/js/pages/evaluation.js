@@ -37,24 +37,30 @@
   }
 
   function modelPerformance(silver, golden, majority, goldenMajority) {
-    return card("Model performance — TF-IDF + LogisticRegression",
+    return card("Model performance",
       el("div", null,
+        el("div", { class: "section-title", text: "Golden set — human-verified labels (the trustworthy number)" }),
         el("div", { class: "grid cols-4" },
-          statBlock({ label: "Accuracy (silver)", value: pct(silver.accuracy), sub: `n=${silver.n_examples}`, tip: "Cluster-derived labels — structurally optimistic." }),
-          statBlock({ label: "Macro-F1 (silver)", value: num(silver.macro_f1) }),
-          statBlock({ label: "Accuracy (golden)", value: pct(golden?.accuracy), sub: `human-verified, n=${golden?.n_examples ?? "—"}`, tone: "golden" }),
-          statBlock({ label: "Macro-F1 (golden)", value: num(golden?.macro_f1), tone: "golden" })
-        ),
-        el("div", { class: "mt-5 section-title", text: "Baselines" }),
+          statBlock({ label: "Accuracy", value: pct(golden?.accuracy), sub: `human-verified, n=${golden?.n_examples ?? "—"}`, tone: "golden" }),
+          statBlock({ label: "Macro-F1", value: num(golden?.macro_f1), tone: "golden" }),
+          statBlock({ label: "Precision (macro)", value: num(golden?.macro_precision), tone: "golden" }),
+          statBlock({ label: "Recall (macro)", value: num(golden?.macro_recall), tone: "golden" })),
+        el("div", { class: "section-title", text: "Silver benchmark — cluster-derived labels (structurally optimistic)" }),
+        el("div", { class: "grid cols-4" },
+          statBlock({ label: "Accuracy", value: pct(silver.accuracy), sub: `n=${silver.n_examples}`, tone: "silver", tip: "Labels produced by the same clustering that shaped training — never quote alone." }),
+          statBlock({ label: "Macro-F1", value: num(silver.macro_f1), tone: "silver" }),
+          statBlock({ label: "Precision (macro)", value: num(silver.macro_precision), tone: "silver" }),
+          statBlock({ label: "Recall (macro)", value: num(silver.macro_recall), tone: "silver" })),
+        el("div", { class: "mt-5 section-title", text: "Baseline comparison — same metric, both label sources, side by side" }),
         baselineTable(silver, golden, majority, goldenMajority)
       ));
   }
 
   function baselineTable(silver, golden, majority, goldenMajority) {
     const rows = [
-      ["Majority class", pct(majority?.accuracy), num(majority?.macro_f1), pct(goldenMajority?.accuracy), "predicts the single most frequent intent always"],
+      ["Majority class", pct(majority?.accuracy), num(majority?.macro_f1), pct(goldenMajority?.accuracy), "always predicts the single most frequent intent"],
       ["TF-IDF + LogisticRegression", pct(silver.accuracy), num(silver.macro_f1), pct(golden?.accuracy), "the classifier this system is built on"],
-      ["Full agent (classification + retrieval + evidence + grounding + escalation)", "—", "—", "—", "evaluated via automation precision/coverage below; grounding quality NOT AVAILABLE IN MOCK MODE"],
+      ["Full agent (retrieval + evidence + grounding + escalation)", "—", "—", "—", "evaluated via automation precision/coverage below — its value is abstention, not intent accuracy"],
     ];
     return el("table", { class: "data" },
       el("thead", null, el("tr", null,
